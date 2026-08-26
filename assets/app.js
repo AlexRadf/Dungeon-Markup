@@ -326,15 +326,7 @@ ta.addEventListener('input', () => {
 
 /* title + subtitle are edited from the page itself */
 $('#view').addEventListener('dblclick', e => {
-  if(!editing) return;
-  const d = docs[cur];
-  if(e.target.closest('h1')){
-    const v = prompt('Page title', d.title);
-    if(v != null){ d.title = v; d.dirty = true; store.drafts[d.file] = Markup.serialize(d); draw(); writeStore(); }
-  }else if(e.target.closest('.subtitle')){
-    const v = prompt('Subtitle', d.subtitle || '');
-    if(v != null){ d.subtitle = v; d.dirty = true; store.drafts[d.file] = Markup.serialize(d); draw(); writeStore(); }
-  }
+  if(e.target.closest('.masthead') || e.target.closest('.runhead')) openPageSetup();
 });
 
 /* images: paste or drop, embedded as data URIs so a page stays self-contained */
@@ -406,85 +398,120 @@ function toggleEdit(){
 }
 $('#editBtn').addEventListener('click', toggleEdit);
 
-$('#newBtn').addEventListener('click', () => {
+/* ---------- page setup ----------
+   One form, two jobs: New builds a page from it, Page… edits the one
+   you are on. The fields are the front matter — everything that ends up
+   between the --- lines at the top of the .md file. */
+
+const META_FIELDS = [
+  ['title',     'Title',        'The big line'],
+  ['kicker',    'Kicker',       'Small red line above the title'],
+  ['number',    'Number',       'Large grey numeral, top right'],
+  ['subtitle',  'Subtitle',     'Grey line under the title'],
+  ['head',      'Running head', 'Top left of every page'],
+  ['headright', 'Head right',   'Top right of every page']
+];
+
+function metaModal(opts){
+  const v = opts.values || {};
   const modal = document.createElement('div');
   modal.className = 'modal-overlay';
-  modal.innerHTML = `
-    <div class="modal-content">
-      <h3>New Document</h3>
+  modal.innerHTML =
+    `<div class="modal-content" role="dialog" aria-modal="true" aria-label="${Markup.esc(opts.heading)}">
+       <h3>${Markup.esc(opts.heading)}</h3>
+       ${META_FIELDS.map(([k, label, hint]) => `
+         <label for="doc-${k}">${label}<small>${hint}</small></label>
+         <input type="text" id="doc-${k}" value="${Markup.esc(v[k] || '')}">`).join('')}
+       ${opts.withFile ? `
+         <label for="doc-file">File name<small>Commit it to content/ under this name</small></label>
+         <input type="text" id="doc-file" value="${Markup.esc(v.file || '')}">` : ''}
+       ${opts.withBody ? `
+         <label for="doc-body">Initial content</label>
+         <textarea id="doc-body" rows="5">Write here.</textarea>` : ''}
+       <div class="modal-actions">
+         <button class="btn" data-act="cancel">Cancel</button>
+         <button class="btn solid" data-act="ok">${Markup.esc(opts.submitLabel)}</button>
+       </div>
+     </div>`;
 
-      <label>Title</label>
-      <input type="text" id="docTitle" value="New page">
+  const close = () => { modal.remove(); document.removeEventListener('keydown', onKey); };
+  const read = () => {
+    const out = {};
+    META_FIELDS.forEach(([k]) => { out[k] = modal.querySelector('#doc-' + k).value.trim(); });
+    if(opts.withFile) out.file = modal.querySelector('#doc-file').value.trim();
+    if(opts.withBody) out.body = modal.querySelector('#doc-body').value;
+    return out;
+  };
+  const submit = () => { opts.onSubmit(read()); close(); };
+  function onKey(e){
+    if(e.key === 'Escape'){ e.preventDefault(); close(); }
+    if(e.key === 'Enter' && e.target.tagName === 'INPUT'){ e.preventDefault(); submit(); }
+  }
 
-      <label>Kicker</label>
-      <input type="text" id="docKicker" value="">
-
-      <label>Number</label>
-      <input type="text" id="docNumber" value="">
-
-      <label>Subtitle</label>
-      <input type="text" id="docSubtitle" value="">
-
-      <label>Running Head</label>
-      <input type="text" id="docHead" value="">
-
-      <label>Running Head Right</label>
-      <input type="text" id="docHeadright" value="">
-
-      <label>Initial Content</label>
-      <textarea id="docContent" rows="6">Write here.</textarea>
-
-      <div class="modal-actions">
-        <button id="cancelDocBtn">Cancel</button>
-        <button id="createDocBtn">Create</button>
-      </div>
-    </div>
-  `;
-
+  modal.addEventListener('click', e => {
+    if(e.target === modal) return close();
+    const act = e.target.closest('[data-act]');
+    if(!act) return;
+    if(act.dataset.act === 'cancel') close(); else submit();
+  });
+  document.addEventListener('keydown', onKey);
   document.body.appendChild(modal);
+  modal.querySelector('#doc-title').focus();
+  modal.querySelector('#doc-title').select();
+  return modal;
+}
 
-  modal.querySelector('#cancelDocBtn').addEventListener('click', () => {
-    modal.remove();
-  });
+/* write the form back onto a doc and persist it as a draft */
+function applyMeta(d, vals){
+  META_FIELDS.forEach(([k]) => { d[k] = vals[k]; });
+  d.dirty = true;
+  store.drafts[d.file] = Markup.serialize(d);
+}
 
-  modal.querySelector('#createDocBtn').addEventListener('click', () => {
-    const t = modal.querySelector('#docTitle').value.trim() || 'New page';
-    const kicker = modal.querySelector('#docKicker').value.trim();
-    const number = modal.querySelector('#docNumber').value.trim();
-    const sub = modal.querySelector('#docSubtitle').value.trim();
-    const head = modal.querySelector('#docHead').value.trim();
-    const headright = modal.querySelector('#docHeadright').value.trim();
-    const bodyText = modal.querySelector('#docContent').value;
-
+$('#newBtn').addEventListener('click', () => metaModal({
+  heading: 'New page',
+  submitLabel: 'Create',
+  withBody: true,
+  values: { title: 'New page' },
+  onSubmit: vals => {
+    const t = vals.title || 'New page';
     let file = slug(t) + '.md', n = 2;
-    while (docs.some(d => d.file === file)) {
-      file = slug(t) + '-' + (n++) + '.md';
-    }
-
-    const d = {
-      file,
-      title: t,
-      kicker,
-      number,
-      subtitle: sub,
-      head,
-      headright,
-      md: bodyText + '\n',
-      base: null,
-      dirty: true
-    };
-
+    while(docs.some(d => d.file === file)) file = slug(t) + '-' + (n++) + '.md';
+    const d = { file, md: (vals.body || 'Write here.') + '\n', base: null, dirty: true };
+    applyMeta(d, Object.assign({}, vals, { title: t }));
     docs.push(d);
-    store.drafts[file] = Markup.serialize(d);
     cur = docs.length - 1;
-    
-    draw();
-    writeStore();
-    if (!editing) toggleEdit();
+    draw(); writeStore();
+    if(!editing) toggleEdit();
+  }
+}));
 
-    modal.remove();
+function openPageSetup(){
+  const d = docs[cur];
+  if(!d) return;
+  metaModal({
+    heading: 'Page setup',
+    submitLabel: 'Apply',
+    withFile: true,
+    values: d,
+    onSubmit: vals => {
+      const was = d.file;
+      const file = (vals.file || was).replace(/[^\w.\- ]+/g, '').trim() || was;
+      if(file !== was){
+        if(docs.some(x => x !== d && x.file === file)) return toast('A page already uses that file name');
+        delete store.drafts[was];
+        d.file = file;
+        // the committed file still lives under the old name, so there is
+        // nothing to revert this one to any more
+        d.base = null;
+        toast('Renamed — update content/manifest.json to match');
+      }
+      applyMeta(d, vals);
+      draw(); writeStore();
+    }
   });
-});
+}
+$('#pageBtn').addEventListener('click', openPageSetup);
 
 $('#dlBtn').addEventListener('click', () => {
   const d = docs[cur];
@@ -515,6 +542,7 @@ document.addEventListener('keydown', e => {
   const cmd = e.metaKey || e.ctrlKey;
   if(cmd && e.key.toLowerCase() === 'e'){ e.preventDefault(); toggleEdit(); }
   if(cmd && e.key.toLowerCase() === 's'){ e.preventDefault(); $('#dlBtn').click(); }
+  if(cmd && e.key.toLowerCase() === 'i'){ e.preventDefault(); openPageSetup(); }
   if(e.key === 'Escape' && !$('#printbox').hidden) closePrintBox();
 });
 

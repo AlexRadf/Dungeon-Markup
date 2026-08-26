@@ -42,6 +42,11 @@ headright: DUNG 101
 ---
 ```
 
+`content/03-the-god-is-still-dying.md` is a level 15 one-shot laid out on Sly
+Flourish's prep spine instead of a plot: a strong start, unordered potential scenes,
+ten secrets and clues tied to no room, three fantastic locations with three
+evocative details each, then the monsters and the one decision the session turns on.
+
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
@@ -74,6 +79,9 @@ the argument; `|` splits it into parts.
 | `:::valve` | Pacing valves — `Label: text` per line |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark` |
 | `:::cols 2` | Two or three columns; blocks nest inside |
+| `:::secrets` | Ten things they can learn, in any order, each with a box to tick |
+| `:::scenes LABEL` | What might happen, deliberately unordered |
+| `:::place Name \| one line` | A location and the three details you say aloud |
 
 ### Stat blocks
 
@@ -103,6 +111,14 @@ square. Text after the word `dungeon` becomes the caption.
 
 `#` rock · `.` floor · `~` water · `:` rubble · `=` stairs · `+` door ·
 `S` secret door · `0-9`/`A-Z` a keyed marker.
+
+### Page setup
+
+**Page…** in the toolbar (Ctrl/Cmd+I, or double-click a page's masthead) edits the
+current page's front matter — title, kicker, number, subtitle, and both halves of
+the running head — plus the file name it saves under. **New** builds a page from the
+same form. Renaming a page is a local change: update `content/manifest.json` to
+match before you commit.
 
 ### The in-browser editor
 
