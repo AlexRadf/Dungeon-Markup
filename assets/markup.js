@@ -275,6 +275,34 @@ block('puzzle', (arg, body) => {
        + (de?`<div class="de">${inline(de)}</div>`:'') + rows + `</div>`;
 });
 
+/* Lazy-DM prep blocks: a session is a situation, not a sequence.
+
+   :::secrets   ten things the party can learn, in any order, ticked off
+                as they land — never tied to a room.
+   :::scenes    what might happen, deliberately unordered.
+   :::place     a fantastic location and the three details you say aloud. */
+
+block('secrets', (arg, body) => {
+  const items = h.lines(body)
+    .map(l => `<li>${inline(l.replace(/^\s*(?:\d+[.)]|[-*])\s+/, ''))}</li>`).join('');
+  return `<ol class="secrets">${items}</ol>`;
+});
+
+block('scenes', (arg, body) => {
+  const items = h.lines(body)
+    .map(l => `<li>${inline(l.replace(/^\s*(?:\d+[.)]|[-*])\s+/, ''))}</li>`).join('');
+  return `<ul class="scenes">${arg?`<li class="t">${inline(arg)}</li>`:''}${items}</ul>`;
+});
+
+block('place', (arg, body) => {
+  const [nm, de] = split(arg);
+  const items = h.lines(body)
+    .map(l => `<li>${inline(l.replace(/^\s*[-*]\s+/, ''))}</li>`).join('');
+  return `<div class="place"><div class="nm">${inline(nm||'')}</div>`
+       + (de?`<div class="de">${inline(de)}</div>`:'')
+       + `<ul class="det">${items}</ul></div>`;
+});
+
 /* ---------- block parser ---------- */
 function render(src){
   const lines = String(src||'').replace(/\r/g,'').split('\n');

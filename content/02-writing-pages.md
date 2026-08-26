@@ -7,7 +7,7 @@ head: REFERENCE
 headright: WRITING PAGES
 ---
 
-A page is one file in `content/`, listed in `content/manifest.json`. The front matter at the top sets the furniture: `title`, `subtitle`, `kicker` (the small red line above the title), `number` (the big grey numeral), `head` and `headright` (the running head, left and right).
+A page is one file in `content/`, listed in `content/manifest.json`. The front matter at the top sets the furniture: `title`, `subtitle`, `kicker` (the small red line above the title), `number` (the big grey numeral), `head` and `headright` (the running head, left and right). **Page…** in the toolbar (Ctrl/Cmd+I, or double-click the masthead) edits all of it, including the file name; **New** builds a page from the same form.
 
 **One `+++` on its own line ends a printed page and starts the next.** Pages here are designed, not flowed — what you see stacked in the preview is what comes out of the printer, and a page that runs long gets outlined in red so you can trim it before you print.
 
@@ -33,6 +33,12 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::valve` | Pacing valves. `Label: text` per line. |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark`. |
 | `:::cols 2` | Two or three columns. Blocks nest inside. |
+
+| BLOCK | WHAT IT MAKES |
+|---|---|
+| `:::secrets` | Ten things they can learn, in any order, each with a box to tick. |
+| `:::scenes LABEL` | What might happen, deliberately unordered. |
+| `:::place Name \| one line` | A location and the three details you say aloud. |
 :::
 
 +++
@@ -103,6 +109,12 @@ SPELLS: DC 12, +4 -- at will *dancing lights* -- 1/day *sleep*
 ### The fonts
 
 TeX Gyre Heros Cn for display, Lora for body, DejaVu Sans Mono for labels — all three bundled as subset WOFF2 in `assets/fonts`, about 160 KB total. Nothing is fetched from a network, so the page prints identically on any machine, offline, forever.
+
+### Prepping the lazy way
+
+`content/03-the-god-is-still-dying.md` is laid out on Sly Flourish's prep spine rather than a plot: a **strong start** you read cold, **potential scenes** that are explicitly not a sequence, **ten secrets and clues** tied to no room in particular, and **three fantastic locations** with three evocative details each. `:::secrets`, `:::scenes` and `:::place` exist for exactly those four things.
+
+The tick boxes on `:::secrets` are the point — a secret lands wherever the table wanders into it, and you cross it off. Nothing on that list says where it is found.
 
 ### Adding a block
 
