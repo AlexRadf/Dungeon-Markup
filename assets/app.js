@@ -407,16 +407,83 @@ function toggleEdit(){
 $('#editBtn').addEventListener('click', toggleEdit);
 
 $('#newBtn').addEventListener('click', () => {
-  const t = prompt('Page title', 'New page');
-  if(t == null) return;
-  let file = slug(t) + '.md', n = 2;
-  while(docs.some(d => d.file === file)) file = slug(t) + '-' + (n++) + '.md';
-  const d = {file, title:t || 'New page', subtitle:'', md:'Write here.\n', base:null, dirty:true};
-  docs.push(d);
-  store.drafts[file] = Markup.serialize(d);
-  cur = docs.length - 1;
-  draw(); writeStore();
-  if(!editing) toggleEdit();
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h3>New Document</h3>
+
+      <label>Title</label>
+      <input type="text" id="docTitle" value="New page">
+
+      <label>Kicker</label>
+      <input type="text" id="docKicker" value="">
+
+      <label>Number</label>
+      <input type="text" id="docNumber" value="">
+
+      <label>Subtitle</label>
+      <input type="text" id="docSubtitle" value="">
+
+      <label>Running Head</label>
+      <input type="text" id="docHead" value="">
+
+      <label>Running Head Right</label>
+      <input type="text" id="docHeadright" value="">
+
+      <label>Initial Content</label>
+      <textarea id="docContent" rows="6">Write here.</textarea>
+
+      <div class="modal-actions">
+        <button id="cancelDocBtn">Cancel</button>
+        <button id="createDocBtn">Create</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  modal.querySelector('#cancelDocBtn').addEventListener('click', () => {
+    modal.remove();
+  });
+
+  modal.querySelector('#createDocBtn').addEventListener('click', () => {
+    const t = modal.querySelector('#docTitle').value.trim() || 'New page';
+    const kicker = modal.querySelector('#docKicker').value.trim();
+    const number = modal.querySelector('#docNumber').value.trim();
+    const sub = modal.querySelector('#docSubtitle').value.trim();
+    const head = modal.querySelector('#docHead').value.trim();
+    const headright = modal.querySelector('#docHeadright').value.trim();
+    const bodyText = modal.querySelector('#docContent').value;
+
+    let file = slug(t) + '.md', n = 2;
+    while (docs.some(d => d.file === file)) {
+      file = slug(t) + '-' + (n++) + '.md';
+    }
+
+    const d = {
+      file,
+      title: t,
+      kicker,
+      number,
+      subtitle: sub,
+      head,
+      headright,
+      md: bodyText + '\n',
+      base: null,
+      dirty: true
+    };
+
+    docs.push(d);
+    store.drafts[file] = Markup.serialize(d);
+    cur = docs.length - 1;
+    
+    draw();
+    writeStore();
+    if (!editing) toggleEdit();
+
+    modal.remove();
+  });
 });
 
 $('#dlBtn').addEventListener('click', () => {

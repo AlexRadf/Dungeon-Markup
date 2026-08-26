@@ -410,7 +410,11 @@ function renderDoc(doc){
 
 function serialize(doc){
   const fm = ['---', `title: ${doc.title||''}`];
+  if(doc.kicker) fm.push(`kicker: ${doc.kicker}`);
+  if(doc.number) fm.push(`number: ${doc.number}`);
   if(doc.subtitle) fm.push(`subtitle: ${doc.subtitle}`);
+  if(doc.head) fm.push(`head: ${doc.head}`);
+  if(doc.headright) fm.push(`headright: ${doc.headright}`);
   fm.push('---', '');
   return fm.join('\n') + String(doc.md||'').replace(/^\n+/,'');
 }
