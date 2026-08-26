@@ -13,7 +13,6 @@ A page is one file in `content/`, listed in `content/manifest.json`. The front m
 
 Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes, `---` rules, tables, images. Dice and DCs — 2d6+1, DC 14 — are set in mono automatically.
 
-:::cols 2
 | BLOCK | WHAT IT MAKES |
 |---|---|
 | `:::pitch` | Black panel. A `!!` line becomes the gold theme rule. |
@@ -22,9 +21,6 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::beats` | Numbered beats with black square markers. |
 | `:::npc Name \| descriptor` | Voice card. `WANT:` `VOICE:` `BREAK:` `LINE:` `USE:` |
 | `:::stat Name \| CR 1/2 \| AC 12 \| HP 22 \| SPD 30 ft \| STR +2` | Compressed stat block. All six abilities always print. A `>` line is the black where-it-goes bar. |
-
-| BLOCK | WHAT IT MAKES |
-|---|---|
 | `:::rooms \| AREA \| WHAT IS THERE` | Keyed area table. One line per area: `1 \| NAME \| text`. |
 | `:::item Name \| type, rarity` | Magic item or plot object. |
 | `:::puzzle Name \| premise` | Drop-in puzzle. `LOOKS:` `SOLVE:` `FAIL:` |
@@ -33,13 +29,9 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::valve` | Pacing valves. `Label: text` per line. |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark`. |
 | `:::cols 2` | Two or three columns. Blocks nest inside. |
-
-| BLOCK | WHAT IT MAKES |
-|---|---|
 | `:::secrets` | Ten things they can learn, in any order, each with a box to tick. |
 | `:::scenes LABEL` | What might happen, deliberately unordered. |
 | `:::place Name \| one line` | A location and the three details you say aloud. |
-:::
 
 +++
 
@@ -80,8 +72,6 @@ Turn **Background graphics** on, or the black panels and table headers come out 
 
 The house sets body copy at 8.2pt, which is what the booklet uses. It is dense on purpose: a session should be one spread you can take in at a glance, not four pages you leaf through at the table.
 
-+++
-
 ### Stat blocks
 
 The opening line is the whole defensive line: a name, then any number of `KEY value` pairs split by `|`. The six ability modifiers are lifted out of those pairs and always printed as their own row, in order, whether or not you gave them — an ability you leave out prints `+0`, which is what a stat block means by silence.
@@ -105,6 +95,8 @@ SPELLS: DC 12, +4 -- at will *dancing lights* -- 1/day *sleep*
 > Area 3 · never fights, only leads
 :::
 ```
+
++++
 
 ### The fonts
 

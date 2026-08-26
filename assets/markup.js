@@ -89,7 +89,7 @@ function inline(t){
 
   // table-facing niceties: dice and DCs get a monospace tag
   s = s.replace(/\b(\d*d\d+(?:\s*[+-]\s*\d+)?)\b/g,'<span class="dice">$1</span>');
-  s = s.replace(/\bDC\s*(\d+)/g,'<span class="dc">DC&nbsp;$1</span>');
+  s = s.replace(/\bDC\s*(\d+)/g,'<span class="dc">DC $1</span>');  // .dc is nowrap
   s = s.replace(/ -- /g,' — ');
 
   return s.replace(new RegExp(SEP + '(\\d+)' + SEP, 'g'), (m,i) => keep[+i]);
