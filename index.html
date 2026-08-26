@@ -31,7 +31,7 @@
         <textarea id="md" spellcheck="false" aria-label="Markdown source"></textarea>
         <div class="edfoot"><span id="stats"></span><span class="spacer"></span><span id="draft"></span></div>
       </div>
-      <div id="view"><div class="sheet" id="out"></div></div>
+      <div id="view"><div id="out"></div></div>
     </div>
   </main>
 </div>
@@ -53,12 +53,12 @@
   <label>Margins
     <select id="pbMargin">
       <option value="10mm 11mm">Tight</option>
-      <option value="15mm 16mm">Normal</option>
-      <option value="20mm 22mm">Wide</option>
+      <option value="14mm 15mm">Normal</option>
+      <option value="18mm 20mm">Wide</option>
     </select>
   </label>
   <label>Text size
-    <span class="rangewrap"><input type="range" id="pbText" min="8" max="13" step="0.5"><output id="pbTextOut"></output></span>
+    <span class="rangewrap"><input type="range" id="pbText" min="7" max="11" step="0.1"><output id="pbTextOut"></output></span>
   </label>
   <label class="check"><input type="checkbox" id="pbMono"> Ink saver (no filled panels)</label>
   <p class="hint">In the browser dialog, turn <b>Background graphics</b> on and <b>Headers and footers</b> off.</p>
