@@ -20,7 +20,7 @@ window.Markup = (function(){
 'use strict';
 
 /* ---------- dungeon map renderer ---------- */
-const INK = '#141210', ACCENT = '#C22E28';
+const INK = '#17130E', ACCENT = '#A32323';
 const FLOOR = new Set(['.','~',':','=','+','S']);
 const isLabel = c => /[0-9A-Z]/.test(c);
 const walkable = c => FLOOR.has(c) || isLabel(c);
@@ -37,9 +37,9 @@ function drawDungeon(src){
   s += `<rect width="${W}" height="${H}" fill="#fff"/>`;
   for(let y=0;y<h;y++) for(let x=0;x<w;x++){
     const c = at(x,y); if(!walkable(c)) continue;
-    const fill = c==='~' ? '#DCE5E8' : c===':' ? '#E9E5DB' : '#fff';
+    const fill = c==='~' ? '#D9E3E6' : c===':' ? '#EFEADC' : '#fff';
     s += `<rect x="${x*C}" y="${y*C}" width="${C}" height="${C}" fill="${fill}"/>`;
-    s += `<rect x="${x*C}" y="${y*C}" width="${C}" height="${C}" fill="none" stroke="#C6C1B7" stroke-width=".45"/>`;
+    s += `<rect x="${x*C}" y="${y*C}" width="${C}" height="${C}" fill="none" stroke="#BDB8AE" stroke-width=".45"/>`;
     if(c===':') s += `<path d="M${x*C+3} ${y*C+10}l3-4M${x*C+7} ${y*C+11}l4-5" stroke="${INK}" stroke-width=".6" fill="none"/>`;
     if(c==='~') s += `<path d="M${x*C+2.5} ${y*C+7.5}q2.5-2 5 0t5 0" stroke="#6E8A96" stroke-width=".8" fill="none"/>`;
     if(c==='='){ for(let k=1;k<5;k++){const yy=y*C+k*C/5; s += `<line x1="${x*C+1.5}" y1="${yy}" x2="${x*C+C-1.5}" y2="${yy}" stroke="${INK}" stroke-width=".7"/>`;} }
@@ -63,7 +63,7 @@ function drawDungeon(src){
     const c=at(x,y); if(!isLabel(c)) continue;
     const cx=x*C+C/2, cy=y*C+C/2;
     s+=`<circle cx="${cx}" cy="${cy}" r="${C*.42}" fill="${INK}"/>`;
-    s+=`<text x="${cx}" y="${cy+3.3}" text-anchor="middle" font-family="Arial Narrow,sans-serif" font-weight="700" font-size="9.5" fill="#fff">${c}</text>`;
+    s+=`<text x="${cx}" y="${cy+3.3}" text-anchor="middle" font-family="TeX Gyre Heros Cn,Arial Narrow,sans-serif" font-weight="700" font-size="9.5" fill="#fff">${c}</text>`;
   }
   return s+'</svg>';
 }
@@ -111,7 +111,13 @@ const BLOCKS = {};
 const block = (name, fn) => { BLOCKS[name] = fn; };
 const split = arg => String(arg||'').split('|').map(s => s.trim());
 
-block('pitch', (arg, body) => `<div class="pitch">${h.md(body)}</div>`);
+block('pitch', (arg, body) => {
+  const ls = String(body).split('\n');
+  const gold = ls.filter(l => l.startsWith('!! ')).map(l => inline(l.slice(3))).join(' ');
+  const rest = ls.filter(l => !l.startsWith('!! ')).join('\n');
+  return `<div class="pitch">${h.md(rest)}`
+       + (gold?`<div class="theme">${gold}</div>`:'') + `</div>`;
+});
 
 block('read', (arg, body) =>
   `<div class="read"><div class="lbl">${inline(arg || 'Read aloud')}</div>${h.md(body)}</div>`);
@@ -119,9 +125,12 @@ block('read', (arg, body) =>
 block('clue', (arg, body) => {
   const ls = String(body).split('\n');
   const big = ls.filter(l => l.startsWith('!! ')).map(l => inline(l.slice(3))).join('<br>');
-  const rest = ls.filter(l => !l.startsWith('!! ')).join('\n');
-  return `<div class="clue">${arg?`<div class="lbl">&#10230; ${inline(arg)}</div>`:''}`
-       + h.md(rest) + (big?`<div class="big">${big}</div>`:'') + `</div>`;
+  const sub = ls.filter(l => l.startsWith('>> ')).map(l => inline(l.slice(3))).join(' ');
+  const rest = ls.filter(l => !l.startsWith('!! ') && !l.startsWith('>> ')).join('\n');
+  return `<div class="clue">${arg?`<div class="lbl">&#8594; ${inline(arg)}</div>`:''}`
+       + h.md(rest)
+       + (big?`<div class="big">${big}</div>`:'')
+       + (sub?`<div class="sub">${sub}</div>`:'') + `</div>`;
 });
 
 block('npc', (arg, body) => {
@@ -135,20 +144,53 @@ block('npc', (arg, body) => {
        + (de?`<div class="de">${inline(de)}</div>`:'') + rows + line + `</div>`;
 });
 
+/* Compressed stat block.
+
+   The opening line is the whole defensive line: a name, then any number
+   of `KEY value` pairs separated by `|`. The six ability modifiers are
+   pulled out of those pairs and always printed as their own row, in
+   order, whether or not you supplied them — an ability you leave out
+   shows +0, which is what a 5e stat block means by silence.
+
+   In the body, a line of `SHOUTY KEY: value` becomes a compact keyed
+   row: SPELLS, SAVES, SKILLS, SENSES, RESIST, LANG. Use SPELLS for a
+   caster's attack in one line rather than a spell list:
+     SPELLS: DC 13, +5 · at will fire bolt 1d10 · 2/day misty step  */
+const ABIL = ['STR','DEX','CON','INT','WIS','CHA'];
+
 block('stat', (arg, body) => {
   const p = split(arg);
   const nm = p.shift() || '';
-  const cr = p.find(x => /^CR/i.test(x)) || '';
-  const bar = p.filter(x => x && !/^CR/i.test(x)).map(x => {
+  const cr = p.find(x => /^CR\b/i.test(x)) || '';
+  const abil = {}, defence = [];
+  p.forEach(x => {
+    if(!x || /^CR\b/i.test(x)) return;
+    const m = x.match(/^([A-Za-z]{3})\s+(.+)$/);
+    if(m && ABIL.includes(m[1].toUpperCase())) abil[m[1].toUpperCase()] = m[2].trim();
+    else defence.push(x);
+  });
+
+  const bar = defence.map(x => {
     const m = x.match(/^(\S+)\s+(.*)$/);
     return m ? `<b>${esc(m[1])}</b> ${esc(m[2])}` : esc(x);
   }).join(' &nbsp; ');
-  const ls = String(body).split('\n');
-  const where = ls.filter(l => l.startsWith('> ')).map(l => inline(l.slice(2))).join(' ');
-  const rest = ls.filter(l => !l.startsWith('> ') && l.trim()).map(l => `<p>${inline(l)}</p>`).join('');
+
+  const abilRow = '<div class="abil">'
+    + ABIL.map(k => `<span><b>${k}</b> ${esc(abil[k] || '+0')}</span>`).join('')
+    + '</div>';
+
+  let where = '', rows = '';
+  String(body).split('\n').forEach(l => {
+    if(l.startsWith('> ')){ where += (where?' ':'') + inline(l.slice(2)); return; }
+    if(!l.trim()) return;
+    const m = l.match(/^([A-Z][A-Z0-9 &/'-]{1,13}):\s*(.*)$/);
+    rows += m ? `<div class="krow"><span class="k">${esc(m[1].trim())}</span><span>${inline(m[2])}</span></div>`
+              : `<p>${inline(l)}</p>`;
+  });
+
   return `<div class="stat"><div class="hd"><span class="nm">${esc(nm)}</span>`
        + (cr?`<span class="cr">${esc(cr)}</span>`:'') + `</div>`
-       + (bar?`<div class="bar">${bar}</div>`:'') + rest
+       + (bar?`<div class="bar">${bar}</div>`:'') + abilRow + rows
        + (where?`<div class="where">&#9654; ${where}</div>`:'') + `</div>`;
 });
 
@@ -204,6 +246,35 @@ block('cols', (arg, body) => {
   return `<div class="cols" style="column-count:${n}">${h.md(body)}</div>`;
 });
 
+block('rooms', (arg, body) => {
+  const head = String(arg||'').trim() ? split(arg) : [];
+  const rows = h.lines(body).map(l => {
+    const c = l.split('|').map(x => x.trim());
+    const mk = c.length > 2 ? c.shift() : '';
+    const nm = c.shift() || '';
+    return `<tr>${mk!==''?`<td class="mk">${esc(mk)}</td>`:''}`
+         + `<td class="nm">${inline(nm)}</td><td>${inline(c.join(' | '))}</td></tr>`;
+  }).join('');
+  const th = head.length
+    ? `<thead><tr><th class="mk">${esc(head[0]||'')}</th><th>${esc(head[1]||'')}</th><th>${esc(head[2]||'')}</th></tr></thead>`
+    : '';
+  return `<table class="rooms">${th}<tbody>${rows}</tbody></table>`;
+});
+
+block('item', (arg, body) => {
+  const [nm, kind] = split(arg);
+  return `<div class="item"><div class="nm">${inline(nm||'')}</div>`
+       + (kind?`<div class="kd">${inline(kind)}</div>`:'') + h.md(body) + `</div>`;
+});
+
+block('puzzle', (arg, body) => {
+  const [nm, de] = split(arg);
+  const rows = h.kv(body).map(({k,v}) =>
+    `<div class="row"><span class="k">${esc(k)}</span><span>${inline(v)}</span></div>`).join('');
+  return `<div class="puzzle"><div class="nm">${inline(nm||'')}</div>`
+       + (de?`<div class="de">${inline(de)}</div>`:'') + rows + `</div>`;
+});
+
 /* ---------- block parser ---------- */
 function render(src){
   const lines = String(src||'').replace(/\r/g,'').split('\n');
@@ -237,8 +308,9 @@ function render(src){
       const body = []; i++;
       while(i < lines.length && !/^```/.test(lines[i])){ body.push(lines[i]); i++; }
       i++;
-      out += lang === 'dungeon' ? drawDungeon(body.join('\n'))
-                                : `<pre><code>${esc(body.join('\n'))}</code></pre>`;
+      const dm = lang.match(/^dungeon\b\s*(.*)$/);
+      out += dm ? drawDungeon(body.join('\n')) + (dm[1]?`<div class="mapcap">${inline(dm[1])}</div>`:'')
+                : `<pre><code>${esc(body.join('\n'))}</code></pre>`;
       continue;
     }
 
@@ -306,16 +378,34 @@ function parseDoc(text){
     });
   }
   return {
-    title: meta.title || (md.match(/^#\s+(.*)$/m)||[])[1] || 'Untitled',
+    title:    meta.title || (md.match(/^#\s+(.*)$/m)||[])[1] || 'Untitled',
     subtitle: meta.subtitle || meta.sub || '',
+    kicker:   meta.kicker || '',
+    number:   meta.number || '',
+    head:     meta.head || '',
+    headright: meta.headright || meta['head-right'] || '',
     md
   };
 }
 
+/* A page in this house style is designed, not flowed: `+++` on its own
+   line ends one printed page and starts the next. */
+function splitPages(md){
+  return String(md||'').split(/^\+\+\+[ \t]*$/m);
+}
+
+/* The title block that opens a document's first page. */
+function masthead(doc){
+  return `<div class="masthead">`
+       + (doc.number?`<div class="bignum">${esc(doc.number)}</div>`:'')
+       + (doc.kicker?`<div class="kicker">${inline(doc.kicker)}</div>`:'')
+       + `<h1>${esc(doc.title)}</h1>`
+       + (doc.subtitle?`<div class="subtitle">${inline(doc.subtitle)}</div>`:'')
+       + `</div>`;
+}
+
 function renderDoc(doc){
-  return `<h1>${esc(doc.title)}</h1>`
-       + (doc.subtitle ? `<div class="subtitle">${inline(doc.subtitle)}</div>` : '')
-       + render(doc.md);
+  return splitPages(doc.md).map((md,i) => (i?'':masthead(doc)) + render(md)).join('');
 }
 
 function serialize(doc){
@@ -325,5 +415,6 @@ function serialize(doc){
   return fm.join('\n') + String(doc.md||'').replace(/^\n+/,'');
 }
 
-return { render, renderDoc, parseDoc, serialize, block, blocks: BLOCKS, drawDungeon, inline, esc };
+return { render, renderDoc, parseDoc, serialize, splitPages, masthead,
+         block, blocks: BLOCKS, drawDungeon, inline, esc };
 })();

@@ -19,7 +19,7 @@ const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 
 const STORE = 'dungeon-markup:v1';
-const PAPER = { A4:'210mm', Letter:'216mm', A5:'148mm' };
+const PAPER = { A4:['210mm','297mm'], Letter:['216mm','279mm'], A5:['148mm','210mm'] };
 
 const WELCOME = [
   '---',
@@ -48,7 +48,7 @@ let editing = false;
 let saveT = null;
 let printScope = 'page';
 
-let cfg = { page:'A4', margin:'15mm 16mm', text:10.5, mono:false };
+let cfg = { page:'A4', margin:'14mm 15mm', text:8.2, mono:false };
 let store = { order:null, drafts:{} };
 
 /* ---------- storage ---------- */
@@ -130,7 +130,55 @@ async function boot(){
   draw();
 }
 
-/* ---------- render ---------- */
+/* ---------- render ----------
+   A document is a run of designed pages: `+++` ends one and starts
+   the next. Each page becomes its own .sheet, carrying a running head
+   and a folio, so the preview stack is exactly the printed stack. */
+
+function sheetHTML(doc, md, first, folio){
+  const left  = doc.head || doc.kicker || doc.title;
+  const right = doc.headright || doc.title;
+  return `<section class="sheet">`
+       + `<div class="runhead"><span>${Markup.esc(left)}</span>`
+       + `<span class="r">${Markup.esc(right)}</span></div>`
+       + `<div class="body">${first ? Markup.masthead(doc) : ''}${Markup.render(md)}</div>`
+       + `<div class="overflag">This page overflows — trim it, or split it with +++</div>`
+       + `<div class="folio">${folio}</div>`
+       + `</section>`;
+}
+
+function renderBook(list){
+  let n = 0, out = '';
+  list.forEach(doc => {
+    Markup.splitPages(doc.md).forEach((md, i) => { n++; out += sheetHTML(doc, md, i === 0, n); });
+  });
+  return out;
+}
+
+/* Flag any page whose content runs past the paper.
+   .sheet has a min-height of one page, so its rendered height hides
+   whether the content actually fits — measure with that lifted. Print
+   lays the same content out a little taller than the screen does, so
+   the last ~2% of the page is treated as full: "fits here" has to
+   mean "fits there", and being wrong costs a blank sheet of paper. */
+function flagOverflow(root){
+  const probe = document.createElement('div');
+  probe.style.cssText = 'position:absolute;visibility:hidden;height:var(--sheet-h)';
+  document.body.appendChild(probe);
+  const limit = probe.offsetHeight;
+  probe.remove();
+  if(!limit) return;
+  root.querySelectorAll('.sheet').forEach(el => {
+    const held = el.style.minHeight;
+    el.classList.remove('over');   // the warning itself takes up room
+    el.style.minHeight = '0';
+    const natural = el.offsetHeight;
+    el.style.minHeight = held;
+    el.classList.toggle('over', natural > limit - 10);
+    el.dataset.fill = Math.round(natural / limit * 100) + '%';
+  });
+}
+
 function draw(){
   const d = docs[cur];
 
@@ -151,20 +199,27 @@ function draw(){
 
   if(!d) return;
   $('#md').value = d.md;
-  $('#out').innerHTML = Markup.renderDoc(d);
-  const words = (d.md.match(/[A-Za-z0-9'-]+/g) || []).length;
-  $('#stats').textContent = `${words} words`;
-  $('#draft').textContent = d.dirty ? 'local draft' : '';
-  $('#draft').classList.toggle('on', !!d.dirty);
+  drawView();
   document.title = d.title + ' — Dungeon Markup';
   syncPrint();
+}
+
+function drawView(){
+  const d = docs[cur];
+  const out = $('#out');
+  out.innerHTML = renderBook([d]);
+  flagOverflow(out);
+  const words = (d.md.match(/[A-Za-z0-9'-]+/g) || []).length;
+  const pages = Markup.splitPages(d.md).length;
+  $('#stats').textContent = `${words} words · ${pages} page${pages>1?'s':''}`;
+  $('#draft').textContent = d.dirty ? 'local draft' : '';
+  $('#draft').classList.toggle('on', !!d.dirty);
 }
 
 /* ---------- printing ---------- */
 function syncPrint(){
   const list = printScope === 'book' ? docs : [docs[cur]].filter(Boolean);
-  $('#print-root').innerHTML =
-    list.map(d => `<article class="sheet">${Markup.renderDoc(d)}</article>`).join('');
+  $('#print-root').innerHTML = renderBook(list);
 }
 
 function doPrint(scope){
@@ -182,11 +237,19 @@ window.addEventListener('afterprint', () => { printScope = 'page'; syncPrint(); 
 function applyConfig(){
   $('#pagerule').textContent = `@page{size:${cfg.page};margin:${cfg.margin}}`;
   const r = document.documentElement.style;
-  r.setProperty('--sheet-w', PAPER[cfg.page] || PAPER.A4);
+  const paper = PAPER[cfg.page] || PAPER.A4;
+  r.setProperty('--sheet-w', paper[0]);
+  r.setProperty('--sheet-h', paper[1]);
+  // How tall one printed page's content box is: paper minus the @page
+  // margins. print.css pins each sheet to this so the folio sits at the
+  // foot of the page without 100vh spilling onto a second sheet.
+  const vpad = parseFloat(cfg.margin) || 0;
+  r.setProperty('--print-fill', `calc(${paper[1]} - ${vpad * 2}mm - 2mm)`);
   r.setProperty('--sheet-pad', cfg.margin);
   r.setProperty('--sheet-size', cfg.text + 'pt');
   r.setProperty('--print-size', cfg.text + 'pt');
   document.body.classList.toggle('mono', !!cfg.mono);
+  if(docs.length) { flagOverflow($('#out')); }
 }
 
 function openPrintBox(){
@@ -255,17 +318,14 @@ ta.addEventListener('input', () => {
   d.md = ta.value;
   d.dirty = true;
   store.drafts[d.file] = Markup.serialize(d);
-  $('#out').innerHTML = Markup.renderDoc(d);
-  $('#draft').textContent = 'local draft';
-  $('#draft').classList.add('on');
-  $('#stats').textContent = ((d.md.match(/[A-Za-z0-9'-]+/g)||[]).length) + ' words';
+  drawView();
   const row = $(`.pg[data-i="${cur}"]`); if(row) row.classList.add('mod');
   syncPrint();
   writeStore();
 });
 
 /* title + subtitle are edited from the page itself */
-$('#out').addEventListener('dblclick', e => {
+$('#view').addEventListener('dblclick', e => {
   if(!editing) return;
   const d = docs[cur];
   if(e.target.closest('h1')){
@@ -308,22 +368,26 @@ ta.addEventListener('paste', e => {
 /* insert chips */
 const SNIP = [
   ['H2',      '## '],
+  ['Pitch',   ':::pitch\nThe one-paragraph sell.\n!! THEME -- the one line you keep coming back to.\n:::\n'],
+  ['Read',    ':::read OPENING SHOT -- READ IT, THEN STOP TALKING\nThe boxed text you say out loud.\n:::\n'],
   ['Beats',   ':::beats\n1. **Beat.** What happens.\n:::\n'],
-  ['Room',    ':::room 1 | Room name\nWhat they see. What it costs.\n:::\n'],
-  ['Read',    ':::read\nThe boxed text you say out loud.\n:::\n'],
-  ['Clue',    ':::clue THE CLUE\nWhat they learn.\n!! The big line.\n:::\n'],
-  ['NPC',     ':::npc Name | descriptor\nWANT: \nVOICE: \nLINE: \n:::\n'],
-  ['Stat',    ':::stat Name | CR 1 | AC 13 | HP 27 | SPD 30 ft\n**Attack** +4, 5 ft: 7 (2d6) damage.\n> Area 1 -- x2\n:::\n'],
-  ['Roll',    ':::roll 1d6 | What is in there\n1 First thing.\n2 Second thing.\n:::\n'],
+  ['Clue',    ':::clue THE CLUE -- S1\nWhat they learn.\n!! The big line.\n>> Do not explain it.\n:::\n'],
+  ['NPC',     ':::npc Name | race, role, one physical thing\nWANT: \nVOICE: \nBREAK: \nLINE: \nUSE: \n:::\n'],
+  ['Stat',    ':::stat Name | CR 1/2 | AC 12 | HP 22 | SPD 30 ft | STR +2 | DEX +0 | CON -2 | INT -4 | WIS +0 | CHA -3\n**Attack** +4, 5 ft: 7 (2d6) damage.\n> Area 1 -- x2\n:::\n'],
+  ['Caster',  ':::stat Name | CR 2 | AC 12 | HP 33 | SPD 30 ft | STR +0 | DEX +2 | CON +1 | INT +3 | WIS +1 | CHA +2\nSAVES: INT +5, WIS +3\nSPELLS: DC 13, +5 -- at will *mage hand* -- 2/day *hold person*\n> Area 1\n:::\n'],
+  ['Rooms',   ':::rooms | AREA | WHAT IS THERE\n1 | THE STAIR | Sticks shut. DC 12 Athletics, or press on.\n2 | THE STACK | Unsorted, enormous. Anything they want is here.\n:::\n'],
+  ['Item',    ':::item The Somnolent Stamp | Wondrous, rare -- found in S1\nWhat it does, in two sentences.\n:::\n'],
+  ['Puzzle',  ':::puzzle The Sealed Nameplate | Painted over, eleven years ago\nLOOKS: What they see first.\nSOLVE: The intended answer, and the roll if they force it.\nFAIL: What it costs. Never a dead end.\n:::\n'],
+  ['Roll',    ':::roll d6 | COMPLICATION\n1 First thing.\n2 Second thing.\n:::\n'],
   ['Track',   ':::track\nAlarm: 6\nLantern: 4\n:::\n'],
-  ['Box',     ':::box plain | TITLE\nText.\n:::\n'],
-  ['Pitch',   ':::pitch\nThe one-line pitch.\n:::\n'],
   ['Valves',  ":::valve\nIf it's dragging: \nIf it's going fast: \n:::\n"],
+  ['Box',     ':::box plain | TITLE\nText.\n:::\n'],
   ['Cols',    ':::cols 2\nContent.\n:::\n'],
   ['Table',   '| A | B |\n|---|---|\n| 1 | 2 |\n'],
   ['Dungeon', '```dungeon\n#########\n#1...+.2#\n#...#...#\n#########\n```\n'],
-  ['Break',   '\n+++\n\n']
+  ['New page','\n+++\n\n']
 ];
+
 $('#edbar').innerHTML = SNIP.map((s,i) => `<button class="chip" data-s="${i}">${s[0]}</button>`).join('');
 $('#edbar').addEventListener('click', e => {
   const b = e.target.closest('[data-s]');

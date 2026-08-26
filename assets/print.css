@@ -1,16 +1,17 @@
 /* ============================================================
    DUNGEON MARKUP — print
    Loaded with media="print", so every rule here is print-only
-   and does not need an @media wrapper (or !important wars).
+   and needs no @media wrapper (or !important wars).
 
    THE FIX: the app is a full-height flex/overflow layout, and a
-   browser prints a scroll container as one clipped page. So we
-   don't print the app at all. app.js mirrors the pages into
-   #print-root, a plain static block that is a direct child of
-   <body>, and this sheet hides #app entirely.
+   browser cannot paginate the inside of a scroll container. So
+   the app is not printed at all. app.js mirrors the pages into
+   #print-root, a plain static block hanging off <body>, and this
+   sheet hides #app.
 
-   @page size/margins are set by the Print dialog into the
-   <style id="pagerule"> tag in index.html.
+   One .sheet is one printed page: a `+++` in the markdown ends a
+   page, and each sheet carries its own running head and folio.
+   @page size and margins come from <style id="pagerule">.
    ============================================================ */
 
 html,body{
@@ -18,42 +19,37 @@ html,body{
   background:#fff;color:var(--ink);
 }
 body{
-  font-family:var(--body);font-size:var(--print-size);line-height:1.42;
+  font-family:var(--body);font-size:var(--print-size);line-height:1.36;
   -webkit-print-color-adjust:exact;print-color-adjust:exact;
 }
 
-#app,#toast,#scrim,#printbox,.no-print{display:none !important}
+#app,#toast,#scrim,#printbox,.overflag{display:none !important}
 
 #print-root{display:block}
 
-/* one page-object per document */
 #print-root .sheet{
-  display:block;max-width:none;width:auto;margin:0;padding:0;
-  background:#fff;box-shadow:none;font-size:var(--print-size);line-height:1.42;
+  display:flex;flex-direction:column;
+  width:auto;max-width:none;margin:0;padding:0;min-height:var(--print-fill,0);
+  background:#fff;box-shadow:none;outline:0;
+  font-size:var(--print-size);line-height:1.36;
   break-after:page;page-break-after:always;
 }
-#print-root .sheet:last-child{break-after:auto;page-break-after:auto}
+#print-root .sheet:last-child{break-after:auto;page-break-after:auto;min-height:0}
+#print-root .sheet>.body{flex:1 0 auto}
 
-/* explicit breaks written as +++ in the markdown */
-.pagebreak{
-  break-after:page;page-break-after:always;
-  height:0;border:0;margin:0;
-}
+/* explicit breaks inside a page (rare — `+++` makes a new sheet instead) */
+.pagebreak{break-after:page;page-break-after:always;height:0;border:0;margin:0}
 .pagebreak::after{content:none}
 
 /* ---------- keep things whole ---------- */
-h1,h2,h3,h4,.subtitle{break-after:avoid;page-break-after:avoid;break-inside:avoid}
+h1,h2,h3,h4,.masthead,.runhead{break-after:avoid;page-break-after:avoid;break-inside:avoid}
 p,li,blockquote{orphans:3;widows:3}
-.pitch,.read,.clue,.npc,.stat,.kbox,.room,.track,.valve,.cols>*,
+.pitch,.read,.clue,.npc,.stat,.item,.puzzle,.kbox,.room,.track,.valve,.cols>*,
 figure,pre,svg.dmap,ol.beats>li,tr{break-inside:avoid;page-break-inside:avoid}
 table{break-inside:auto}
 thead{display:table-header-group}
 tfoot{display:table-footer-group}
 
-/* a heading immediately after a break shouldn't inherit a big top gap */
-.sheet>h2:first-child,.sheet>h3:first-child{margin-top:0}
-
 /* ---------- ink ---------- */
-.sheet img,svg.dmap{max-width:100%}
+.sheet img{max-width:100%}
 .sheet a{color:var(--ink);text-decoration:none}
-.sheet code,.sheet pre{background:var(--wash)}
