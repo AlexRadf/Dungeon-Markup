@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dungeon Markup</title>
+<meta name="description" content="Write one-night D&D adventures in plain markdown. Prints straight to a table-ready booklet.">
+<link rel="stylesheet" href="assets/press.css">
+<link rel="stylesheet" href="assets/print.css" media="print">
+<style id="pagerule">@page{size:A4;margin:15mm 16mm}</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <button class="btn ghost" id="navBtn" hidden aria-label="Pages">&#9776;</button>
+    <div class="brand">Dungeon Markup<small>markdown &middot; one night &middot; one booklet</small></div>
+    <div class="spacer"></div>
+    <button class="btn" id="editBtn" title="Ctrl/Cmd + E">Edit</button>
+    <button class="btn" id="newBtn">New</button>
+    <button class="btn" id="dlBtn" title="Download this page as .md — Ctrl/Cmd + S">Save .md</button>
+    <button class="btn" id="prtBtn" title="Paper, margins, text size — Ctrl/Cmd+P prints this page straight away">Print&hellip;</button>
+  </header>
+
+  <main>
+    <aside id="side"></aside>
+
+    <div id="work">
+      <div id="editor">
+        <div class="edbar" id="edbar"></div>
+        <textarea id="md" spellcheck="false" aria-label="Markdown source"></textarea>
+        <div class="edfoot"><span id="stats"></span><span class="spacer"></span><span id="draft"></span></div>
+      </div>
+      <div id="view"><div class="sheet" id="out"></div></div>
+    </div>
+  </main>
+</div>
+
+<!-- Print target. Lives outside #app so no scroll container can clip it. -->
+<div id="print-root" aria-hidden="true"></div>
+
+<!-- Print setup -->
+<div id="scrim" hidden></div>
+<div id="printbox" role="dialog" aria-modal="true" aria-labelledby="pbTitle" hidden>
+  <h2 id="pbTitle">Print</h2>
+  <label>Paper
+    <select id="pbPage">
+      <option value="A4">A4</option>
+      <option value="Letter">US Letter</option>
+      <option value="A5">A5 (half-size booklet)</option>
+    </select>
+  </label>
+  <label>Margins
+    <select id="pbMargin">
+      <option value="10mm 11mm">Tight</option>
+      <option value="15mm 16mm">Normal</option>
+      <option value="20mm 22mm">Wide</option>
+    </select>
+  </label>
+  <label>Text size
+    <span class="rangewrap"><input type="range" id="pbText" min="8" max="13" step="0.5"><output id="pbTextOut"></output></span>
+  </label>
+  <label class="check"><input type="checkbox" id="pbMono"> Ink saver (no filled panels)</label>
+  <p class="hint">In the browser dialog, turn <b>Background graphics</b> on and <b>Headers and footers</b> off.</p>
+  <div class="pbrow">
+    <button class="btn solid" id="pbPageBtn">Print this page</button>
+    <button class="btn solid" id="pbBookBtn">Print whole book</button>
+    <button class="btn ghost" id="pbClose">Cancel</button>
+  </div>
+</div>
+
+<noscript><p style="color:#fff;font:14px system-ui;padding:20px">Dungeon Markup renders its pages in the browser, so it needs JavaScript. The adventure itself is plain markdown in <code>content/</code> if you would rather just read it there.</p></noscript>
+<div id="toast" role="status"></div>
+
+<script src="assets/markup.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
