@@ -144,20 +144,53 @@ block('npc', (arg, body) => {
        + (de?`<div class="de">${inline(de)}</div>`:'') + rows + line + `</div>`;
 });
 
+/* Compressed stat block.
+
+   The opening line is the whole defensive line: a name, then any number
+   of `KEY value` pairs separated by `|`. The six ability modifiers are
+   pulled out of those pairs and always printed as their own row, in
+   order, whether or not you supplied them — an ability you leave out
+   shows +0, which is what a 5e stat block means by silence.
+
+   In the body, a line of `SHOUTY KEY: value` becomes a compact keyed
+   row: SPELLS, SAVES, SKILLS, SENSES, RESIST, LANG. Use SPELLS for a
+   caster's attack in one line rather than a spell list:
+     SPELLS: DC 13, +5 · at will fire bolt 1d10 · 2/day misty step  */
+const ABIL = ['STR','DEX','CON','INT','WIS','CHA'];
+
 block('stat', (arg, body) => {
   const p = split(arg);
   const nm = p.shift() || '';
-  const cr = p.find(x => /^CR/i.test(x)) || '';
-  const bar = p.filter(x => x && !/^CR/i.test(x)).map(x => {
+  const cr = p.find(x => /^CR\b/i.test(x)) || '';
+  const abil = {}, defence = [];
+  p.forEach(x => {
+    if(!x || /^CR\b/i.test(x)) return;
+    const m = x.match(/^([A-Za-z]{3})\s+(.+)$/);
+    if(m && ABIL.includes(m[1].toUpperCase())) abil[m[1].toUpperCase()] = m[2].trim();
+    else defence.push(x);
+  });
+
+  const bar = defence.map(x => {
     const m = x.match(/^(\S+)\s+(.*)$/);
     return m ? `<b>${esc(m[1])}</b> ${esc(m[2])}` : esc(x);
   }).join(' &nbsp; ');
-  const ls = String(body).split('\n');
-  const where = ls.filter(l => l.startsWith('> ')).map(l => inline(l.slice(2))).join(' ');
-  const rest = ls.filter(l => !l.startsWith('> ') && l.trim()).map(l => `<p>${inline(l)}</p>`).join('');
+
+  const abilRow = '<div class="abil">'
+    + ABIL.map(k => `<span><b>${k}</b> ${esc(abil[k] || '+0')}</span>`).join('')
+    + '</div>';
+
+  let where = '', rows = '';
+  String(body).split('\n').forEach(l => {
+    if(l.startsWith('> ')){ where += (where?' ':'') + inline(l.slice(2)); return; }
+    if(!l.trim()) return;
+    const m = l.match(/^([A-Z][A-Z0-9 &/'-]{1,13}):\s*(.*)$/);
+    rows += m ? `<div class="krow"><span class="k">${esc(m[1].trim())}</span><span>${inline(m[2])}</span></div>`
+              : `<p>${inline(l)}</p>`;
+  });
+
   return `<div class="stat"><div class="hd"><span class="nm">${esc(nm)}</span>`
        + (cr?`<span class="cr">${esc(cr)}</span>`:'') + `</div>`
-       + (bar?`<div class="bar">${bar}</div>`:'') + rest
+       + (bar?`<div class="bar">${bar}</div>`:'') + abilRow + rows
        + (where?`<div class="where">&#9654; ${where}</div>`:'') + `</div>`;
 });
 

@@ -65,7 +65,7 @@ the argument; `|` splits it into parts.
 | `:::clue LABEL` | Pink clue box. `!!` is the big line, `>>` the red sub-line |
 | `:::beats` | Numbered beats with black square markers |
 | `:::npc Name \| descriptor` | Voice card — `WANT:` `VOICE:` `BREAK:` `LINE:` `USE:` |
-| `:::stat Name \| CR 1/2 \| AC 12 \| HP 22 \| SPD 30 ft \| STR +2` | Compressed stat block; any `KEY value` pairs. A `>` line is the black where-it-goes bar |
+| `:::stat Name \| CR 1/2 \| AC 12 \| HP 22 \| SPD 30 ft \| STR +2` | Compressed stat block; any `KEY value` pairs. All six abilities always print. A `>` line is the black where-it-goes bar |
 | `:::rooms \| AREA \| WHAT IS THERE` | Keyed area table — `1 \| NAME \| text` per line |
 | `:::item Name \| type, rarity` | Magic item or plot object |
 | `:::puzzle Name \| premise` | Drop-in puzzle — `LOOKS:` `SOLVE:` `FAIL:` |
@@ -74,6 +74,27 @@ the argument; `|` splits it into parts.
 | `:::valve` | Pacing valves — `Label: text` per line |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark` |
 | `:::cols 2` | Two or three columns; blocks nest inside |
+
+### Stat blocks
+
+The opening line is the whole defensive line: a name, then any number of
+`KEY value` pairs split by `|`. The six ability modifiers are lifted out of those
+pairs and always printed as their own row, in order, whether or not you supplied
+them — an ability you leave out prints `+0`, which is what a stat block means by
+silence.
+
+In the body, a line of `SHOUTY KEY: value` becomes one compact keyed row: `SAVES`,
+`SKILLS`, `SENSES`, `RESIST`, `LANG`, and `SPELLS`. Use `SPELLS` to compress a
+caster into a single line instead of a spell list — the save DC and attack bonus,
+then what they actually cast, by frequency.
+
+```
+:::stat Wisp | CR 1 | AC 13 | HP 18 | SPD fly 40 ft | STR -4 | DEX +3 | CON +0 | INT +1 | WIS +2 | CHA +3
+SPELLS: DC 12, +4 -- at will *dancing lights* -- 1/day *sleep*
+**Fade.** Invisible in bright light, and knows it.
+> Area 3 · never fights, only leads
+:::
+```
 
 ### Dungeon maps
 

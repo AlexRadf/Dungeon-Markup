@@ -101,14 +101,14 @@ The delve every first-year does to get Form 7 stamped. Registration is the hook;
 ### What is down there -- everything you need is on this page
 
 :::cols 2
-:::stat Homework Swarm | CR 1/2 | AC 12 | HP 22 | SPD fly 30 ft | STR -1 | DEX +3 | CON +0
+:::stat Homework Swarm | CR 1/2 | AC 12 | HP 22 | SPD fly 30 ft | STR -1 | DEX +3 | CON +0 | INT -4 | WIS +0 | CHA -4
 **Papercuts** +4, 5 ft, all in its space: 10 (4d4) slashing, 5 (2d4) at half HP.
 **Swarm.** Resists physical damage. Vulnerable to fire, immune to psychic.
 **Recite (1/day).** Reads a dead student's essay in a PC's own voice: DC 11 WIS or frightened.
 > Area 2 · x2 · rises the moment anyone reads aloud
 :::
 
-:::stat Gutterwick | CR 1/2 | AC 8 | HP 27 | SPD 10 ft, climb 10 ft | STR +2 | DEX -2 | CON +3
+:::stat Gutterwick | CR 1/2 | AC 8 | HP 27 | SPD 10 ft, climb 10 ft | STR +2 | DEX -2 | CON +3 | INT -2 | WIS -1 | CHA +0
 **Pseudopod** +3, 5 ft: 6 (1d8+2) bludgeoning and 3 (1d6) acid. Self-defence only.
 **Extremely polite.** Never initiates. Wants an apology for the plumbing -- DC 13 Persuasion ends it.
 **Amorphous.** Moves through a 1-inch gap.
