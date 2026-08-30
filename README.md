@@ -47,6 +47,13 @@ Flourish's prep spine instead of a plot: a strong start, unordered potential sce
 ten secrets and clues tied to no room, three fantastic locations with three
 evocative details each, then the monsters and the one decision the session turns on.
 
+`content/04-the-grey-survey.md`, `05-the-marches-map.md` and
+`06-hex-gazetteer.md` are a complete **west marches** campaign: the charter and
+the seven house rules, the march and tariff procedures, a 35-hex map at six miles
+to the hex, and one adventure entry for every hex on it, banded into four rings
+of difficulty by distance from the home town. The map is the campaign — a session
+is one hex chartered, opened and walked home from.
+
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
@@ -82,6 +89,7 @@ the argument; `|` splits it into parts.
 | `:::secrets` | Ten things they can learn, in any order, each with a box to tick |
 | `:::scenes LABEL` | What might happen, deliberately unordered |
 | `:::place Name \| one line` | A location and the three details you say aloud |
+| `:::hex 0403 \| Name \| terrain` | One hex of a west marches map as one adventure entry — `SEE:` `HOOK:` `RISK:` `TAKE:` `LEADS:` |
 
 ### Stat blocks
 
@@ -111,6 +119,26 @@ square. Text after the word `dungeon` becomes the caption.
 
 `#` rock · `.` floor · `~` water · `:` rubble · `=` stairs · `+` door ·
 `S` secret door · `0-9`/`A-Z` a keyed marker.
+
+### Hex maps
+
+A fenced ` ```hexmap ` block is drawn as a hex grid, one character per hex, rows
+top to bottom, odd rows sitting half a hex to the right. Every hex is labelled
+inside itself with its coordinate — **column then row, two digits each** — and
+that coordinate is the key: the hex drawn `0403` is the entry `:::hex 0403`.
+Text after the word `hexmap` becomes the caption.
+
+`@` the holding · `*` a built thing · `^` mountain · `h` hills · `f` forest ·
+`,` heath · `=` marsh · `~` water · `:` burnt waste · `.` open ground ·
+space or `#` off the map.
+
+```
+```hexmap SIX MILES TO THE HEX
+^^^hff:
+h^ff~f^
+@,f*~f^
+```
+```
 
 ### Page setup
 
@@ -175,7 +203,8 @@ assets/markup.js      parser, block registry, dungeon map renderer
 assets/app.js         state, storage, editor, print pipeline
 assets/fonts/         subset WOFF2 + licences
 content/manifest.json page order
-content/*.md          the adventure
+content/*.md          the adventures — a one-shot, a lazy-prep site,
+                      and a 35-hex west marches campaign
 ```
 
 Every colour, font and size lives in the `:root` block at the top of

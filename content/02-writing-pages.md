@@ -32,6 +32,7 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::secrets` | Ten things they can learn, in any order, each with a box to tick. |
 | `:::scenes LABEL` | What might happen, deliberately unordered. |
 | `:::place Name \| one line` | A location and the three details you say aloud. |
+| `:::hex 0403 \| Name \| terrain` | One hex of a hex map as one adventure entry. `SEE:` `HOOK:` `RISK:` `TAKE:` `LEADS:` |
 
 +++
 
@@ -62,6 +63,42 @@ A fenced `dungeon` block draws a real map, one character per 5 ft square. Text a
 | `0-9 A-Z` | floor with a keyed marker |
 :::
 
+### Hex maps
+
+A fenced `hexmap` block draws a hex grid instead: one character per hex, rows top to bottom, odd rows half a hex to the right. Each hex prints its own coordinate — **column then row, two digits each** — and that is the only index the book needs, because the hex drawn 0203 is the entry `:::hex 0203`.
+
+:::cols 2
+```hexmap SIX MILES TO THE HEX
+^h,ff
+@,f~^
+=,f:^
+```
+
+| CHAR | GROUND |
+|---|---|
+| `@` | the holding |
+| `*` | a built thing |
+| `^` | mountain |
+| `h` | hills |
+| `f` | forest |
+| `,` | heath |
+| `=` | marsh |
+| `~` | open water |
+| `:` | burnt waste |
+| `.` | open ground |
+| space `#` | off the map |
+:::
+
+:::hex 0203 | Near Acre | Heath -- ring 1 -- half a day
+SEE: What shows from the hex line, before they commit to walking in.
+HOOK: Why a party charters this hex and not the one next to it.
+RISK: What is dangerous here, and roughly how dangerous.
+TAKE: What is worth the walk home.
+LEADS: Which hex this one points at, so the map keeps pulling outward.
+:::
+
+`content/04-the-grey-survey.md` runs a whole west marches campaign off those two blocks: thirty-five hexes, thirty-five entries, four rings of difficulty measured in hexes from the home town.
+
 ### Printing
 
 **Print…** sets paper, margins, text size and an ink-saver mode that hollows out the filled panels, then prints the current page or the whole book. The sheet on screen is a true page preview at the same point size, so what fits, fits.
@@ -71,6 +108,8 @@ Turn **Background graphics** on, or the black panels and table headers come out 
 :::
 
 The house sets body copy at 8.2pt, which is what the booklet uses. It is dense on purpose: a session should be one spread you can take in at a glance, not four pages you leaf through at the table.
+
++++
 
 ### Stat blocks
 
@@ -95,8 +134,6 @@ SPELLS: DC 12, +4 -- at will *dancing lights* -- 1/day *sleep*
 > Area 3 · never fights, only leads
 :::
 ```
-
-+++
 
 ### The fonts
 

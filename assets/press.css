@@ -382,6 +382,7 @@ table.roll tbody tr:nth-child(odd) td{background:var(--tint)}
 .cols>h2:first-child,.cols>h3:first-child{margin-top:0}
 
 svg.dmap{width:100%;height:auto;display:block;margin:.2em auto .15em;max-width:95mm}
+svg.hmap{width:100%;height:auto;display:block;margin:.35em auto .2em;max-width:150mm}
 
 .pagebreak{height:0;border-top:2px dashed var(--red);margin:1.4em 0;position:relative}
 .pagebreak::after{
@@ -403,7 +404,7 @@ svg.dmap{width:100%;height:auto;display:block;margin:.2em auto .15em;max-width:9
 /* ---------- ink saver ---------- */
 body.mono .pitch,body.mono .kbox.dark,body.mono .stat .where,body.mono .sheet th,
 body.mono table.roll caption,body.mono .room>.mk,body.mono table.rooms td.mk,
-body.mono ol.beats>li::before{
+body.mono ol.beats>li::before,body.mono .hex .co{
   background:var(--paper) !important;color:var(--ink);border:1.2px solid var(--ink);
 }
 body.mono .pitch .theme,body.mono .kbox.dark>.t{color:var(--ink)}
@@ -485,6 +486,34 @@ ul.scenes>li.t::before{content:none}
 .place ul.det>li::before{
   content:"";position:absolute;left:.1em;top:.5em;width:.3em;height:.3em;background:var(--brass);
 }
+
+/* ---------- west marches ----------
+   One hex of the map is one adventure entry. The black coordinate chip
+   is the only index the book has: a player points at the hex on the map
+   and the same four digits are printed at the top of its entry. */
+.hex{
+  border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);
+  padding:.35em 0 .4em;margin:0 0 .55em;break-inside:avoid;
+}
+.hex .hd{display:flex;align-items:baseline;gap:.45em}
+.hex .co{
+  font-family:var(--mono);font-size:.8em;font-weight:700;letter-spacing:.1em;
+  background:var(--ink);color:var(--paper);padding:.1em .32em;
+}
+.hex .nm{
+  font-family:var(--dsp);font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+  font-size:1.22em;line-height:1.05;
+}
+.hex .de{
+  font-family:var(--mono);font-size:.72em;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mute);margin:.18em 0 .28em;
+}
+.hex .row{display:flex;gap:.5em;margin-bottom:.14em;line-height:1.28}
+.hex .k{
+  flex:0 0 3.2em;font-family:var(--mono);font-size:.76em;font-weight:700;letter-spacing:.1em;
+  color:var(--red);padding-top:.12em;
+}
+.hex p{margin:0 0 .25em;line-height:1.3}
 
 /* ---------- page setup / new page dialog ---------- */
 .modal-overlay{

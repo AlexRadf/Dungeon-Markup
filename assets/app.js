@@ -377,6 +377,8 @@ const SNIP = [
   ['Cols',    ':::cols 2\nContent.\n:::\n'],
   ['Table',   '| A | B |\n|---|---|\n| 1 | 2 |\n'],
   ['Dungeon', '```dungeon\n#########\n#1...+.2#\n#...#...#\n#########\n```\n'],
+  ['Hexmap',  '```hexmap 6 MILES TO THE HEX\n@,ff^\n,f~h^\n==~f:\n```\n'],
+  ['Hex',     ':::hex 0203 | Name of the hex | Forest -- ring 1 -- one day out\nSEE: What shows from the hex line, before they commit.\nHOOK: Why a party charters this hex and not another.\nRISK: What is dangerous here, and how dangerous.\nTAKE: What is worth the walk home.\nLEADS: Which hex this one points at.\n:::\n'],
   ['New page','\n+++\n\n']
 ];
 

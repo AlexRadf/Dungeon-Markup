@@ -68,6 +68,88 @@ function drawDungeon(src){
   return s+'</svg>';
 }
 
+/* ---------- hex map renderer ----------
+   One character per hex, rows top to bottom, odd rows sitting half a
+   hex to the right. A hex is keyed by where it is: column then row,
+   two digits each, printed small inside the hex — so the hex the map
+   labels 0304 is the entry `:::hex 0304`, and there is nothing else
+   to look up. ` ` or `#` is off the map and is not drawn at all.  */
+const HEXFILL = {'.':'#fff', ',':'#fff', 'f':'#F1F3EB', 'h':'#F6F2E7',
+                 '^':'#EDE8DA', '~':'#D9E3E6', '=':'#E3EBE6', ':':'#EFEADC',
+                 '@':'#fff', '*':'#fff'};
+
+/* What is drawn in the middle of a hex — terrain as a mark, not a
+   colour, so the map survives an ink-saver print and a photocopier. */
+function hexArt(c){
+  switch(c){
+    case '^': return `<path d="M-13 6L-4.5-8 0.5-1.5 6.5-7.5 13.5 6Z" fill="#fff" stroke="${INK}" stroke-width=".9" stroke-linejoin="round"/>`;
+    case 'h': return `<path d="M-12 4.5q5.5-7.5 11 0M1 4.5q5-6.5 10 0" fill="none" stroke="${INK}" stroke-width=".9"/>`;
+    case 'f': return [[-8,3.5],[0,-2.5],[8,3.5]].map(([x,y]) =>
+                     `<path d="M${x} ${y-7.5}l4.3 8.6h-8.6Z" fill="#fff" stroke="${INK}" stroke-width=".8" stroke-linejoin="round"/>`
+                   + `<line x1="${x}" y1="${y+1.1}" x2="${x}" y2="${y+3.2}" stroke="${INK}" stroke-width=".8"/>`).join('');
+    case '~': return `<path d="M-11-2.5q3.5-2.6 7 0t7 0M-11 3.5q3.5-2.6 7 0t7 0" fill="none" stroke="#6E8A96" stroke-width="1"/>`;
+    case '=': return `<path d="M-11 2h6.5M1 2h8M-8 6.5h7M3 6.5h6" stroke="#6E8A96" stroke-width="1"/>`
+                   + [[-5,-1],[4,-2]].map(([x,y]) =>   /* grass standing in the water */
+                     `<path d="M${x} ${y}q-.6-3.2-2.6-4.6M${x} ${y}v-5M${x} ${y}q.6-3.2 2.6-4.6" fill="none" stroke="${INK}" stroke-width=".8"/>`).join('');
+    case ':': return `<path d="M-9 3l3-4M-1.5 5l3-4M6 1l3-4M-6-4l2.5-3.5M4-5l2.5-3.5" stroke="${INK}" stroke-width=".7"/>`;
+    case ',': return [[-8,2],[1,5],[8,-1]].map(([x,y]) =>
+                     `<path d="M${x} ${y}q-.6-3.5-2.6-5M${x} ${y}v-5.5M${x} ${y}q.6-3.5 2.6-5" fill="none" stroke="${INK}" stroke-width=".8"/>`).join('');
+    case '@': return `<circle r="6.6" fill="${INK}"/><circle r="2.4" fill="#fff"/>`;
+    case '*': return `<path d="M-5 6.5v-8.5l5-6 5 6v8.5Z" fill="#fff" stroke="${INK}" stroke-width="1.4" stroke-linejoin="round"/>`
+                   + `<path d="M-1.6 6.5v-4h3.2v4" fill="none" stroke="${INK}" stroke-width="1"/>`;
+    default : return '';   /* open ground: the paper is the plain */
+  }
+}
+
+const pad2 = n => String(n).padStart(2,'0');
+
+function drawHexmap(src){
+  const rows = src.replace(/\t/g,' ').split('\n').filter(r => r.trim().length);
+  if(!rows.length) return '<div class="err">hexmap: no grid</div>';
+  const rh = rows.length, rw = Math.max(...rows.map(r => r.length));
+  const g = rows.map(r => r.padEnd(rw,' ').split(''));
+  const at = (x,y) => (y>=0&&y<rh&&x>=0&&x<rw) ? g[y][x] : ' ';
+  const on = (x,y) => { const c = at(x,y); return c !== ' ' && c !== '#'; };
+
+  const W = 46, H = W*2/Math.sqrt(3), ROW = H*.75, PAD = 3;
+  const px = (x,y) => PAD + W/2 + x*W + (y%2 ? W/2 : 0);
+  const py = y => PAD + H/2 + y*ROW;
+  const VW = PAD*2 + rw*W + (rh>1 ? W/2 : 0), VH = PAD*2 + (rh-1)*ROW + H;
+
+  /* the six corners, clockwise from the top: edge i runs P[i]→P[i+1] */
+  const P = [[0,-H/2],[W/2,-H/4],[W/2,H/4],[0,H/2],[-W/2,H/4],[-W/2,-H/4]];
+  /* who is across edge i — NE, E, SE, SW, W, NW — on an even row, then odd */
+  const NB = [[[0,-1],[1,0],[0,1],[-1,1],[-1,0],[-1,-1]],
+              [[1,-1],[1,0],[1,1],[0,1],[-1,0],[0,-1]]];
+  const poly = P.map(([x,y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+
+  let s = `<svg class="hmap" viewBox="0 0 ${VW.toFixed(1)} ${VH.toFixed(1)}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hex map">`;
+  s += `<rect width="${VW.toFixed(1)}" height="${VH.toFixed(1)}" fill="#fff"/>`;
+
+  for(let y=0;y<rh;y++) for(let x=0;x<rw;x++){
+    if(!on(x,y)) continue;
+    const c = at(x,y);
+    s += `<g transform="translate(${px(x,y).toFixed(1)} ${py(y).toFixed(1)})">`
+       + `<polygon points="${poly}" fill="${HEXFILL[c] || '#fff'}" stroke="#BDB8AE" stroke-width=".6"/>`
+       + hexArt(c)
+       + `<text y="${(-H/2+8).toFixed(1)}" text-anchor="middle" font-family="DejaVu Sans Mono,monospace" font-size="6" letter-spacing=".3" fill="#8C8477">${pad2(x+1)}${pad2(y+1)}</text>`
+       + `</g>`;
+  }
+
+  /* the edge of the known world, inked heavy — the same trick the
+     dungeon renderer uses for walls: draw the side nobody is on */
+  for(let y=0;y<rh;y++) for(let x=0;x<rw;x++){
+    if(!on(x,y)) continue;
+    const ox = px(x,y), oy = py(y), nb = NB[y%2];
+    for(let e=0;e<6;e++){
+      if(on(x+nb[e][0], y+nb[e][1])) continue;
+      const a = P[e], b = P[(e+1)%6];
+      s += `<line x1="${(ox+a[0]).toFixed(1)}" y1="${(oy+a[1]).toFixed(1)}" x2="${(ox+b[0]).toFixed(1)}" y2="${(oy+b[1]).toFixed(1)}" stroke="${INK}" stroke-width="2"/>`;
+    }
+  }
+  return s + '</svg>';
+}
+
 /* ---------- inline ---------- */
 const esc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
@@ -303,6 +385,31 @@ block('place', (arg, body) => {
        + `<ul class="det">${items}</ul></div>`;
 });
 
+/* West marches: one hex of the map is one adventure entry, and its
+   coordinate is its key — :::hex 0304 is the hex the map draws as
+   0304, so a party pointing at the paper has already found the page.
+
+     SEE   what they can see from the hex line, before they commit
+     HOOK  why a party charters this hex instead of another
+     RISK  what is dangerous here, and roughly how dangerous
+     TAKE  what is worth the walk home
+     LEADS which hex this one points at — the map has to keep pulling */
+
+block('hex', (arg, body) => {
+  const [co, nm, de] = split(arg);
+  let rows = '';
+  String(body).split('\n').forEach(l => {
+    if(!l.trim()) return;
+    const m = l.match(/^([A-Z][A-Z0-9 &/'-]{1,9}):\s*(.*)$/);
+    rows += m ? `<div class="row"><span class="k">${esc(m[1].trim())}</span><span>${inline(m[2])}</span></div>`
+              : `<p>${inline(l)}</p>`;
+  });
+  return `<div class="hex"><div class="hd">`
+       + (co?`<span class="co">${esc(co)}</span>`:'')
+       + `<span class="nm">${inline(nm||'')}</span></div>`
+       + (de?`<div class="de">${inline(de)}</div>`:'') + rows + `</div>`;
+});
+
 /* ---------- block parser ---------- */
 function render(src){
   const lines = String(src||'').replace(/\r/g,'').split('\n');
@@ -337,7 +444,10 @@ function render(src){
       while(i < lines.length && !/^```/.test(lines[i])){ body.push(lines[i]); i++; }
       i++;
       const dm = lang.match(/^dungeon\b\s*(.*)$/);
-      out += dm ? drawDungeon(body.join('\n')) + (dm[1]?`<div class="mapcap">${inline(dm[1])}</div>`:'')
+      const hm = lang.match(/^hexmap\b\s*(.*)$/);
+      const cap = t => t ? `<div class="mapcap">${inline(t)}</div>` : '';
+      out += dm ? drawDungeon(body.join('\n')) + cap(dm[1])
+           : hm ? drawHexmap(body.join('\n')) + cap(hm[1])
                 : `<pre><code>${esc(body.join('\n'))}</code></pre>`;
       continue;
     }
@@ -448,5 +558,5 @@ function serialize(doc){
 }
 
 return { render, renderDoc, parseDoc, serialize, splitPages, masthead,
-         block, blocks: BLOCKS, drawDungeon, inline, esc };
+         block, blocks: BLOCKS, drawDungeon, drawHexmap, inline, esc };
 })();
