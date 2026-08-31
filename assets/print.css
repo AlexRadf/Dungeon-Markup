@@ -44,8 +44,8 @@ body{
 /* ---------- keep things whole ---------- */
 h1,h2,h3,h4,.masthead,.runhead{break-after:avoid;page-break-after:avoid;break-inside:avoid}
 p,li,blockquote{orphans:3;widows:3}
-.pitch,.read,.clue,.npc,.stat,.item,.puzzle,.kbox,.room,.track,.valve,.cols>*,
-figure,pre,svg.dmap,ol.beats>li,tr{break-inside:avoid;page-break-inside:avoid}
+.pitch,.read,.clue,.npc,.stat,.item,.puzzle,.kbox,.room,.track,.valve,.hex,.cols>*,
+figure,pre,svg.dmap,svg.hmap,ol.beats>li,tr{break-inside:avoid;page-break-inside:avoid}
 table{break-inside:auto}
 thead{display:table-header-group}
 tfoot{display:table-footer-group}
