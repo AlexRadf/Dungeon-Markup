@@ -50,6 +50,18 @@ evocative details each, then the monsters and the one decision the session turns
 `content/04-nobody-drowned.md` is a five-node investigation: no scene order, five
 places and people, and three clues pointing at every one of them.
 
+`content/b00-the-board.md` and `content/b01-*` to `b14-*` are The Board: fourteen
+jobs pinned up outside the Bursar's office at Eldoria University, levels 1–5, two to
+four hours each. Every job is three sheets in the same order, so you can find
+anything mid-session without reading:
+
+- **the board** — the notice as posted, what they hear on the way there, the
+  handouts to cut free, and the secrets;
+- **the web** — where it starts, then five `:::node` blocks with three clues into
+  every one of them, drawn and audited by `:::web`;
+- **the crunch** — trouble, the four-step doom clock, the ways out, and every
+  `:::stat`, `:::puzzle` and `:::roll` the table needs.
+
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
