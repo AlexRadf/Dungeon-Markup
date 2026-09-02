@@ -56,42 +56,40 @@ A page from the registry of authorised seals: eleven circular stamp impressions 
 The Dean's office is locked, watched and empty, and there is no way into it. There is a grandfather clock on the landing with a case big enough to stand in, that has not run in a decade, and the pendulum is already gone. Somebody took it out. Recently.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Four minutes between the porter's passes and three hours to midnight. Three ways into everything, because they will burn the first two.
+```dungeon 5 FT GRID · THE OLD DEANERY · THE CASE IS THE DOOR, AND WHAT IS BEHIND IT IS BIGGER
+############.....#############
+############..4..#############
+############.....#############
+#######............###########
+#######...1........###########
+#######............###########
+############S#################
+######................########
+######......2.........########
+######................########
+######......###...####........
+######......###...####..3.....
+######......###...####........
+######................########
+######................########
+```
+
+Two floors of one building and a third that is not in it. **Above the line:** the landing and the office, four minutes apart on the porter's round. **Below it:** the Citadel, entered through the clock case, where an hour costs a minute outside.
+
+:::rooms | AREA | WHAT IS THERE
+1 | The landing | The clock, the register of authorised seals on the table, and four minutes between the porter's passes. He tries the office door every time.
+2 | The Citadel | Inside the case. Brass, freezing, and much larger than the landing it stands on. Time runs slow. Every corridor is signposted. **Gargoyles at alarm 1, 3 and 5.**
+3 | The Vault | Where the seals and stamps actually live. The forms are here. So is the pen. **So is the queue,** and the queue is what costs you midnight.
+4 | The office | You come out at ankle height, onto the Dean's carpet, four feet from the box. Forty ballots, stamped and countersigned already, by the eleventh seal.
 :::
 
-:::cols 2
-:::node A | The Landing | place | start
-The clock, the porter's round, and four minutes between passes.
--> B  The case is big enough to stand in and the pendulum is already gone.
--> C  Every stamp in the building is signed out to one room, and the register is on the landing table.
--> D  The porter tries the office door on every single pass, which means it is worth trying.
-:::
-
-:::node B | The Citadel | place
-Inside the case. Brass, freezing, and a great deal larger than the landing it stands on.
--> C  Brass corridors, all of them signposted, and one signpost reads SEALS AND STAMPS.
--> D  The way out comes up at ankle height, and the carpet above it is the Dean's.
--> E  Time runs slow in here, and something is keeping it, and it is not the clock.
-:::
-
-:::node C | The Vault | place
-Where the university's seals and stamps actually live, and where the queue is.
--> B  The forms are here, the pen is here, and the queue is here, and the queue is inside the case.
--> D  A correctly filed swap is a legal swap, and the office door opens for legal and for nothing else.
--> E  The stamps are countersigned by an authority whose name nobody in Registry can read.
-:::
-
-:::node D | The Office | place
-You come out at ankle height, onto the Dean's carpet, four feet from the box.
--> B  There is one way back and it is the way you came, at ankle height, carrying a box.
--> C  The forty ballots are stamped and countersigned already, and the eleventh seal did it.
--> E  It arrives at alarm 5 whatever you are doing, and it goes to the paperwork before it goes to you.
-:::
-
-:::node E | The Auditor | creature
-Unhurried, incorruptible, and entirely uninterested in your names.
-:::
+:::roll d6 | COMPLICATION -- ON EVERY ALARM LEVEL
+1 The porter's round runs three minutes, not four.
+2 The pendulum turns up in someone's pack.
+3 A gargoyle asks your name and waits.
+4 Sam is helpful, at the worst moment.
+5 The box is heavier than the other box.
+6 A stamp is signed out in your name.
 :::
 
 :::track
@@ -146,21 +144,10 @@ SAVES: INT +13, WIS +12 · **Immune** charmed, frightened, and being lied to
 :::
 :::
 
-:::cols 2
 :::puzzle The Correct Form | the Vault · a heist won at a counter
 LOOKS: A queue, a pen on a chain, and a rack of forms, one of which is a Substitution of Sealed Material.
 SOLVE: Fill it, stamp it with anything from the rack, and join the queue. The queue is the cost -- it takes real minutes and midnight is a real deadline.
 FAIL: Never a dead end. A wrong form still stamps; it just files the swap under the wrong department, and somebody will read it in a fortnight.
-:::
-
-:::roll d6 | COMPLICATION
-1 The porter's round runs three minutes, not four.
-2 The pendulum turns up in someone's pack.
-3 A gargoyle asks your name and waits.
-4 Sam is helpful, at the worst moment.
-5 The box is heavier than the other box.
-6 A stamp is signed out in your name.
-:::
 :::
 
 :::item The Eleventh Seal | Wondrous, rare -- the Vault, third shelf, unlabelled

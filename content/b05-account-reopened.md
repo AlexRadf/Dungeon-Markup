@@ -55,46 +55,44 @@ A village bill, printed on a jobbing press in Stonehaven and nailed up for the f
 Two pillars, a lintel, a sealed door, and a slot with a heap of silver under it that nobody local will touch. Pick a coin up and it is warm, the way a coin is warm out of a hand. The gate has not opened in two hundred years, and somebody has oiled the hinges.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Three ways down into every part of this, because the way they came in shuts behind them at the stair.
+```dungeon 5 FT GRID · THE CRYPT OF KHARN, OFF THE OLD ROAD · FORTY STEPS DOWN
+##############################
+#########.........############
+#########....1....############
+#########....+....############
+#########....=....############
+#########....=....############
+####.........=.........#######
+####...2.....=.....3...#######
+####.........=.........#######
+####.........=.........#######
+#############=################
+#############S################
+##########.........###########
+##########....4....###########
+##########.........###########
+```
+
+Sealed two hundred years, maintained the whole time. **Light:** none below the gate, and no dust in it either. Everything down here is swept, oiled and in good repair, which is the single most frightening fact on this page.
+
+:::rooms | AREA | WHAT IS THERE
+1 | The gate | Sealed, oiled, slot goes both ways. Warm silver under it, more every week. The hinges are wet. It opens **outward**.
+2 | The counting room | Kharn's ledgers, still kept, in ink that has not dried. Bullion in and coin out on the same page. The arrears column runs to a figure with a date beside it, and the date is close.
+3 | The mint | Press, dies, blanks, and finished silver too warm to bag. The dies are numbered to ledger lines. Nothing here is turning the press; it is turned from below, on a beat.
+4 | The cell at the bottom | **Behind the secret door**, which is not locked and never was. Where the account is being settled. Kharn is in here, counting, and has been since January.
 :::
 
-:::cols 2
-:::node A | The Gate | place | start
-Sealed, oiled, and the slot goes both ways. The coin under it is warm and there is more of it every week.
--> B  Fresh oil on the hinges, and the drips run down the inside of the frame, not the outside.
--> C  Every coin carries a number that is not a denomination. It is a line reference.
--> D  Silver at .92 fine off a die in no kingdom series. Somebody within a hundred yards is striking it.
-:::
-
-:::node B | The Stair | place
-Forty steps down. No dust, no cobweb, no smell. It has been swept this week.
--> C  The sweepings are stacked at the bottom, tidily, beside a ledger that logs the sweeping.
--> D  Step twenty-nine rings hollow, and under it a hammer is working, slowly, on a beat.
--> E  The steps are worn in the middle going down and at the edges coming up. Something comes up here.
-:::
-
-:::node C | The Counting Room | place
-Kharn's ledgers, still being kept, in ink that has not dried.
--> B  There is an entry for the stair being swept, this week, initialled by a hand that is not a hand.
--> D  Bullion in, coin out, on the same page, in the same fresh ink, with no supplier named.
--> E  The arrears column runs to a figure, and beside the figure is a date, and the date is close.
-:::
-
-:::node D | The Mint | place
-A press, dies, blanks, and a heap of finished silver still too warm to bag.
--> B  Blanks go up the stair to be struck and the finished coin comes back down.
--> C  The dies are numbered, and the numbers are ledger references, and the ledger is upstairs.
--> E  Nothing here is turning the press. It is being turned from further down, on the same beat.
-:::
-
-:::node E | The Cell at the Bottom | place
-Where the account is being settled, by someone who has been extremely patient about it.
-:::
+:::roll d6 | COMPLICATION -- ONCE AN HOUR BELOW THE GATE
+1 A coin in someone's purse turns warm.
+2 The press stops. Everything listens.
+3 A Stonehaven child at the gate, alone.
+4 A new entry appears in your handwriting.
+5 Divinity's man arrives, wanting his half.
+6 The hinges are oiled again behind you.
 :::
 
 :::track
-The arrears, in payments still to make: 8
+Payments still to make: 8
 :::
 
 :::valve
@@ -145,21 +143,10 @@ SAVES: WIS +9, CHA +10 · **Immune** poison, exhaustion, frightened
 :::
 :::
 
-:::cols 2
 :::puzzle The Perpetual Care Contract | the counting room · a day's work, or a fight
 LOOKS: A hundred and thirty-six years of undone maintenance, itemised, in a hand that has never once been wrong.
 SOLVE: Do some of it. Sweep, oil, re-letter a stone, log it, sign it. The contract does not specify a standard and Kharn is not a pedant. Signing it as the university closes the account.
 FAIL: Signing it as yourselves transfers the contract. In perpetuity. You will be told this clearly and you will still do it.
-:::
-
-:::roll d6 | COMPLICATION
-1 A coin in someone's purse turns warm.
-2 The press stops. Everything listens.
-3 A Stonehaven child at the gate, alone.
-4 A new entry appears in your handwriting.
-5 Divinity's man arrives, wanting his half.
-6 The hinges are oiled again behind you.
-:::
 :::
 
 :::item One Coin of the New Die | Silver, .92 fine, warm -- the slot, or anywhere below

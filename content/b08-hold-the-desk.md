@@ -55,42 +55,41 @@ The diagram cut into the brass strip, reproduced as a technical plate in the lib
 Six hours to first bell. The quiet study floor has stopped being a room with windows: it is a keep, and past the brass line there is a plain of bones running out further than the building can possibly be. The desk is behind you. Something is already walking.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-A siege has a map too. Three ways into every part of it, and all of them are inside one room.
+```dungeon 5 FT GRID · THE QUIET STUDY FLOOR · SEGMENT 9 IS THE RED ONE
+######........................
+######...1....................
+######........................
+######..##....##....##........
+######..##.3..##....##........
+######........................
+######........................
+######++++++++S+++++++++++++++
+#####.........2...............
+#####.........................
+#####..........4..............
+#####.........................
+#####.........................
+#####.........................
+#####.........................
+```
+
+One room, six hours, and one line you do not cross. **The brass:** twelve segments, cut when the library was built. **Segment 9 was lifted for cabling three years ago and never re-cut** — it is drawn in red because that is where everything comes through at hour five.
+
+:::rooms | AREA | WHAT IS THERE
+1 | The desk | The objective. Everything on this floor is measured from it. The overdue notice is in the tray, already filled in, and it requires a witness.
+2 | The line | Brass in the floor, twelve segments. Eleven of them hold. Waves break on it at hours one to four and cannot cross.
+3 | The stacks | Cover, choke points, and things you must not shelve. Six incident forms in the tray, none countersigned, every one describing segment 9.
+9 | Segment 9 | Not cut. Not warded. **Hour five, something comes through here,** behind you, between you and the desk. It can be re-cut mid-fight with a chisel and somebody covering.
+4 | The plain | Out there, and further out than the building can be. The chariot is on it. It is made of the book, and it goes when the book does.
 :::
 
-:::cols 2
-:::node A | The Desk | place | start
-The objective. Everything on this floor is measured from it, including you.
--> B  Brass across the floor, and one segment of it has a cabling channel cut clean through.
--> C  The returns trolley is loaded, and every book on it is one you have been told not to shelve.
--> D  Past the line the floor stops being a floor and runs out further than the building can.
-:::
-
-:::node B | The Line | place
-Brass in the floor, laid when the library was built, and segment 9 is not cut.
--> C  The spoil from the lifted section is stacked in the stacks, three years old, work order on top.
--> D  Everything crossing comes to segment 9 first, which means everything out there already knows.
--> E  The ward plate keeps him out. Read it properly and it also keeps him from handing anything in.
-:::
-
-:::node C | The Stacks | place
-Cover, choke points, and things you must not shelve.
--> B  Six incident forms in the tray, none countersigned, every one of them describing segment 9.
--> D  One shelf mark on the trolley belongs to no catalogue here, and the plain is full of that mark.
--> E  The overdue notice: borrower unrecorded, item uncatalogued, due four hundred and eleven years ago.
-:::
-
-:::node D | The Plain | place
-Out there, where the chariot is, and where the bones go further than the walls allow.
--> B  Every wave crosses at the same place. Watch one and you have the map of all six.
--> C  The plain is made out of the book. Shelve the book and it has nowhere left to be.
--> E  The chariot at hour six is not leading them. It is queueing, patiently, behind its own army.
-:::
-
-:::node E | The Dread-Lord | person
-Four hundred and eleven years overdue, and here to settle it.
-:::
+:::roll d6 | WHAT THE WAVE BRINGS -- ROLL AT THE TOP OF EACH HOUR
+1 They come wide, at both ends of the line at once.
+2 One of them is carrying a book, and holds it out.
+3 They come for the stacks, not for you.
+4 Something out there counts your number aloud.
+5 They stop at the line and wait a full minute.
+6 They test segment 9. Just the once, this time.
 :::
 
 :::track

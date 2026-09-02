@@ -51,46 +51,45 @@ An engraved mineralogy plate. Four geodes in cross-section, ruled and numbered, 
 The polisher room is hot, and it is hotter at the back wall than it is at the boiler, which is the wrong way round. Behind the wall is a steam tunnel that appears on no plan of this building. The grate has been pushed out from the inside. There is quartz grit on the floor in a trail leading in.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Three ways to everything, and a clock that ends at eight in the morning whether or not they have found it.
+```dungeon 5 FT GRID · UNDER THE GEOLOGY BUILDING · THE TUNNEL IS ON NO PLAN
+##############################
+##.........###################
+##...1.....###################
+##.........###################
+##........+###################
+##########.........###########
+##########....2....###########
+##########.........###########
+##############...#############
+#########...............######
+#########......3........######
+#########...............######
+##############+###############
+####.........................#
+####...4............5........#
+```
+
+Forty feet of tunnel, then it stops being a tunnel. **Light:** yours only, and area 5 gives every bit of it straight back. **Heat:** DC 12 CON each hour below the grate or a level of exhaustion.
+
+:::rooms | AREA | WHAT IS THERE
+1 | The polisher room | Hot, loud, thirty-nine geodes short. The grate in the back wall was pushed **out**, from the tunnel side. Quartz grit in a trail leading in.
+2 | The tunnel | Hot, low, forty feet. Tool marks start halfway along and they are recent and neat. Lamp oil burning further in than Estates has ever been.
+3 | The cut face | Worked obsidian, lamps lit, tools down mid-shift. **Crystal-clad miners x4**, carrying geodes one at a time, one way, and not to the face.
+4 | The sorting gallery | Thirty-nine numbered geodes stacked neatly. **Number 31 is open and empty.** The collection permit is here with Vance's name on it.
+5 | The Tyrant's floor | Polished black, no cover, and it likes that. The beam needs a straight line and a shine — break either and it has to come to you.
 :::
 
-:::cols 2
-:::node A | The Polisher Room | place | start
-Hot, loud, and thirty-nine geodes short. The draught out of the back wall smells of cut stone.
--> B  The grate is pushed out from inside and there is a grit trail leading in, not out.
--> C  It is hotter at the wall than at the boiler, and the heat is coming from a worked face.
--> D  Thirty-nine numbers went in and thirty-nine went somewhere. They were carried, not scattered.
-:::
-
-:::node B | The Tunnel | place
-Hot, low, forty feet, and then it stops being a tunnel.
--> C  Forty feet in there are tool marks, and the marks are recent, and they are neat.
--> D  Lamp oil burning further in than anyone from Estates has ever been.
--> E  The floor turns to polished black and you can see your own lamp in it from forty feet away.
-:::
-
-:::node C | The Cut Face | place
-Worked obsidian, lamps burning, tools down mid-shift, and the shift still here.
--> B  The tools went down two months ago and the shift walked out through this tunnel.
--> D  They carry geodes, one at a time, to somewhere they are stacking them.
--> E  They neither stop nor hurry, and they are all walking the same way, and it is not to the face.
-:::
-
-:::node D | The Sorting Gallery | place
-Thirty-nine numbered geodes stacked neatly, and one of them open.
--> B  Thirty-one is open and empty, and what came out of it went towards the grate.
--> C  The collection permit is here, signed with Vance's name, and the miners are on the same trip list.
--> E  Somebody taught them to stack neatly, and it is on the far side of this gallery, watching them do it.
-:::
-
-:::node E | The Tyrant's Floor | creature
-Polished black, no cover, and it likes that very much.
-:::
+:::roll d6 | COMPLICATION -- ONCE AN HOUR, OR WHEN THEY REST
+1 A lamp goes out. The floor still shines.
+2 Steam vents. DC 12 DEX or 1d6 fire.
+3 A miner says a name. It is a name.
+4 A geode in someone's pack shifts.
+5 The grate behind you closes.
+6 Vance came down after you. Of course she did.
 :::
 
 :::track
-Hours to eight o'clock: 8
+Hours until eight in the morning: 8
 :::
 
 :::valve
@@ -140,21 +139,10 @@ Cliffhanger: eight o'clock, the crate goes up to the department, and thirty-eigh
 :::
 :::
 
-:::cols 2
 :::puzzle Thirty-One | the gallery · already open, and the lid is on the floor
 LOOKS: Thirty-nine stacked, and one on its side with the top hinged back like a lid, and nothing inside.
 SOLVE: Count them. Everything they need to understand tonight is arithmetic: thirty-nine here, forty on the sheet, nine lost to a collapse that did not happen.
 FAIL: They take the crate up without counting, and the session ends in a warm departmental office at eight in the morning.
-:::
-
-:::roll d6 | COMPLICATION
-1 A lamp goes out. The floor still shines.
-2 Steam vents. DC 12 DEX or 1d6 fire.
-3 A miner says a name. It is a name.
-4 A geode in someone's pack shifts.
-5 The grate behind you closes.
-6 Vance came down after you. Of course she did.
-:::
 :::
 
 :::item Specimen 19 | Mineral, uncommon, hollow -- the sorting gallery

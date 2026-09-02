@@ -98,8 +98,8 @@ It has no pattern of its own. It has four hundred nights of yours.
 :::
 
 :::track
-The tide, in hours: 6
-Dusk, and the light goes on ready or not: 4
+Hours before the rock goes under: 6
+Hours until the lamp lights itself: 4
 :::
 
 :::valve

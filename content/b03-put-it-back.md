@@ -55,47 +55,60 @@ From a Beast Husbandry textbook: *GRIFFON, EGG AND NEAR-TERM CHICK.* Two engrave
 The crate is roped to a pony and the pony hates it, in the way animals hate a thing they can hear. Four hundred feet of crag above you, the nest two-thirds of the way up, and not one bird in the sky -- so she is out on her circuit, and you do not know how far along.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Everything you need to survive the top of this cliff can be learned at the bottom of it, three ways each.
+:::beats
+1. **The bottom of the crag.** No bird in the sky. Nobody can tell you how far into her circuit she is, and the notice says four days.
+2. **The scree.** Loose, loud, the only daylight approach, and somebody has to carry the crate up it.
+3. **The old nests.** Eleven years of bones sorted by season. Anyone who counts them learns the circuit is six days, not four.
+4. **The crack opens.** Four rounds of blood heat and no inverting, on a rope, four hundred feet up.
+5. **The male.** Smaller, starving, and he will not leave the ledge for anything. This is the fight if there is one.
+6. **The nest**, four eggs and a gap, and the gap is the exact shape of what you are carrying.
+7. **Down**, against the clock, with a chick or without one, and the pony is still where you left it or it is not.
 :::
 
 :::cols 2
-:::node A | The Scree | place | start
-Loose, loud, and the only approach in daylight. The crate has to come up it on somebody's back.
--> B  The only rope anchors on the face are on three abandoned ledges halfway up.
--> C  The scree points straight at the notch in the ridge, and the notch is the nest.
--> D  Something has been watching the climb since you started and has not once flown off.
+:::place The Scree | loose, loud, and the only way up in daylight
+- Every third step goes, and the sound of it carries the full four hundred feet.
+- No anchors, no line, nothing to tie to for the first hundred and fifty.
+- From here you can see the notch. From the notch, whatever is on the ledge can see you.
 :::
 
-:::node B | The Old Nests | place
-Three abandoned ledges, eleven years of bones, and something living on the middle one now.
--> C  This nest's lining was robbed from these, recently, and in a hurry.
--> D  A half-plucked goat, three days dead, dragged up by something that could not carry it far.
--> E  Eleven years of bones, sorted by season. Count them and her circuit is six days, not four.
+:::place The Old Nests | three abandoned ledges, eleven years of bones
+- Lining robbed out of them recently and in a hurry, and taken upward.
+- A half-plucked goat, three days dead, dragged up by something that could not carry it far.
+- Bones sorted by season, eleven layers of them. Count them and you have the circuit.
 :::
 
-:::node C | The Nest | place
-Four eggs, one gap, and the gap is exactly the shape of what is in your crate.
--> B  The lining is fresh and stolen, and it came from the ledges below.
--> D  He comes to the gap every hour and sits on nothing at all.
--> E  Nine days of down-drift across the ledge, undisturbed. She has not landed here in nine days.
+:::place The Nest | four eggs, one gap, and the shape of the gap
+- Fresh lining, stolen from below, packed the way a bird packs when it is short-handed.
+- Nine days of down-drift lying undisturbed across the ledge.
+- The gap is warm. Something has been sitting over the space where the egg was.
 :::
 
-:::node D | The Male | creature
-He does not hunt a circuit. He is here, he is smaller, and he is starving.
--> B  His last three kills are rotting on the old ledges. He has not eaten any of them.
--> C  Follow him and he goes to the gap, every time, and settles over the space where the egg was.
--> E  He is feeding four alone, which a griffon only does on day five of six. Not day three of four.
+:::place The Male's Ledge | he does not hunt a circuit, he is here
+- Ribs showing under the feathers. He has not eaten in nine days.
+- Three kills rotting on the ledges below, none of them touched.
+- He goes to the gap every hour and settles over nothing at all.
 :::
 
-:::node E | Her Circuit | event
-Six days wide, and you are further into it than the notice says. Every hour you spend on the face is an hour of it.
+:::place The Pass Below | Stonehaven's flocks, and how far along she is
+- Shepherds who will tell you six days, flatly, because they are the ones paying for it.
+- Nothing taken in nine days, which is not good news, and which nobody up here has worked out.
+- From the scree you can see the whole pass, which means the whole pass can see you.
 :::
+:::
+
+:::roll d6 | COMPLICATION
+1 The pony bolts with the spare rope.
+2 Scree goes. DC 13 DEX or slide 20 ft.
+3 The crate inverts. Nobody admits it.
+4 Wind off the pass, straight down the face.
+5 A Stonehaven shepherd, following the van's tracks.
+6 The thing on the middle ledge wakes up.
 :::
 
 :::track
-Her circuit, in hours: 12
-The crack, once the climb starts: 4
+Hours of her circuit left: 12
+Rounds before the crack opens: 4
 :::
 
 :::valve
@@ -146,21 +159,10 @@ SENSES: sees a moving figure on open scree at 800 ft
 :::
 :::
 
-:::cols 2
 :::puzzle The Hairline Crack | on the rope · four rounds, then it is a chick
 LOOKS: A hair of a line across the shell, and it was not there when you tied the crate on.
 SOLVE: Blood heat and no inversion. Someone climbs one-handed, or the crate goes up on a second line, slowly, while somebody keeps it warm against them.
 FAIL: It hatches on the face. Four feet of griffon, wet, loud, and imprinted on whoever is holding it.
-:::
-
-:::roll d6 | COMPLICATION
-1 The pony bolts with the spare rope.
-2 Scree goes. DC 13 DEX or slide 20 ft.
-3 The crate inverts. Nobody admits it.
-4 Wind off the pass, straight down the face.
-5 A Stonehaven shepherd, following the van's tracks.
-6 The thing on the middle ledge wakes up.
-:::
 :::
 
 :::item Ossoway's Instruction | Paper, one sheet -- his coat, or the loading bay

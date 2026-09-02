@@ -12,36 +12,38 @@ Fourteen jobs, pinned up outside the Bursar's office, in a university that has d
 !! THEME -- every department here is solvent, respectable, and lying about one thing.
 :::
 
-| # | Job | Difficulty | Genre | Time | Levels |
+| # | Job | Difficulty | Genre | Levels | Sheet 2 |
 |---|---|---|---|---|---|
-| 1 | Something Is Eating Our Survey | Easy | combat | two hours | 1–2 |
-| 2 | We Have Lost Our Field Site | Easy | political | two and a half hours | 1–3 |
-| 3 | Put It Back | Medium | heist | three hours | 2–4 |
-| 4 | The Light Is Still On | Medium | investigation | three and a half hours | 3–5 |
-| 5 | The Account Has Been Reopened | Hard | dungeon | four hours | 4–5 |
-| 6 | The Samples Are Gone | Medium | dungeon | three hours | 1–3 |
-| 7 | Before Midnight | Medium | heist | three hours | 2–4 |
-| 8 | Hold The Desk | Medium | siege | three hours | 2–4 |
-| 9 | We Have Lost The Mascot | Medium | wilderness | two and a half hours | 2–4 |
-| 10 | Four In One Week | Hard | investigation | four hours | 3–5 |
-| 11 | Noise | Easy | investigation | two hours | 1–3 |
-| 12 | The Cellar Has Grown | Medium | dungeon | three hours | 2–4 |
-| 13 | The Inspection | Medium | political | three hours | 2–4 |
-| 14 | The Dragon Lecture | Hard | heist | four hours | 4–5 |
+| 1 | Something Is Eating Our Survey | Easy | combat | 1–2 | **beats** |
+| 2 | We Have Lost Our Field Site | Easy | political | 1–3 | **web** |
+| 3 | Put It Back | Medium | heist | 2–4 | **beats** |
+| 4 | The Light Is Still On | Medium | investigation | 3–5 | **web** |
+| 5 | The Account Has Been Reopened | Hard | dungeon | 4–5 | **map** |
+| 6 | The Samples Are Gone | Medium | dungeon | 1–3 | **map** |
+| 7 | Before Midnight | Medium | heist | 2–4 | **map** |
+| 8 | Hold The Desk | Medium | siege | 2–4 | **map** |
+| 9 | We Have Lost The Mascot | Medium | wilderness | 2–4 | **beats** |
+| 10 | Four In One Week | Hard | investigation | 3–5 | **web** |
+| 11 | Noise | Easy | investigation | 1–3 | **web** |
+| 12 | The Cellar Has Grown | Medium | dungeon | 2–4 | **map** |
+| 13 | The Inspection | Medium | political | 2–4 | **beats** |
+| 14 | The Dragon Lecture | Hard | heist | 4–5 | **beats** |
 
 :::cols 2
 :::box plain | HOW EACH JOB IS LAID OUT
-Three sheets, always in the same order, so you can find anything mid-session without reading.
+Three sheets. One and three are the same every time. Two is whatever the job actually is.
 
 **Sheet one -- the board.** The notice as posted, what they hear on the way there, the handouts to cut free, and the secrets.
 
-**Sheet two -- the web.** Where it starts, then five nodes with three clues into every one of them. No order. They pick.
+**Sheet two -- the web, the map, or the beats.** A mystery gets five nodes and three clues into each. A site gets a drawn map and keyed areas. Everything else gets the beats and the places.
 
 **Sheet three -- the crunch.** Trouble, the doom clock, the ways out, and every stat block, puzzle and table you need.
 :::
 
 :::box gold | RUNNING THESE
-The webs are audited against the three clue rule as this book renders. If a node ever goes red on you, the page is telling you where the session will stall before you run it.
+**Web** jobs are mysteries: no order, and the page is audited against the three clue rule as this book renders. If a node goes red, it is telling you where the session will stall before you run it.
+
+**Map** jobs are places: a drawn grid at five feet a square, keyed areas, and a complication table. **Beats** jobs are the ones with a shape -- a climb, a clock, an itinerary -- and get the run of the night and the places, in order.
 
 The doom clocks are numbered one to four. They are what happens if the party does nothing at all, and they are meant to be run, not threatened with.
 

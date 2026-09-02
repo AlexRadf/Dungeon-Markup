@@ -53,46 +53,59 @@ A lecture bill, engraved style, heavy display lettering, the sort pasted up in a
 The mine crew below the roost have been counting the sleeping days for years, and they will tell you, confidently, that today is day eight. They are one out and they do not know it. Above you, warm air comes off the ledge in a slow steady column, and it is going up on a nine-count, not an eight.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Three ways to everything, and one of the five is a number rather than a place.
+:::beats
+1. **Five days in.** The crew give you the count, for free, over food, and they are certain, and they are wrong.
+2. **The approach**, under the wyverns, who are not dragons and who will kill you for the confusion.
+3. **The ledge.** The warm column, and a shoulder that is figure 41 made real at forty feet across.
+4. **Nine seconds at the vessel.** Count them out loud at the table. Do not roll for them.
+5. **The neighbouring scale moves.** The plate says it will. Somebody has to be holding it when it does.
+6. **The nest shelf**, if they want six hundred rather than two-fifty -- and something has already counted it.
+7. **Five days back**, in the weather, with eleven days to the lecture and a thousand posters already printed.
 :::
 
 :::cols 2
-:::node A | The Workings | place | start
-The crew, the count, and the only shelter within a day's walk.
--> B  The only way up passes under the wyvern roosts, and the crew know which hours they hunt.
--> C  Warm air off the ledge in a slow steady column, visible from the pit head on a clear morning.
--> D  They have watched that shelf for years and can tell you to the egg how many are on it.
+:::place The Workings | the crew, the count, the only shelter for a day
+- Golden Ore, worked out at the top level, still worked at the bottom.
+- They have counted the sleeping days for years and they will tell you today is day eight.
+- The only fire, the only roof and the only food within a day's walk in any direction.
 :::
 
-:::node B | The Approach | place
-Wyverns, who are not dragons, and who will kill you for the confusion.
--> C  Above the roosts the warm column runs a hand's width off the face and goes straight up to the ledge.
--> D  They fly the shelf every hour, in the same order, and they land on it and look at it.
--> E  They are restless, and wyverns are not restless on a sleeping day.
+:::place The Approach | wyverns, who are not dragons
+- They fly the shelf every hour, in the same order, and they land on it and look.
+- Warm air comes off the ledge in a column a hand's width from the face, all the way up.
+- They are restless today, and wyverns are not restless on a sleeping day.
 :::
 
-:::node C | The Ledge | place
-The old one, the shoulder, and figure 41 made real at forty feet across.
--> B  The shoulder is the plate exactly, and the neighbouring scale moves, exactly as lettered.
--> D  From up here you can see the shelf, and something has already been counting it.
--> E  It is breathing on a nine-count. Brand's own monograph says what that means.
+:::place The Ledge | the old one, and the shoulder
+- Forty feet of shoulder, layered like roof slate, rising and falling on a nine-count.
+- Figure 41 exactly: the free edge, the seated root, the vessel, the neighbouring scale.
+- A cut scale bleeds for about nine seconds. Then it stops, and by then it has been noticed.
 :::
 
-:::node D | The Nest Shelf | place
-Eggs, and something has already counted them.
--> B  The wyverns are the count. Take one and they follow the trailer for five days.
--> C  Eleven days from hatching, and the ledge above is the only warm place within a day.
--> E  The crew say day eight. The shelf is not guessing and the shelf says otherwise.
+:::place The Nest Shelf | eggs, and something has already counted them
+- Eleven days from hatching, and the ledge above is the only warm place within a day.
+- The count is kept by the wyverns. Take one and they follow the trailer for five days.
+- The shelf is not guessing about which day it is, and neither is anything on it.
 :::
 
-:::node E | The Ninth Day | event
-Today. Nobody at the workings knows, and the whole job is on the other side of the number.
+:::place The Col | the last shelter before the roost
+- Four hours below the ledge and the only flat ground to wait out weather on.
+- The weather is what actually kills people out here, and it does not care which day it is.
+- From here the warm column is visible against the sky, rising and stopping, rising and stopping.
 :::
+:::
+
+:::roll d6 | COMPLICATION -- ONCE PER HOUR ON THE FACE
+1 The column stops. Nobody breathes. It starts again.
+2 Weather off the ridge. Visibility to arm's length.
+3 A wyvern flies the shelf an hour early.
+4 The neighbouring scale settles half an inch.
+5 A crew member has followed you up.
+6 Something below counts the eggs, out loud.
 :::
 
 :::track
-Seconds at (c) before it wakes: 9
+Seconds at the vessel before it wakes: 9
 Days to the lecture: 11
 :::
 

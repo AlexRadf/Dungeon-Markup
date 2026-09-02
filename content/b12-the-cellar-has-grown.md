@@ -59,47 +59,46 @@ A wine label, actual size. Oval, engraved border, confident line work -- vine sc
 Eleven bays of dusty racking, exactly as they have been for ninety-nine years, and then a twelfth that is colder, cleaner, and whose mortar is still wet enough to take a thumbprint. The lights do not reach the far end. Nothing in here echoes the way the size of the room says it should.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-The count is different behind you. Three ways into every part of it, because they will lose their own chalk.
+```dungeon 5 FT GRID · UNDER THE DINING HALL · THE HALL ABOVE ENDS AT BAY 11
+##############################
+###=##########################
+###=##########################
+###+##########################
+##....########################
+##.1..#..#..#..#..#..#..#..#.#
+##...........2...........3...:
+##...........................:
+##...#..#..#..#..#..#..#..#..#
+############################.#
+############################.#
+############.................:
+############....4........5...:
+############.................:
+##############################
+```
+
+One door, one key, and eleven bays that have been eleven bays since the university opened. **Light:** what you carry, and it does not reach the far end of a room ninety feet long. **Measure the building from outside.** It has not grown an inch.
+
+:::rooms | AREA | WHAT IS THERE
+1 | The old cellar | Bays 1 to 11, dusty racking, four hundred bottles, exactly as always. This is the whole cellar as far as the stock book has ever been concerned.
+2 | The new bays | Bay 12 onward. Colder, cleaner, mortar still wet enough to take a thumbprint. Perfect labels in Sallow's hand. The wine is very good.
+3 | The counting drift | Where your chalk marks get re-marked, in your own hand, in places you have not been. The count is different behind you, every time.
+4 | The working face | Bays still being added, right now, on a trowel's rhythm. **The second stores man is in bay 24.** He is well. He is cheerful. He does not want to leave.
+5 | The back wall | If you get to it. Nobody has since Thursday. It is the year the builder has reached, not a wall.
 :::
 
-:::cols 2
-:::node A | The Stair and the Door | place | start
-One door, one key, and a Bursar's man at the top of it who will not come down.
--> B  The stock book is on the table at the top of the stair, and this morning's total is in it already.
--> C  The draught coming up is colder than eleven bays of dusty racking can account for.
--> D  Something is working down there on a trowel's rhythm and has not stopped since Tuesday.
-:::
-
-:::node B | The Old Cellar | place
-Bays 1 to 11, exactly as always, and then bay 12.
--> C  Bay 11 ends, bay 12 begins, and the mortar in bay 12 takes a thumbprint.
--> D  The chalk marks you make get re-marked, further in, in your own hand.
--> E  Measure the building from outside. It has not grown an inch. That is where the back wall went.
-:::
-
-:::node C | The New Bays | place
-Cold, wet mortar, perfect labels, and very good wine.
--> B  The labels are in the same hand as the real stock, and the real stock is behind you.
--> D  They get colder and newer going in. The newest one is still being built.
--> E  The vintage on these bottles is the year one hundred and forty. This is year ninety-nine.
-:::
-
-:::node D | The Working Face | place
-Where bays are still being added, recently, and by something with a trowel.
--> B  The second stores man is here, in bay 24, well, cheerful, and stacking.
--> C  It stocks as fast as it builds, and the labels come out of the wall finished.
--> E  It is building forward in time, not sideways in stone, and the far wall is the year it has reached.
-:::
-
-:::node E | The Back Wall | place
-If you get to it. Nobody has since Thursday.
-:::
+:::roll d6 | COMPLICATION -- ONCE PER BAY THEY COUNT
+1 The count is one higher than last time.
+2 A chalk mark you did not make, in your hand.
+3 A cork pops somewhere behind you.
+4 The stores man offers you a bottle.
+5 The lights do not reach as far as they did.
+6 A finished label, still wet, on new mortar.
 :::
 
 :::track
 Days to the Centennial Dinner: 6
-Bays, and rising: 12
+Bays counted and rising: 12
 :::
 
 :::valve

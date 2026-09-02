@@ -55,42 +55,59 @@ Engraved natural-history plate: *GASTROLITHS RECOVERED, IRON HENGE, LOTS I–VII
 Eleven black pillars a stone's throw apart, and the ground between them scattered with rings, buckles and nails, the way a beach is scattered with shell. Your compass is turning and will not stop turning. Anyone in mail has the hair standing up on their arms.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Three clues into everywhere they have to reach. The ring is where they start; nothing has to lead there.
+:::beats
+1. **The ring.** Compasses spin, metal litter to the ankle, and sooner or later somebody works out that all of it is *fittings* -- buckles, nails, eyelets -- and that there is no cloth anywhere.
+2. **The camp.** Three seasons of tents rotted to lace and every peg gone. The field notes count eleven pillars in year one and ten in year two, and then stop counting.
+3. **The trench.** Still warm, and Perch alive at the bottom of it under his own breastplate. He will say the two things that matter: the pillars are shed, and take the mail off.
+4. **It takes something.** Not a person. A piece of kit, at night, from the edge of the firelight, and nobody hears it go.
+5. **The midden**, and the arithmetic: hold a pellet against a pillar's bore. Same animal. Eleven times over.
+6. **They choose.** Feed it and go, kill it while it is gorged, or dig Perch out and walk away with what he knows.
+7. **Finance.** Whatever they bring back, the claim is still held, because Section 4 is still blank.
 :::
 
 :::cols 2
-:::node A | The Ring | place | start
-Open ground, no cover, metal litter to the ankle. Whatever happened here happened in the open and nobody ran far.
--> B  Guy-line stains west of the stones, tent-shaped, three seasons deep.
--> C  One furrow ploughed between two pillars, not dug, and the soil turned out of it is still warm.
--> D  The litter thins going north, and something has been going north with it.
+:::place The Ring | open ground, no cover, and the compass will not settle
+- Metal litter to the ankle: buckles, nails, eyelets. No cloth. No bone.
+- Strike a pillar with steel and the whole ring hums for a count of nine.
+- The pillars are warm on the south face and cold on the north, which is backwards.
 :::
 
-:::node B | The Camp | place
-Three seasons of it, tents rotted to lace, and every single peg gone.
--> C  Only one bedroll unrolled. Somebody was still here after the others left, and his tracks go to the furrow.
--> D  Pegs, pots, buckles, rivets -- gone. The wool untouched. Follow what it wanted, not what it left.
--> E  Field notes: eleven pillars in year one. Ten in year two. Somebody was counting, and then stopped counting.
+:::place The Camp | three seasons of it, and every peg gone
+- Tents rotted to lace, guy-lines still knotted round nothing at all.
+- One bedroll unrolled. Somebody was still here after the others left.
+- Wool blankets untouched, folded, dry. The pots are gone to the last rivet.
 :::
 
-:::node C | The Trench | place
-A furrow between two pillars, still warm, and something at the bottom of it that is breathing.
--> B  Perch, pinned under his own breastplate, alive: *the camp -- my notes -- and take that mail off.*
--> D  The furrow runs on north and stays warm the whole way.
--> E  Perch knows what the pillars are and will say it exactly once. They are shed.
+:::place The Trench | a furrow ploughed between two pillars, and still warm
+- Not dug. Ploughed, from below, and the soil turned out of it steams in the cold.
+- Perch, pinned, nine days without water, entirely lucid and very funny about it.
+- His breastplate is bent inward around him. It is the reason he is alive.
 :::
 
-:::node D | The Midden | place
-Pellets of digested metal in a heap, some of them shield-sized, all of them faintly warm.
--> B  A theodolite, half dissolved, department number still legible -- and the loss form was filed from the camp.
--> C  One pellet holds a breastplate strap, cut through, not eaten. Something is still wearing the rest.
--> E  Measure a pellet against a pillar's bore. The animal that made these made the henge.
+:::place The Midden | pellets of digested metal, some of them shield-sized
+- Smooth and faintly concentric, like river stones. Warm to the hand.
+- A theodolite half dissolved, department number still legible.
+- One pellet holds a breastplate strap, cut through rather than eaten.
 :::
 
-:::node E | The Old One | creature
-Cart-sized, eleven moults old, and under your feet the whole time. It does not hunt you. It hunts what you are carrying.
+:::place The Eleventh Pillar | the newest casing, standing a little apart
+- Softer than the others. A thumbnail marks it, and the mark stays.
+- It stands where no pillar stood last year, and the farmers are right about the count.
+- Nothing grows in a ten-foot circle around it. Nothing has since it was shed.
 :::
+:::
+
+:::roll d6 | COMPLICATION
+1 The compass needle snaps clean off.
+2 A pellet in the midden is still hot enough to blister.
+3 A pillar settles an inch. The ground remembers.
+4 Sheep in the pass, and a farmer following them.
+5 Perch calls out, and it hears him.
+6 Someone's buckle goes missing, quietly.
+:::
+
+:::track
+Pieces of your metal it has taken: 6
 :::
 
 :::valve
@@ -142,21 +159,10 @@ USE: The only source for the pillars, the wool, and the count. Free him and the 
 :::
 :::
 
-:::cols 2
 :::puzzle The Ringing Pillar | anywhere in the ring · a bell, and a bell can be aimed
 LOOKS: Strike a casing with steel and the whole ring hums for a count of nine.
 SOLVE: It is bait. Ring a pillar at the far side, with the scrap piled under it, and buy yourselves the trench.
 FAIL: Ring it while standing next to it and the ground opens under the person holding the steel.
-:::
-
-:::roll d6 | COMPLICATION
-1 The compass needle snaps clean off.
-2 A pellet in the midden is still hot enough to blister.
-3 A pillar settles an inch. The ground remembers.
-4 Sheep in the pass, and a farmer following them.
-5 Perch calls out, and it hears him.
-6 Someone's buckle goes missing, quietly.
-:::
 :::
 
 :::item The Theodolite of Field Party Three | Wondrous, uncommon -- the midden

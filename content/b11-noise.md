@@ -99,6 +99,10 @@ Denies owning a bell. Keeps one. Will not let anybody ring it.
 :::
 :::
 
+:::track
+Nights until finals: 9
+:::
+
 :::valve
 If it's dragging: it starts an hour early, before moonrise, and it is louder.
 If it's going fast: a student from Rhetoric comes up the hill alone to reason with it.

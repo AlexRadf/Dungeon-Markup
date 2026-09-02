@@ -57,10 +57,18 @@ anything mid-session without reading:
 
 - **the board** — the notice as posted, what they hear on the way there, the
   handouts to cut free, and the secrets;
-- **the web** — where it starts, then five `:::node` blocks with three clues into
-  every one of them, drawn and audited by `:::web`;
+- **the middle sheet**, which is whatever the job actually is;
 - **the crunch** — trouble, the four-step doom clock, the ways out, and every
   `:::stat`, `:::puzzle` and `:::roll` the table needs.
+
+The middle sheet comes in three kinds, because a node web is the wrong tool for a
+siege and a map is the wrong tool for a mystery:
+
+| Kind | Jobs | What is on it |
+|---|---|---|
+| **web** | 2, 4, 10, 11 | The four investigations. Five `:::node` blocks and three clues into each, drawn and audited by `:::web` |
+| **map** | 5, 6, 7, 8, 12 | The interior sites, including all three dungeons. A ` ```dungeon ` grid and `:::rooms` keyed areas |
+| **beats** | 1, 3, 9, 13, 14 | The ones with a shape — a climb, a ten-round clock, an itinerary. `:::beats` and five `:::place` blocks |
 
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is

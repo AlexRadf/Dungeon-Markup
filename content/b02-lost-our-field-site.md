@@ -91,6 +91,10 @@ Thaumaturgy's, though he will call himself a surveyor. Paid weekly, patient, and
 :::
 :::
 
+:::track
+Refusals before the conclave stops talking: 3
+:::
+
 :::valve
 If it's dragging: a deer comes down to the fence line, and does not come back up it.
 If it's going fast: the Chair's clerk arrives with a letter refusing to attend, and reads it aloud at the gate.

@@ -53,42 +53,55 @@ A cross-section from a botanical monograph: the crop of a titan-class carnivorou
 The reflection in the koi pond is not the sky. You go in dry and you come out dry on the other side, into heat, under a closed canopy, and the whole jungle is one plant. You can still hear him. He sounds furious. He sounds a long way in.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Ten rounds, five places, three ways into each. They will not visit all of them and that is the design.
+:::beats
+1. **Through the pond.** Dry in, dry out, into heat under a closed canopy. You can still hear him, and the canopy has already started shutting behind you.
+2. **Rounds one to three: the drag.** A channel torn through the moss, going inward, easy to follow. That is the trap and it is also the answer.
+3. **Round four: the beds.** Hydras both sides and the only path runs between them. Going round costs three rounds you do not have.
+4. **Round five: the ribbon** comes free in the crop and floats up the fluid where everyone can see it.
+5. **Rounds six to nine.** Heat, salt, or acid borrowed from the beds, applied to six feet of trunk, by somebody with a free hand and somebody else buying them the time.
+6. **Round ten: he stops.** Not dramatically. He simply stops, and the table has been counting.
+7. **Round eleven.** The canopy closes over the pond, and the pond is on the Botany lawn.
 :::
 
 :::cols 2
-:::node A | The Pond-Side | place | start
-The way home, and it shuts when the canopy shuts, which has already started.
--> B  A channel torn through the moss going inward, and something heavy was dragged along it.
--> C  The only path inward runs between two beds of something that hisses as you pass.
--> D  You can still hear him, and the sound is coming from the base of the biggest trunk.
+:::place The Pond-Side | the way home, and it is shutting
+- You arrive dry, which is the first thing anybody notices and the worst.
+- Heat like a glasshouse in August, and a canopy closed overhead in every direction.
+- Behind you the moss is already knitting across the way you came.
 :::
 
-:::node B | The Drag | place
-A channel through the moss, going inward, and easy to follow -- which is the trap and also the answer.
--> C  It runs straight between the beds, because whatever made it does not care about acid.
--> D  It ends at six feet of swollen trunk, and there is a ribbon on the ground beside it.
--> E  Where the drag started, the canopy has already knitted shut behind you.
+:::place The Drag | a channel torn inward through the moss
+- Six feet wide and going one way, and something heavy went along it this morning.
+- Acid scarring along both edges, older than the drag itself.
+- It runs dead straight between the hydra beds, because whatever made it does not care.
 :::
 
-:::node C | The Hydra Beds | place
-Acid, and the only path runs between them.
--> B  Acid-scarred moss on the drag. The hydras were here first and they lost.
--> D  Borrow enough of their acid and you have the one thing that makes a crop open.
--> E  They regrow because the canopy feeds them. Everything in here is the same plant.
+:::place The Hydra Beds | acid, and the only path runs between them
+- Three heads each, and the stumps close over and regrow while you watch.
+- The moss between the beds is burned to the stone and still steaming.
+- They are fed by the canopy. They cannot leave and they will not stop.
 :::
 
-:::node D | The Crop | place
-Six feet of it, at the base of the trunk, with a ribbon four feet down.
--> B  Fourteen years old, badly behaved, beloved, and four feet down and still moving.
--> C  Heat, salt, or acid. The beds are the only acid within a jungle.
--> E  The crop is the trunk and the trunk is the canopy and the canopy is the pond.
+:::place The Crop | six feet of swollen trunk at the base of the tree
+- Warm to the hand, and moving, slowly, on a count of about nine.
+- A ribbon visible through the wall at four feet, university colours.
+- Bone at the bottom. A collar at four feet. Something whole at the top.
 :::
 
-:::node E | The Canopy | event
-Closing, since you arrived, and it is the roof, the walls and the way home.
+:::place The Canopy | the roof, the walls, and the way home
+- Closed over completely, and closing further, one round at a time, since you arrived.
+- It feeds the hydras, it grew the drag, and it owns the pond. It is all one plant.
+- When it shuts over the water, the water is still on the Botany lawn.
 :::
+:::
+
+:::roll d6 | COMPLICATION -- ONCE EVERY THREE ROUNDS
+1 The canopy shuts another ten feet behind you.
+2 A hydra head regrows before the stump cools.
+3 The moss gives. DC 13 DEX or waist-deep.
+4 He goes quiet for one round, then starts again.
+5 Acid underfoot. 1d6, and your boots after that.
+6 A second drag channel, older, crossing yours.
 :::
 
 :::track

@@ -55,47 +55,60 @@ Departments loathe each other and will not co-operate without leverage. Astronom
 The side door of the Proctor's lodge. He hands over a folded list, tells you nine of the eleven out loud, and does not tell you the other two. Then he says good luck in a voice that has done this before. The inspector's car is already at the west gate. It is fifteen minutes early.
 :::
 
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Eleven hours, one trolley, and four departments who will not help you without being paid in each other.
+:::beats
+1. **05:45, the side door.** Nine items said aloud and two that are not. The list is in your hand and it is half a sheet.
+2. **06:00, he arrives fifteen minutes early**, and the Chancellor has to fill the time with something.
+3. **08:30, Divinity.** The chapel, the fittings, and a cupboard with no lock on it.
+4. **10:00, the animal facility.** Pen 9 is still locked from the inside and the story is that it is a store room.
+5. **11:00, Astronomy**, *including the roof*, which is on the itinerary in italics because somebody insisted.
+6. **12:00, the unwatched hour**, which is not unwatched, because he does not eat and he does walk.
+7. **16:00, the interview. 17:00, determination.** Somebody has to decide about item 11 before then.
 :::
 
 :::cols 2
-:::node A | The Proctor's Lodge | place | start
-A folded list, nine items said aloud, and two that are not.
--> B  Item 1 is a bell in a cupboard with no lock, and he says the word bell only once.
--> C  Item 2 says say it is a store room, and the underline has gone through the paper.
--> D  Astronomy will not discuss the tarp, and the itinerary has the inspector on that roof at eleven.
--> E  Item 8 is whatever Thaumaturgy is doing in the old kiln, and they are doing it right now.
+:::place Divinity | the chapel, the fittings, and item 1
+- A cupboard with no lock, which is the only unlocked thing in the building.
+- The bell inside it has been rung exactly once, in spring, and everyone remembers when.
+- The inventory lists a fitting removed to Astronomy thirty years ago and never returned.
 :::
 
-:::node B | Divinity | place
-The chapel, the fittings, and a bell in a cupboard with no lock on it.
--> C  The bell was rung once in spring. Pen 9 has been locked from the inside since spring.
--> D  The chapel inventory lists a fitting removed to Astronomy thirty years ago and never returned.
+:::place Pen 9 | locked from the inside since spring
+- The lock is on the inside of the door and it was fitted from the inside too.
+- Straw changed weekly. Somebody is feeding it and nobody has signed for the feed.
+- It understands you perfectly. It will not answer in Eldorian and it will co-operate for one thing.
 :::
 
-:::node C | Pen 9 | place
-Locked from the inside since spring, and the lock is on the inside of the door.
--> D  Whatever is in there came off the Astronomy roof, in a crate, at the last inspection.
--> E  It will co-operate for one thing, and the one thing is currently on fire in the old kiln.
+:::place The Astronomy Roof | under a tarp, guyed down, not discussed
+- Kiln-fired ceramic anchors at all four corners, and one kiln on this campus is lit.
+- Whatever is under it has Divinity's mark cut into the base.
+- It came off this roof in a crate at the last inspection, thirty years ago, and went to Pen 9.
 :::
 
-:::node D | The Astronomy Roof | place
-Under a tarp, guyed down, and Astronomy will not discuss it.
--> B  Under the tarp is a fitting with Divinity's mark cut into the base of it.
--> E  The tarp is guyed with kiln-fired anchors, and one kiln on this campus is lit.
+:::place The Old Kiln | Thaumaturgy are doing it right now
+- Lit since Tuesday and they will not damp it for the Proctor or the Chancellor.
+- They will stop for a bell. That is the only thing they will stop for.
+- They want Pen 9 emptied by noon and will trade the kiln for it, gladly, in writing.
 :::
 
-:::node E | The Old Kiln | place
-Thaumaturgy are still doing it, right now, and will not stop for you.
--> B  They will stop for a bell. They will not stop for the Proctor, the Chancellor or you.
--> C  They need Pen 9 emptied by noon and will trade the kiln for it.
+:::place The Proctor's Lodge | where it starts, and item 11
+- A side door, a folded half-sheet, and nine items said out loud in the dark.
+- Three lines blacked out with a nib, gone over several times, still readable at a window.
+- Item 11 is the Proctor. He wrote it himself and he has carried the sheet for some time.
 :::
+:::
+
+:::roll d6 | COMPLICATION
+1 He is twenty minutes ahead of the itinerary.
+2 A department demands its item back.
+3 The trolley loses a wheel. Loudly.
+4 A student asks the inspector a question.
+5 The kiln is opened, by Thaumaturgy, on time.
+6 The Chancellor decides to help.
 :::
 
 :::track
-Hours, dawn to determination: 11
-The unwatched hour, at noon: 1
+Hours from dawn to determination: 11
+The unwatched hour at noon: 1
 :::
 
 :::valve
@@ -146,21 +159,10 @@ USE: He will not explain the redactions and he will answer any direct question a
 :::
 :::
 
-:::cols 2
 :::puzzle Item Nine | anywhere · a list that is longer than it says
 LOOKS: Eleven numbered lines, three of them blacked out with a nib, and line 9 reading *the tenth item on this list.*
 SOLVE: Hold it to a window. The nib went over the redactions several times and the paper remembers the strokes. Item 10 can be read in about a minute by anyone patient.
 FAIL: Never a dead end. Not reading it means arriving at the tenth item at noon, with the inspector already in the corridor.
-:::
-
-:::roll d6 | COMPLICATION
-1 He is twenty minutes ahead of the itinerary.
-2 A department demands its item back.
-3 The trolley loses a wheel. Loudly.
-4 A student asks the inspector a question.
-5 The kiln is opened, by Thaumaturgy, on time.
-6 The Chancellor decides to help.
-:::
 :::
 
 :::item The Chancellor's Gratitude | Favour, redeemable exactly once -- the fee, in part
