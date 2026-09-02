@@ -47,6 +47,9 @@ Flourish's prep spine instead of a plot: a strong start, unordered potential sce
 ten secrets and clues tied to no room, three fantastic locations with three
 evocative details each, then the monsters and the one decision the session turns on.
 
+`content/04-nobody-drowned.md` is a five-node investigation: no scene order, five
+places and people, and three clues pointing at every one of them.
+
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
@@ -68,6 +71,9 @@ the argument; `|` splits it into parts.
 | `:::pitch` | Black panel. A `!!` line becomes the gold theme rule |
 | `:::read LABEL` | Rule-topped read-aloud, italic |
 | `:::clue LABEL` | Pink clue box. `!!` is the big line, `>>` the red sub-line |
+| `:::node A \| Name \| kind \| start` | One brief node. `-> B text` is a clue leading to node B. The badge counts the clues pointing here, and turns red under three |
+| `:::web LABEL` | Every node on the page, drawn as a web and audited against the three clue rule |
+| `:::reveal Conclusion` | A revelation list — the clues that add up to one conclusion, counted |
 | `:::beats` | Numbered beats with black square markers |
 | `:::npc Name \| descriptor` | Voice card — `WANT:` `VOICE:` `BREAK:` `LINE:` `USE:` |
 | `:::stat Name \| CR 1/2 \| AC 12 \| HP 22 \| SPD 30 ft \| STR +2` | Compressed stat block; any `KEY value` pairs. All six abilities always print. A `>` line is the black where-it-goes bar |
@@ -103,6 +109,54 @@ SPELLS: DC 12, +4 -- at will *dancing lights* -- 1/day *sleep*
 > Area 3 · never fights, only leads
 :::
 ```
+
+### Nodes and the three clue rule
+
+A scenario built this way is not a sequence. It is a handful of nodes — a place,
+a person, a group, an event — joined by the clues that lead from one to the next,
+and the players pick the order. The Alexandrian's rule is the part this press
+actually checks: **for every node they have to reach, write three clues pointing
+at it.** They will miss the first, misread the second, and follow the third.
+
+```markdown
+:::node A | The Silent Mill | place | start
+The wheel still turns. Nobody has ground grain here in a year.
+-> B  The ledger names a buyer, paid in Karrn silver
+-> C  Bootprints in the flour, too big for a man
+:::
+```
+
+The opening line is `ID | Name | kind`, and the word `start` anywhere in it marks
+where the session opens — a start node is exempt from the rule, since nothing has
+to lead there. A `-> ID text` line in the body is a lead: a clue found here that
+points at node ID. Everything else is ordinary markdown, so a node stays as brief
+as you leave it.
+
+`:::web` draws every node on the page and counts the arrows. A node with fewer
+than three clues pointing at it gets a dashed ring in the drawing, a red count on
+its card, and a line under the diagram naming it. That red is the whole feature:
+a page of prep telling you where the session will stall, before you run it. The
+same lines report a node that leads nowhere, a lead to an ID that does not exist,
+and an ID declared twice.
+
+`:::reveal` is the same arithmetic for a conclusion rather than a place — the
+thing they have to work out, and every clue that gets them there:
+
+```markdown
+:::reveal The mill is a front for the Karrn silver trade
+- A: The ledger, if anybody reads the last page
+- B: Vex brags about the mill when drunk
+- D: Assay marks on the ingots
+:::
+```
+
+A clue line beginning with a node's ID is tagged with it; the tally says so when
+there are fewer than three.
+
+The web is one page wide. A page is scanned for its `:::node` blocks before
+anything on it renders, so `:::web` can sit above the nodes it draws and every
+card knows how many clues point at it — and nodes on another page are another
+web. A `:::node` quoted inside a ``` fence is a code sample, not a node.
 
 ### Dungeon maps
 

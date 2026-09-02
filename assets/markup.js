@@ -303,8 +303,304 @@ block('place', (arg, body) => {
        + `<ul class="det">${items}</ul></div>`;
 });
 
-/* ---------- block parser ---------- */
+/* ============================================================
+   THE NODE WEB — node-based design, and the three clue rule
+   ------------------------------------------------------------
+   A scenario is not a sequence. It is a handful of nodes — a
+   place, a person, a group, an event — joined by the clues that
+   lead from one to the next. The players pick the order.
+
+   THE THREE CLUE RULE: for every node they have to reach, write
+   three clues pointing at it. They will miss the first, misread
+   the second, and follow the third. A node with two ways in is a
+   scenario with one way to stall.
+
+     :::node A | The Silent Mill | place | start
+     Brief. What is there, and why they care.
+     -> B  The ledger names a buyer, paid in Karrn silver
+     -> C  Bootprints in the flour, too big for a man
+     :::
+
+   A `-> ID text` line is a lead: a clue found here that points at
+   node ID. Everything else in the body is ordinary markdown, so a
+   node stays as brief as you leave it.
+
+     :::web LABEL       every node on the page, drawn and audited
+     :::reveal Claim    a conclusion, and the clues that add up
+
+   The web is one page wide. render() scans a page for :::node
+   blocks before it renders anything on it, so each card knows how
+   many clues point at it and :::web can sit anywhere on the page,
+   above or below the nodes it draws.
+   ============================================================ */
+
+const LEAD = /^\s*(?:->|=>|→)\s*([A-Za-z0-9][\w-]*)\s*[:|.]?\s*(.*)$/;
+const nid  = s => String(s||'').trim().toUpperCase();
+
+/* One :::node. `-> ID text` lines come out as leads, the rest is body. */
+function parseNode(arg, body){
+  const p = split(arg);
+  const id = nid(p.shift()) || '?';
+  const name = p.shift() || '';
+  let start = false;
+  const kind = p.filter(x => {
+    if(/^start$/i.test(x)){ start = true; return false; }
+    return !!x;
+  }).join(' · ');
+
+  const leads = [], text = [];
+  String(body||'').split('\n').forEach(l => {
+    const m = l.match(LEAD);
+    if(m) leads.push({ to: nid(m[1]), text: m[2].trim() });
+    else text.push(l);
+  });
+  return { id, name, kind, start, leads, md: text.join('\n') };
+}
+
+/* The arithmetic the rule needs: how many clues point at each node.
+   A start node is exempt — it is where the session opens, so nothing
+   has to lead there. */
+function weigh(list){
+  const w = { list, has:{}, name:{}, start:{}, in:{}, dup:[] };
+  list.forEach(n => {
+    if(w.has[n.id]) w.dup.push(n.id);
+    w.has[n.id]  = true;
+    w.in[n.id]   = w.in[n.id] || 0;
+    w.name[n.id] = w.name[n.id] || n.name;
+    if(n.start) w.start[n.id] = true;
+  });
+  list.forEach(n => n.leads.forEach(l => { if(w.has[l.to]) w.in[l.to]++; }));
+  w.count = id => w.in[id] || 0;
+  w.thin  = id => !w.start[id] && w.count(id) < 3;
+  w.lost  = () => {
+    const out = [];
+    list.forEach(n => n.leads.forEach(l => { if(!w.has[l.to]) out.push([n.id, l.to]); }));
+    return out;
+  };
+  return w;
+}
+
+/* Nodes are found by reading the page, not by rendering it, so this has
+   to skip ``` fences the same way the parser does — a :::node quoted in
+   a code sample is a code sample, not a node. */
+function scanNodes(src){
+  const lines = String(src||'').replace(/\r/g,'').split('\n');
+  const list = [];
+  let fence = false;
+  for(let i = 0; i < lines.length; i++){
+    if(/^```/.test(lines[i])){ fence = !fence; continue; }
+    if(fence) continue;
+    const m = lines[i].match(/^:::\s*node\b\s*(.*)$/);
+    if(!m) continue;
+    const body = [];
+    let depth = 1;
+    while(++i < lines.length){
+      if(/^:::\s*[\w-]/.test(lines[i])) depth++;
+      else if(/^:::\s*$/.test(lines[i]) && !--depth) break;
+      body.push(lines[i]);
+    }
+    list.push(parseNode(m[1], body.join('\n')));
+  }
+  return weigh(list);
+}
+
+let WEB = weigh([]);
+
+/* ---------- the web, drawn ----------
+   Nodes sit on an ellipse in the order they are declared, so the
+   picture is the same every time you print it. Clues are arrows,
+   bowed left of the way they travel so a pair that point at each
+   other do not land on the same line. A node the rule is unhappy
+   with wears a dashed red ring. */
+
+const r2 = v => Math.round(v*100)/100;
+
+const edge = (p, tx, ty, r) => {
+  const dx = tx-p.x, dy = ty-p.y, L = Math.hypot(dx,dy) || 1;
+  return { x: p.x + dx/L*r, y: p.y + dy/L*r };
+};
+
+/* a long name breaks once, at the space nearest the middle */
+function wrapName(s, max){
+  const t = String(s||'').toUpperCase().trim();
+  if(t.length <= max) return [t];
+  const mid = t.length/2;
+  let cut = -1;
+  for(let i = 0; i < t.length; i++)
+    if(t[i] === ' ' && (cut < 0 || Math.abs(i-mid) < Math.abs(cut-mid))) cut = i;
+  return cut < 0 ? [t] : [t.slice(0,cut), t.slice(cut+1)];
+}
+
+const DSP = 'TeX Gyre Heros Cn,Arial Narrow,sans-serif';
+
+function drawWeb(w){
+  const ns = w.list, n = ns.length;
+  const W = 560, H = 310, cx = W/2, cy = H/2, R = 15;
+  const rx = n < 4 ? 120 : 155, ry = n < 4 ? 68 : 96;
+
+  const pos = ns.map((nd,i) => {
+    if(n === 1) return { x:cx, y:cy, c:0, s:1 };
+    const a = -Math.PI/2 + i*2*Math.PI/n;
+    return { x: cx + rx*Math.cos(a), y: cy + ry*Math.sin(a), c: Math.cos(a), s: Math.sin(a) };
+  });
+  const idx = {};
+  ns.forEach((nd,i) => { if(idx[nd.id] === undefined) idx[nd.id] = i; });
+
+  // The viewBox is cropped to what is actually drawn, so a web ships no
+  // band of blank paper — and, more to the point, never clips the name
+  // hanging off the node on the far left. Label widths are estimated:
+  // Heros Cn bold runs about .52em to the character.
+  let y0 = cy, y1 = cy, x0 = cx, x1 = cx;
+  const span  = (a, b) => { y0 = Math.min(y0, a); y1 = Math.max(y1, b); };
+  const spanX = (a, b) => { x0 = Math.min(x0, a); x1 = Math.max(x1, b); };
+  const LBL = 11.5, wide = rows => Math.max(...rows.map(t => t.length)) * LBL * 0.52;
+
+  let arcs = '';
+  ns.forEach((nd,i) => nd.leads.forEach(l => {
+    const j = idx[l.to];
+    if(j === undefined || j === i) return;
+    const p = pos[i], q = pos[j];
+    const dx = q.x-p.x, dy = q.y-p.y, L = Math.hypot(dx,dy) || 1;
+    const bow = Math.min(30, L*0.17);
+    const mx = (p.x+q.x)/2 - dy/L*bow, my = (p.y+q.y)/2 + dx/L*bow;
+    const a = edge(p, mx, my, R+2), b = edge(q, mx, my, R+7);
+    span(my, my); spanX(mx, mx);
+    const hl = Math.hypot(b.x-mx, b.y-my) || 1;
+    const hx = (b.x-mx)/hl, hy = (b.y-my)/hl;
+    arcs += `<path d="M${r2(a.x)} ${r2(a.y)}Q${r2(mx)} ${r2(my)} ${r2(b.x)} ${r2(b.y)}" fill="none" stroke="${INK}" stroke-width="1.1"/>`
+          + `<path d="M${r2(b.x+hx*6)} ${r2(b.y+hy*6)}L${r2(b.x-hy*3.4)} ${r2(b.y+hx*3.4)}`
+          + `L${r2(b.x+hy*3.4)} ${r2(b.y-hx*3.4)}Z" fill="${INK}"/>`;
+  }));
+
+  let discs = '', labels = '';
+  ns.forEach((nd,i) => {
+    const p = pos[i];
+    span(p.y - R - 5, p.y + R + 5);
+    spanX(p.x - R - 5, p.x + R + 5);
+    if(w.thin(nd.id))
+      discs += `<circle cx="${r2(p.x)}" cy="${r2(p.y)}" r="${R+4}" fill="none" stroke="${ACCENT}" stroke-width="1.2" stroke-dasharray="3 2.6"/>`;
+    discs += `<circle class="disc" cx="${r2(p.x)}" cy="${r2(p.y)}" r="${R}" fill="${nd.start?ACCENT:INK}"/>`
+           + `<text class="lt" x="${r2(p.x)}" y="${r2(p.y+4.6)}" text-anchor="middle" font-family="${DSP}"`
+           + ` font-weight="700" font-size="${nd.id.length>1?10:13}" fill="#fff">${esc(nd.id)}</text>`;
+
+    const side = Math.abs(p.c) < .3 ? 0 : (p.c > 0 ? 1 : -1);
+    const rows = wrapName(nd.name || nd.id, 20);
+    const lx = p.x + side*(R+7);
+    const ly = side === 0
+      ? (p.s < 0 ? p.y - R - 10 - (rows.length-1)*11 : p.y + R + 18)
+      : p.y + 4 - (rows.length-1)*5.5;
+    span(ly - 9, ly + (rows.length-1)*11 + 3);
+    const wd = wide(rows);
+    spanX(lx - (side < 0 ? wd : side ? 0 : wd/2), lx + (side > 0 ? wd : side ? 0 : wd/2));
+    labels += rows.map((t,k) =>
+      `<text x="${r2(lx)}" y="${r2(ly + k*11)}" text-anchor="${side===0?'middle':side>0?'start':'end'}"`
+      + ` font-family="${DSP}" font-weight="700" font-size="${LBL}" fill="${INK}">${esc(t)}</text>`).join('');
+  });
+
+  // sized off its own aspect, so a web takes about the same band of paper
+  // whatever shape the crop came out — see svg.webmap in press.css
+  const vw = x1-x0+8, vh = y1-y0+8;
+  return `<svg class="webmap" style="--a:${r2(vw/vh)}"`
+       + ` viewBox="${r2(x0-4)} ${r2(y0-4)} ${r2(vw)} ${r2(vh)}"`
+       + ` xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scenario web">`
+       + `${arcs}${discs}${labels}</svg>`;
+}
+
+/* ---------- the three blocks ---------- */
+
+block('node', (arg, body) => {
+  const n = parseNode(arg, body), w = WEB;
+  const thin = w.has[n.id] ? w.thin(n.id) : !n.start;
+  const badge = n.start
+    ? `<span class="in start">start</span>`
+    : `<span class="in${thin?' thin':''}">${w.count(n.id)} in</span>`;
+
+  const leads = n.leads.map(l => {
+    const known = w.has[l.to];
+    const nm = w.name[l.to] || '';
+    return `<li><span class="to${known?'':' bad'}">${esc(l.to)}</span>`
+         + (nm ? `<span class="tn">${inline(nm)}${l.text?' &mdash;':''}</span>` : '')
+         + (l.text ? ` ${inline(l.text)}` : '') + `</li>`;
+  }).join('');
+
+  return `<div class="node${n.start?' start':''}"><div class="mk">${esc(n.id)}</div><div class="bd">`
+       + `<div class="hd"><span class="nm">${inline(n.name)}</span>`
+       + (n.kind ? `<span class="de">${inline(n.kind)}</span>` : '') + badge + `</div>`
+       + (n.md.trim() ? h.md(n.md) : '')
+       + (leads ? `<ul class="leads">${leads}</ul>` : '')
+       + `</div></div>`;
+});
+
+block('web', (arg, body) => {
+  const w = WEB;
+  if(!w.list.length)
+    return `<div class="err">:::web &mdash; no :::node blocks on this page</div>`;
+
+  const rows = w.list.map(n => {
+    const inTxt = n.start ? 'start' : `${w.count(n.id)} in`;
+    return `<div class="r"><span class="mk">${esc(n.id)}</span>`
+         + `<span class="nm">${inline(n.name || n.id)}</span>`
+         + `<span class="ct"><b${w.thin(n.id)?' class="thin"':''}>${inTxt}</b>`
+         + ` &middot; ${n.leads.length} out</span></div>`;
+  }).join('');
+
+  const thin = w.list.filter(n => w.thin(n.id));
+  const ends = w.list.filter(n => !n.leads.length);
+  const lost = w.lost();
+  const dup  = [...new Set(w.dup)];
+
+  let notes = thin.length
+    ? `<div class="note bad"><b>Under three.</b> `
+      + thin.map(n => `${esc(n.id)} has ${w.count(n.id)}`).join(', ')
+      + `. Write another clue, or plan on them stalling there.</div>`
+    : `<div class="note">Three ways into every node. The rule holds.</div>`;
+  if(ends.length) notes += `<div class="note">Ends here: ${ends.map(n => esc(n.id)).join(', ')}.</div>`;
+  if(lost.length) notes += `<div class="note bad"><b>No such node.</b> `
+    + lost.map(p => `${esc(p[0])} &#8594; ${esc(p[1])}`).join(', ') + `.</div>`;
+  if(dup.length) notes += `<div class="note bad"><b>Declared twice.</b> ${dup.map(esc).join(', ')}.</div>`;
+
+  return `<div class="web">${arg?`<div class="lbl">${inline(arg)}</div>`:''}`
+       + (String(body||'').trim() ? h.md(body) : '')
+       + drawWeb(w) + `<div class="audit">${rows}</div>${notes}</div>`;
+});
+
+/* A revelation list: the thing you need them to work out, and every
+   clue that gets them there. Three, or it is not written yet. */
+block('reveal', (arg, body) => {
+  const w = WEB;
+  const items = h.lines(body).map(l => {
+    const t = l.replace(/^\s*(?:[-*]|\d+[.)])\s+/, '');
+    const m = t.match(/^([A-Za-z0-9][\w-]{0,7})\s*[.:|]\s*(.+)$/);
+    return (m && w.has[nid(m[1])]) ? { id: nid(m[1]), t: m[2] } : { id:'', t };
+  });
+  const n = items.length, thin = n < 3;
+  return `<div class="reveal${thin?' thin':''}">`
+       + `<div class="hd"><span class="q">${inline(arg||'')}</span>`
+       + `<span class="tally${thin?' thin':''}">${n} clue${n===1?'':'s'}`
+       + `${thin?' &mdash; the rule says three':''}</span></div>`
+       + `<ul class="cl">` + items.map(it =>
+           `<li${it.id?'':' class="free"'}>${it.id?`<span class="mk">${esc(it.id)}</span>`:''}`
+           + `${inline(it.t)}</li>`).join('')
+       + `</ul></div>`;
+});
+
+/* ---------- block parser ----------
+   render() is the door in. Before anything on a page is rendered the
+   page is scanned for :::node blocks, so the node web is counted once
+   and every block on that page sees the same arithmetic. Nested calls
+   (h.md inside a block, a blockquote) go straight through and keep the
+   page's web. */
+let DEPTH = 0;
+
 function render(src){
+  if(DEPTH) return renderBody(src);
+  WEB = scanNodes(src);
+  DEPTH = 1;
+  try { return renderBody(src); }
+  finally { DEPTH = 0; }
+}
+
+function renderBody(src){
   const lines = String(src||'').replace(/\r/g,'').split('\n');
   let out = '', i = 0;
 

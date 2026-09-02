@@ -18,6 +18,9 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::pitch` | Black panel. A `!!` line becomes the gold theme rule. |
 | `:::read LABEL` | Rule-topped read-aloud, italic. |
 | `:::clue LABEL` | Pink clue box. `!!` = the big line, `>>` = the red sub-line. |
+| `:::node A \| Name \| kind \| start` | One brief node. `-> B text` is a clue leading to node B. The badge counts the clues pointing here, and turns red under three. |
+| `:::web LABEL` | Every node on the page, drawn as a web and audited against the three clue rule. |
+| `:::reveal Conclusion` | A revelation list: the clues that add up to one conclusion, counted. |
 | `:::beats` | Numbered beats with black square markers. |
 | `:::npc Name \| descriptor` | Voice card. `WANT:` `VOICE:` `BREAK:` `LINE:` `USE:` |
 | `:::stat Name \| CR 1/2 \| AC 12 \| HP 22 \| SPD 30 ft \| STR +2` | Compressed stat block. All six abilities always print. A `>` line is the black where-it-goes bar. |
@@ -123,3 +126,53 @@ Then style `.omen` in `assets/press.css`. Helpers: `h.md()` renders markdown, `h
 Writing in your editor: edit `content/*.md`, refresh. The files are the source of truth.
 Writing in the browser: Edit (Ctrl/Cmd+E), then Save .md (Ctrl/Cmd+S) and commit the file.
 :::
+
++++
+
+### Nodes and the three clue rule
+
+A scenario built this way is not a sequence. It is a handful of nodes — a place, a person, a group, an event — joined by the clues that lead from one to the next, and the players pick the order. The Alexandrian's rule is the part this press actually checks: **for every node they have to reach, write three clues pointing at it.** They will miss the first, misread the second, and follow the third.
+
+The opening line is `ID | Name | kind`, and the word `start` anywhere in it marks where the session opens — a start node is exempt, since nothing has to lead there. A `-> ID text` line in the body is a lead. Everything else is ordinary markdown, so a node stays as brief as you leave it.
+
+```
+:::node A | The Burnt Shop | place | start
+-> B  A name in the ash: the shop's own insurer.
+:::
+```
+
+:::web A WORKED WEB -- FOUR NODES, THREE WAYS INTO EACH
+:::
+
+:::cols 2
+:::node A | The Burnt Shop | place | start
+-> B  A name in the ash: the shop's own insurer.
+-> C  Lamp oil, in a shop that never sold oil.
+-> D  A key that fits no door on this street.
+:::
+
+:::node B | Auber the Insurer | person
+-> C  He insured the oil, and not the building.
+-> D  He holds the deed to the warehouse.
+:::
+
+:::node C | The Oil Dock | place
+-> B  The manifest is signed in his hand.
+-> D  Barrels went to a warehouse, not a ship.
+:::
+
+:::node D | The Wet Warehouse | place
+-> B  His coat is hanging in the office.
+-> C  Empty barrels, still wet, stacked to the roof.
+:::
+:::
+
+`:::web` draws every node on the page and counts the arrows. A node with fewer than three clues pointing at it gets a dashed ring in the drawing, a red count on its card, and a line under the diagram naming it — a page of prep telling you where the session will stall, before you run it. `:::reveal` is the same arithmetic for a conclusion rather than a place:
+
+:::reveal Auber burned his own shop
+- B: He insured the oil and not the building.
+- C: The dock manifest is in his own hand.
+- D: His coat is hanging in the warehouse office.
+:::
+
+A clue line that begins with a node's letter is tagged with it. The web is one page wide — a page is scanned for its nodes before anything on it renders, so `:::web` can sit above the nodes it draws, and nodes on another page are another web. `content/04-nobody-drowned.md` is a five-node investigation run the same way.
