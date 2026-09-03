@@ -301,11 +301,18 @@ table.rooms th.mk{width:1.9em}
 .stat .cr{margin-left:auto;font-family:var(--mono);font-size:.82em;letter-spacing:.14em;color:var(--mute)}
 .stat .bar{font-family:var(--mono);font-size:.84em;line-height:1.6;margin-bottom:.15em}
 .stat .bar b{color:var(--red);letter-spacing:.08em}
-/* the six abilities, always all six, always in order */
+/* The six abilities, always all six, always in order — and always six
+   across. As a wrapping flex row they broke 4+2 onto a second line as soon
+   as the column got narrow or the text size went up, which reads as a
+   layout fault rather than a stat block. A six-track grid cannot do that:
+   run out of room and each cell stacks its own label over its own value,
+   all six at once, still in line. */
 .stat .abil{
-  display:flex;flex-wrap:wrap;gap:0 .7em;font-family:var(--mono);font-size:.84em;line-height:1.6;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:0 .5em;
+  font-family:var(--mono);font-size:.84em;line-height:1.6;
   border-top:1px solid var(--rule);padding-top:.12em;margin-bottom:.35em;
 }
+.stat .abil span{min-width:0}
 .stat .abil b{color:var(--red);letter-spacing:.08em;font-weight:700}
 /* SPELLS: / SAVES: / SENSES: — one compact line each */
 .stat .krow{display:flex;gap:.55em;margin:0 0 .16em;line-height:1.3}
