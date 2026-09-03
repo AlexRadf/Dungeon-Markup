@@ -50,9 +50,9 @@ evocative details each, then the monsters and the one decision the session turns
 `content/04-nobody-drowned.md` is a five-node investigation: no scene order, five
 places and people, and three clues pointing at every one of them.
 
-`content/b00-the-board.md` and `content/b01-*` to `b14-*` are The Board: fourteen
+`content/b00-the-board.md` and `content/b01-*` to `b18-*` are The Board: eighteen
 jobs pinned up outside the Bursar's office at Eldoria University, levels 1–5, two to
-four hours each. Every job is three sheets in the same order, so you can find
+four hours each. Jobs 1–14 are three sheets in the same order, so you can find
 anything mid-session without reading:
 
 - **the board** — the notice as posted, what they hear on the way there, the
@@ -66,9 +66,15 @@ siege and a map is the wrong tool for a mystery:
 
 | Kind | Jobs | What is on it |
 |---|---|---|
-| **web** | 2, 4, 10, 11 | The four investigations. Five `:::node` blocks and three clues into each, drawn and audited by `:::web` |
-| **map** | 5, 6, 7, 8, 12 | The interior sites, including all three dungeons. A ` ```dungeon ` grid and `:::rooms` keyed areas |
-| **beats** | 1, 3, 9, 13, 14 | The ones with a shape — a climb, a ten-round clock, an itinerary. `:::beats` and five `:::place` blocks |
+| **web** | 2, 4, 10, 11, 17 | The investigations. Five `:::node` blocks and three clues into each, drawn and audited by `:::web` |
+| **map** | 5, 6, 7, 8, 12, 16 | The interior sites, including all three dungeons. A ` ```dungeon ` grid and `:::rooms` keyed areas |
+| **beats** | 1, 3, 9, 13, 14, 15, 18 | The ones with a shape — a climb, a ten-round clock, an itinerary. `:::beats` and five `:::place` blocks |
+
+Jobs **15–18** are the level ones — two hours, posted by a person rather than a
+department, and nothing in them is lying about anything. They fold onto **two**
+sheets instead of three: the board, the secrets, the trouble and the ways out on the
+first, everything you need at the table on the second. Middle-sheet kinds still
+apply — 16 is a **map**, 17 is a **web**, 15 and 18 are **beats**.
 
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
@@ -193,6 +199,16 @@ current page's front matter — title, kicker, number, subtitle, and both halves
 the running head — plus the file name it saves under. **New** builds a page from the
 same form. Renaming a page is a local change: update `content/manifest.json` to
 match before you commit.
+
+### Reordering pages
+
+The order of the book is the order of the **Pages** list. Drag a page up or down it,
+or focus a page and press **Alt + ↑ / ↓** to move it (plain ↑ / ↓ just walk the
+list). The page you were reading stays the page you are reading, wherever it lands.
+
+Like a rename, the new order is a local preference until you commit it —
+**Download manifest.json** writes out `content/manifest.json` exactly as the app is
+showing the book, ready to drop back into `content/`.
 
 ### The in-browser editor
 

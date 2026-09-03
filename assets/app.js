@@ -47,6 +47,8 @@ let cur = 0;
 let editing = false;
 let saveT = null;
 let printScope = 'page';
+let bookTitle = 'Dungeon Markup';
+let dragFrom = -1;      // index being dragged in the Pages list, or -1
 
 let cfg = { page:'A4', margin:'14mm 15mm', text:8.2, mono:false };
 let store = { order:null, drafts:{} };
@@ -93,7 +95,10 @@ async function boot(){
     if(!mf.ok) throw new Error('manifest ' + mf.status);
     const data = await mf.json();
     files = (data.pages || []).map(p => typeof p === 'string' ? p : p.file);
-    if(data.title) document.querySelector('.brand').firstChild.textContent = data.title;
+    if(data.title){
+      bookTitle = data.title;
+      document.querySelector('.brand').firstChild.textContent = data.title;
+    }
     await Promise.all(files.map(async f => {
       try{
         const r = await fetch('content/' + f, {cache:'no-cache'});
@@ -185,15 +190,19 @@ function draw(){
   $('#side').innerHTML =
     '<div class="sect">Pages</div>' +
     docs.map((pg,i) =>
-      `<div class="pg${i===cur?' on':''}${pg.dirty?' mod':''}" data-i="${i}" tabindex="0" role="button">
+      `<div class="pg${i===cur?' on':''}${pg.dirty?' mod':''}" data-i="${i}" tabindex="0" role="button"
+            draggable="true" aria-label="${Markup.esc(pg.title)}, page ${i+1} of ${docs.length}">
+         <span class="grip" aria-hidden="true">&#8942;&#8942;</span>
          <span class="n">${String(i+1).padStart(2,'0')}</span>
          <span class="dot" title="Unsaved local edits"></span>
          <span>${Markup.esc(pg.title)}</span>
          <span class="x" data-del="${i}" title="Remove page">&times;</span>
        </div>`).join('') +
-    `<div class="sect">Book</div>
+    `<div class="pghint">Drag to reorder &middot; or Alt + &uarr; &darr;</div>
+     <div class="sect">Book</div>
      <div class="sidefoot">
        <button class="btn" id="dlAllBtn">Download all .md</button>
+       <button class="btn" id="mfBtn" title="The page order as it stands, ready to commit">Download manifest.json</button>
        <button class="btn" id="revertBtn">Revert this page</button>
      </div>`;
 
@@ -265,8 +274,8 @@ function openPrintBox(){
 function closePrintBox(){ $('#scrim').hidden = true; $('#printbox').hidden = true; }
 
 /* ---------- files ---------- */
-function download(name, text){
-  const blob = new Blob([text], {type:'text/markdown;charset=utf-8'});
+function download(name, text, mime){
+  const blob = new Blob([text], {type: mime || 'text/markdown;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = name;
@@ -275,8 +284,76 @@ function download(name, text){
 }
 const slug = s => (s||'page').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'page';
 
+/* ---------- reordering ----------
+   The book's order is the order of `docs`, and writeStore() already
+   persists it as store.order, so moving a page is a splice and a redraw.
+   The order is a local preference until you commit it: "Download
+   manifest.json" writes out the list the way the app is showing it. */
+
+function movePage(from, to){
+  if(from === to || from < 0 || from >= docs.length || to < 0 || to >= docs.length) return false;
+  const held = docs[cur];
+  docs.splice(to, 0, docs.splice(from, 1)[0]);
+  cur = docs.indexOf(held);   // follow the page you were reading, wherever it went
+  draw(); writeStore();
+  return true;
+}
+function focusRow(i){
+  const r = $(`.pg[data-i="${i}"]`);
+  if(r) r.focus();
+}
+function clearMarks(){
+  $$('.pg').forEach(el => el.classList.remove('over-up','over-dn'));
+}
+function endDrag(){
+  clearMarks();
+  $$('.pg.dragging').forEach(el => el.classList.remove('dragging'));
+  dragFrom = -1;
+}
+/* which slot the pointer is asking for: before this row, or after it */
+function dropAt(row, y){
+  const r = row.getBoundingClientRect();
+  return +row.dataset.i + (y > r.top + r.height / 2 ? 1 : 0);
+}
+
+$('#side').addEventListener('dragstart', e => {
+  const row = e.target.closest('.pg');
+  if(!row) return;
+  dragFrom = +row.dataset.i;
+  row.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  // Firefox refuses to start a drag with nothing on the transfer
+  try{ e.dataTransfer.setData('text/plain', row.dataset.i); }catch(err){}
+});
+$('#side').addEventListener('dragover', e => {
+  if(dragFrom < 0) return;
+  const row = e.target.closest('.pg');
+  if(!row) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  clearMarks();
+  row.classList.add(dropAt(row, e.clientY) > +row.dataset.i ? 'over-dn' : 'over-up');
+});
+$('#side').addEventListener('drop', e => {
+  const row = dragFrom < 0 ? null : e.target.closest('.pg');
+  if(!row) return endDrag();
+  e.preventDefault();
+  const at = dropAt(row, e.clientY);
+  const from = dragFrom;
+  endDrag();
+  // taking the page out first shifts every slot below it up by one
+  if(movePage(from, at - (at > from ? 1 : 0))) toast('Moved — Download manifest.json to keep it');
+});
+$('#side').addEventListener('dragend', endDrag);
+
 /* ---------- events ---------- */
 $('#side').addEventListener('click', e => {
+  if(e.target.id === 'mfBtn'){
+    download('manifest.json',
+      JSON.stringify({ title: bookTitle, pages: docs.map(d => d.file) }, null, 2) + '\n',
+      'application/json;charset=utf-8');
+    return toast('Saved manifest.json — commit it to content/');
+  }
   if(e.target.id === 'dlAllBtn'){
     docs.forEach((d,i) => setTimeout(() => download(d.file, Markup.serialize(d)), i*250));
     return toast('Downloading ' + docs.length + ' files');
@@ -306,9 +383,19 @@ $('#side').addEventListener('click', e => {
   if(row){ cur = +row.dataset.i; draw(); document.body.classList.remove('nav'); }
 });
 $('#side').addEventListener('keydown', e => {
+  const row = e.target.closest('.pg');
+  if(!row) return;
+  const i = +row.dataset.i;
   if(e.key === 'Enter' || e.key === ' '){
-    const r = e.target.closest('.pg');
-    if(r){ e.preventDefault(); cur = +r.dataset.i; draw(); }
+    e.preventDefault(); cur = i; draw(); focusRow(cur); return;
+  }
+  if(e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+  e.preventDefault();
+  const to = i + (e.key === 'ArrowUp' ? -1 : 1);
+  if(e.altKey){                                   // move the page
+    if(movePage(i, to)){ focusRow(to); toast('Moved — Download manifest.json to keep it'); }
+  }else{                                          // walk the list
+    focusRow(Math.max(0, Math.min(docs.length - 1, to)));
   }
 });
 
