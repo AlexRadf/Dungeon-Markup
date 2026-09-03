@@ -50,51 +50,47 @@ evocative details each, then the monsters and the one decision the session turns
 `content/04-nobody-drowned.md` is a five-node investigation: no scene order, five
 places and people, and three clues pointing at every one of them.
 
-`content/b00-the-board.md` and `content/b01-*` to `b18-*` are The Board: eighteen
-jobs pinned up outside the Bursar's office at Eldoria University, levels 1–5, two to
-four hours each. **Every job is exactly two sheets**, in the same order, so you can
-find anything mid-session without reading:
+`content/q01-the-notice-board.md` and `content/c01-*` to `c07-*` are **The Notice
+Board**: seven jobs pinned up at Eldoria University, levels 1–2, an evening each.
+**Every job is exactly two sheets**, in the same order, so you can find anything
+mid-session without reading:
 
-- **the night** — the pitch and its theme line, the opening shot, the shape of the
-  job, and the secrets;
-- **the crunch** — trouble, the ways out, the doom clock, and every `:::stat`,
-  `:::puzzle` and `:::roll` the table needs.
+- **the session** — the pitch, then `WHAT IS ACTUALLY HAPPENING` stating the
+  situation flat out, the strong start, the beats, the cast, and the secrets;
+- **the crunch** — a drawn map with keyed areas, the stat blocks, a `:::puzzle`
+  with its answer printed, and `HOW IT ENDS`, which lists the endings rather than
+  hinting at them.
 
-The notice is on neither sheet. It is on the job's **quest card** (see below),
-because what the players are allowed to know before they set off is a different
-document from the one the GM runs off.
+The notice is on neither sheet. It is on the job's **quest card**, because what the
+players may know before they set off is a different document from the one the GM
+runs off.
 
-The shape of a job comes in three kinds, because a node web is the wrong tool for a
-siege and a map is the wrong tool for a mystery:
+The shape of a job comes in two kinds, because a node web is the wrong tool for a
+dungeon and a map is the wrong tool for a mystery:
 
 | Kind | Jobs | What is on it |
 |---|---|---|
-| **web** | 2, 4, 10, 11, 17 | The investigations. Five `:::node` blocks and three clues into each, drawn and audited by `:::web` |
-| **map** | 5, 6, 7, 8, 12, 16 | The interior sites, including all three dungeons. A ` ```dungeon ` grid and `:::rooms` keyed areas |
-| **beats** | 1, 3, 9, 13, 14, 15, 18 | The ones with a shape — a climb, a ten-round clock, an itinerary. `:::beats` and `:::place` blocks |
-
-Jobs **15–18** are the level ones — two hours, posted by a person rather than a
-department, and nothing in them is lying about anything. They pay badly, they end
-well, and they are where you start a table that has never played before.
+| **map** | 1, 2, 3, 4, 5, 7 | A ` ```dungeon ` grid and `:::rooms` keyed areas — the crag, the conservatory, the vaults, the gauntlet, the boiler complex, the archive |
+| **web** | 6 | The investigation. Five `:::node` blocks, three clues into each, drawn and audited by `:::web`, and a `:::reveal` stating what the players have to work out |
 
 ### The quest board
 
-`content/q00-the-quest-board.md` is all eighteen jobs as cards, two to a sheet.
+`content/q01-the-notice-board.md` is all seven jobs as cards, two to a sheet.
 Print it, cut each card out on the solid line, and fold it along the dashed centre
 **with the printed side facing out** — a single-sided sheet folded the other way
 puts both panels on the inside, which is a lesson everybody learns once.
 
 | Panel | What is on it |
 |---|---|
-| **Front** | The notice exactly as it hangs on the board, then genre, theme, where, who posted it, what it pays, the level and the difficulty |
+| **Front** | The notice exactly as it hangs, then genre, theme, where, who posted it, what it pays, the level and the difficulty |
 | **Back** | The handouts, and nothing else |
 
 A card's **theme** is five words at most and describes what to expect rather than
-what the job means: *chase*, *torch counting*, *nobody fights*.
+what the job means: *tactical combat*, *four rooms*, *no killing*.
 
 The back holds one or two handouts, and a handout is one of two things:
 
-- **A document** — a ballot, a duty log, a letter, a lease — is printed as it
+- **A document** — a ballot, a duty log, a letter, a waiver — is printed as it
   reads, so you can cut the back up and hand the pieces over as they stand.
 - **An illustration** cannot be, so it gets an empty dashed frame with room to draw
   in. Its brief drops to the foot of the panel, because a brief printed inside the
@@ -102,7 +98,8 @@ The back holds one or two handouts, and a handout is one of two things:
   leave, and never less than 26 mm.
 
 Either way the guidance runs along the foot: what the handout is for, and when to
-put it in somebody's hand.
+put it in somebody's hand. `content/q02-notice-board-handouts.md` carries fourteen
+of the same props at full size — see **Printable handouts** below.
 
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
@@ -143,6 +140,7 @@ the argument; `|` splits it into parts.
 | `:::scenes LABEL` | What might happen, deliberately unordered |
 | `:::place Name \| one line` | A location and the three details you say aloud |
 | `:::quest Title \| kicker` | A fold-out quest card. SHOUTY keys make the front's data rows, `LEVEL` and `DIFFICULTY` go in the strip at the foot, and a `>> TITLE` line starts a section on the back |
+| `:::handout Label \| note` | A printable prop at usable size: a dashed cut line, the label above it and the guidance below. `ART:` makes it a frame to draw in |
 
 ### Stat blocks
 
@@ -254,6 +252,34 @@ size the booklet is set to — which means text can outgrow a panel without the 
 noticing, so a card whose panels have overflowed is outlined in red the same way an
 overfull page is. Two cards fit on a sheet. **Fold printed side out.**
 
+### Printable handouts
+
+A quest card's back is 90 mm across, which is fine for a note and no use at all
+for a prop somebody has to sign, fold, count or cross off. `:::handout` sets one at
+usable size:
+
+```markdown
+:::handout JOB 4 · LIABILITY WAIVER | one per player
+I, the undersigned, enter the Calibration Chamber of my own free will...
+
+Signed ................................................
+!! Make them actually sign it before the portal opens.
+:::
+```
+
+The prop is set exactly as a quest card's back is — solid ink cut line, tinted
+ground, red label over a rule — because on this board **a solid line means cut and a
+dashed one means fold**, and a handout is only ever cut. The note stays outside the
+cut so the scissors do not take it. `ART: brief` makes it a frame to draw or paste a
+picture into, and a bare `TALL:` or `WIDE:` line before it sets the frame's shape
+(96 mm tall, or a 34 mm strip; the default is 52 mm).
+
+`content/q02-notice-board-handouts.md` is fourteen of them for the seven Notice
+Board jobs — the eviction notice that explains why the kobolds are angry, Leo's
+journal, the forged transcript, the waiver, the punch-card, the hour tracker, the
+sign-in log that names the culprit, and the frames for the napkin map, the vault
+blueprint, the accordion receipt and the fold-out bookmark.
+
 ### Dungeon maps
 
 A fenced ` ```dungeon ` block is drawn as a real SVG map, one character per 5 ft
@@ -279,6 +305,12 @@ list). The page you were reading stays the page you are reading, wherever it lan
 Like a rename, the new order is a local preference until you commit it —
 **Download manifest.json** writes out `content/manifest.json` exactly as the app is
 showing the book, ready to drop back into `content/`.
+
+A browser that has reordered the book keeps its own order, so a page added to
+`content/manifest.json` afterwards is new to that browser rather than last in it.
+It is slotted in behind whichever page it follows in the manifest, wherever the
+reader has moved that page to — so a page added to the book turns up where the book
+puts it, not at the bottom of somebody's list.
 
 ### The in-browser editor
 
@@ -335,7 +367,9 @@ assets/markup.js      parser, block registry, dungeon map renderer
 assets/app.js         state, storage, editor, print pipeline
 assets/fonts/         subset WOFF2 + licences
 content/manifest.json page order
-content/q00-*.md      the quest board — every job as a fold-out card
+content/q01-*.md      the notice board — every job as a fold-out card
+content/q02-*.md      the handouts, at a size you can hand over
+content/c0*.md        the seven Notice Board jobs, two sheets each
 content/*.md          the adventure
 ```
 

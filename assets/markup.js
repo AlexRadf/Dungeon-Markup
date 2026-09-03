@@ -367,6 +367,49 @@ block('quest', (arg, body) => {
        + `</div>`;
 });
 
+/* ---------- a printable handout ----------
+   A quest card's back is 90mm across, which is fine for a note and no
+   use at all for a prop somebody has to sign, fold, count or cross off.
+   `:::handout` sets one at usable size: a dashed cut line with the prop
+   clean inside it, the label above and the guidance below, so cutting
+   the thing out does not take the GM's note with it.
+
+     :::handout JOB 4 · LIABILITY WAIVER | one per player
+     I, the undersigned, enter of my own free will...
+     !! Make them actually sign it before the portal opens.
+     :::
+
+   `ART: brief` makes it a frame to draw in, as on a quest card, and
+   `TALL:` / `WIDE:` before it set the frame's shape.  */
+
+block('handout', (arg, body) => {
+  const [label, note] = split(arg);
+  let brief='', img=null, guide=[], lines=[], shape='';
+  String(body||'').split('\n').forEach(l => {
+    let m;
+    if((m = l.match(/^ART:\s*(.*)$/i)))       brief = m[1];
+    else if((m = l.match(/^(TALL|WIDE):\s*$/i))) shape = m[1].toLowerCase();
+    else if((m = l.match(IMG_LINE)))          img = { alt:m[1], src:m[2] };
+    else if((m = l.match(/^!!\s+(.*)$/)))     guide.push(m[1]);
+    else lines.push(l);
+  });
+  const art = (img && img.src)
+    ? `<figure class="hoart has"><img src="${esc(img.src)}" alt="${esc(img.alt)}"></figure>`
+    : (brief || img) ? `<figure class="hoart ${esc(shape)}"></figure>` : '';
+  const foot = [brief && !(img && img.src) ? brief : '', ...guide]
+                 .filter(Boolean).map(t => inline(t));
+  // the label sits inside the cut, styled as a card back's does; the note
+  // stays outside it, so cutting the prop out leaves the GM's note behind
+  if(note) foot.unshift(`<b>${inline(note)}.</b>`);
+  return `<div class="handout">`
+       + `<div class="hocut">`
+       +   (label?`<div class="holbl">${inline(label)}</div>`:'')
+       +   art + h.md(lines.join('\n'))
+       + `</div>`
+       + (foot.length?`<div class="honote">${foot.join(' ')}</div>`:'')
+       + `</div>`;
+});
+
 block('item', (arg, body) => {
   const [nm, kind] = split(arg);
   return `<div class="item"><div class="nm">${inline(nm||'')}</div>`
