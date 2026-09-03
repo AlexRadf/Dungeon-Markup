@@ -261,6 +261,112 @@ block('rooms', (arg, body) => {
   return `<table class="rooms">${th}<tbody>${rows}</tbody></table>`;
 });
 
+/* ---------- the quest card ----------
+   One job as a card you cut out and fold. Two panels side by side:
+   the FRONT — the notice as posted, and everything you need to choose
+   the job — and the BACK, which is the handouts and nothing else.
+
+   A single-sided sheet folded ink-inward hides both panels, so these
+   fold PRINTED SIDE OUT: the crease is the card's edge, both panels
+   end up on an outer face, and neither needs to be set upside down.
+
+   A handout is one of two things and the card treats them differently.
+   A DOCUMENT is printed as it reads, so the back can be cut up and
+   handed over as it stands. An ILLUSTRATION cannot be, so it gets an
+   empty frame — room to draw in, or to paste a picture into — and its
+   brief drops to the foot of the panel with the guidance, because a
+   brief printed inside the box is a brief you would have to draw over.
+
+     :::quest Walk Me Home | JOB 15 · THE BOARD
+     GENRE: escort
+     LEVEL: 1
+     DIFFICULTY: Easy
+     The notice, in the voice of whoever pinned it up.
+     >> THE SECURITY LOG
+     02:14 Escorted D. Ashgrove to east gate. No incident.
+     >> PEN & INK -- THE PARK AT TWO
+     ART: the physics path, unlit, and a lamp forty feet back
+     !! Hand the log over the first time anybody talks to Security.
+     :::
+
+   SHOUTY keys become the card's data rows; LEVEL and DIFFICULTY are
+   lifted into the strip along the foot. Anything not a key is the
+   detail. `>> TITLE` starts a handout; inside it, `ART: brief` makes
+   that handout a frame to draw in, an `![alt](src)` line fills the
+   frame with a picture, and anything else is the document, printed as
+   it reads. `!!` lines anywhere on the back are the guidance.  */
+
+const QFOOT = { level:'LEVEL', difficulty:'DIFFICULTY', diff:'DIFFICULTY' };
+const IMG_LINE = /^\s*!\[([^\]]*)\]\(\s*([^)\s]*)[^)]*\)\s*$/;
+
+block('quest', (arg, body) => {
+  const [nm, kick] = split(arg);
+  const ls = String(body||'').split('\n');
+  const cut = ls.findIndex(l => /^>>\s/.test(l));
+  const front = (cut < 0 ? ls : ls.slice(0, cut));
+  const back  = (cut < 0 ? [] : ls.slice(cut));
+
+  // front: SHOUTY keys make the grid, everything else is the detail
+  let rows = '', foot = {}, detail = [];
+  front.forEach(l => {
+    const m = l.match(/^\s*([A-Z][A-Z ]*[A-Z]|[A-Z])\s*:\s*(.*)$/);
+    if(!m) return detail.push(l);
+    const key = m[1].trim(), slot = QFOOT[key.toLowerCase().replace(/\s+/g,'')];
+    if(slot) foot[slot] = m[2];
+    else rows += `<div class="row"><span class="k">${esc(key)}</span><span>${inline(m[2])}</span></div>`;
+  });
+
+  // back: one section per handout, plus the guidance along the foot
+  const cards = [];
+  let guide = [], cur = null;
+  back.forEach(l => {
+    let m;
+    if((m = l.match(/^>>\s+(.*)$/))){ cur = { label:m[1], brief:'', img:null, lines:[] }; cards.push(cur); }
+    else if(!cur) return;
+    else if((m = l.match(/^ART:\s*(.*)$/i)))  cur.brief = m[1];
+    else if((m = l.match(IMG_LINE)))          cur.img = { alt:m[1], src:m[2] };
+    else if((m = l.match(/^!!\s+(.*)$/)))     guide.push(m[1]);
+    else cur.lines.push(l);
+  });
+
+  const secs = cards.map(c => {
+    // no picture yet: an empty frame, and the brief goes down to the foot
+    const art = (c.img && c.img.src)
+      ? `<figure class="qart has"><img src="${esc(c.img.src)}" alt="${esc(c.img.alt)}"></figure>`
+      : (c.brief || c.img) ? `<figure class="qart"></figure>` : '';
+    // name the brief only when the panel holds more than one handout
+    if(c.brief && !(c.img && c.img.src))
+      c.foot = (cards.length > 1 ? `<b>${inline(c.label)}.</b> ` : '') + inline(c.brief);
+    return `<section class="qdoc${art?' art':''}">`
+         + (c.label?`<div class="qlbl">${inline(c.label)}</div>`:'')
+         + art + h.md(c.lines.join('\n')) + `</section>`;
+  }).join('');
+
+  const foots = cards.filter(c => c.foot).map(c => `<p>${c.foot}</p>`).join('')
+              + (guide.length ? `<p>${inline(guide.join(' '))}</p>` : '');
+
+  const strip = Object.keys(foot).length
+    ? `<div class="qfoot">` + Object.entries(foot).map(([k,v]) =>
+        `<span><b>${esc(k)}</b> ${inline(v)}</span>`).join('') + `</div>`
+    : '';
+
+  return `<div class="quest">`
+       + `<div class="qp qfront">`
+       +   (kick?`<div class="qkick">${inline(kick)}</div>`:'')
+       +   `<div class="qname">${inline(nm||'')}</div>`
+       +   `<div class="qdetail">${h.md(detail.join('\n'))}</div>`
+       +   (rows?`<div class="qgrid">${rows}</div>`:'') + strip
+       +   `<div class="qtag">front</div>`
+       + `</div>`
+       + `<div class="qp qback">`
+       +   `<div class="qhand">${secs}</div>`
+       +   (foots?`<div class="qguide">${foots}</div>`:'')
+       +   `<div class="qtag">back</div>`
+       + `</div>`
+       + `<div class="qcrease" aria-hidden="true">fold &middot; printed side out</div>`
+       + `</div>`;
+});
+
 block('item', (arg, body) => {
   const [nm, kind] = split(arg);
   return `<div class="item"><div class="nm">${inline(nm||'')}</div>`
