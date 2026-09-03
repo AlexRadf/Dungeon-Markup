@@ -270,10 +270,12 @@ Signed ................................................
 :::
 ```
 
-A dashed cut line with the prop clean inside it, the label above and the note
-below — so cutting the handout out does not take the GM's note with it. `ART: brief`
-makes it a frame to draw or paste a picture into, and a bare `TALL:` or `WIDE:` line
-before it sets the frame's shape (96 mm tall, or a 34 mm strip; the default is 52 mm).
+The prop is set exactly as a quest card's back is — solid ink cut line, tinted
+ground, red label over a rule — because on this board **a solid line means cut and a
+dashed one means fold**, and a handout is only ever cut. The note stays outside the
+cut so the scissors do not take it. `ART: brief` makes it a frame to draw or paste a
+picture into, and a bare `TALL:` or `WIDE:` line before it sets the frame's shape
+(96 mm tall, or a 34 mm strip; the default is 52 mm).
 
 `content/q02-notice-board-handouts.md` is fourteen of them for the seven Notice
 Board jobs — the eviction notice that explains why the kobolds are angry, Leo's

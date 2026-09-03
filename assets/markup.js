@@ -396,11 +396,17 @@ block('handout', (arg, body) => {
   const art = (img && img.src)
     ? `<figure class="hoart has"><img src="${esc(img.src)}" alt="${esc(img.alt)}"></figure>`
     : (brief || img) ? `<figure class="hoart ${esc(shape)}"></figure>` : '';
-  const foot = [brief && !(img && img.src) ? brief : '', ...guide].filter(Boolean);
+  const foot = [brief && !(img && img.src) ? brief : '', ...guide]
+                 .filter(Boolean).map(t => inline(t));
+  // the label sits inside the cut, styled as a card back's does; the note
+  // stays outside it, so cutting the prop out leaves the GM's note behind
+  if(note) foot.unshift(`<b>${inline(note)}.</b>`);
   return `<div class="handout">`
-       + (label?`<div class="holbl">${inline(label)}${note?`<span>${inline(note)}</span>`:''}</div>`:'')
-       + `<div class="hocut">${art}${h.md(lines.join('\n'))}</div>`
-       + (foot.length?`<div class="honote">${inline(foot.join(' '))}</div>`:'')
+       + `<div class="hocut">`
+       +   (label?`<div class="holbl">${inline(label)}</div>`:'')
+       +   art + h.md(lines.join('\n'))
+       + `</div>`
+       + (foot.length?`<div class="honote">${foot.join(' ')}</div>`:'')
        + `</div>`;
 });
 

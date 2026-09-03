@@ -419,20 +419,25 @@ table.rooms th.mk{width:1.9em}
    The label and the guidance live outside, so cutting the handout out
    does not remove the note telling you what it is for. */
 .handout{margin:0 0 6mm;break-inside:avoid;page-break-inside:avoid}
-.handout .holbl{
-  display:flex;justify-content:space-between;align-items:baseline;gap:1em;
-  font-family:var(--mono);font-size:.7em;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--red);margin-bottom:.3em;
-}
-.handout .holbl span{color:var(--mute);letter-spacing:.12em}
+
+/* The prop is set exactly as a quest card's back is -- solid ink cut line,
+   tinted ground, red mono label over a rule -- because on this board a solid
+   line means cut and a dashed one means fold, and a handout is only ever cut.
+   The note stays outside the cut so the scissors do not take it. */
 .handout .hocut{
-  border:1px dashed var(--ink);padding:5mm 6mm;background:var(--paper);
+  border:1px solid var(--ink);background:var(--tint);padding:5mm 6mm;
   display:flex;flex-direction:column;
+}
+.handout .holbl{
+  font-family:var(--mono);font-size:.7em;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);border-bottom:1px solid var(--rule);
+  padding-bottom:.15em;margin-bottom:.5em;
 }
 .handout .hocut p{margin:0 0 .5em}
 .handout .hocut p:last-child{margin:0}
 .handout .hoart{
-  flex:1 1 auto;min-height:52mm;margin:0;border:0;
+  flex:1 1 auto;min-height:52mm;margin:0;
+  border:1px dashed var(--rule);background:var(--paper);
   display:flex;align-items:center;justify-content:center;
 }
 .handout .hoart.tall{min-height:96mm}
@@ -440,9 +445,10 @@ table.rooms th.mk{width:1.9em}
 .handout .hoart.has{min-height:0}
 .handout .hoart img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .handout .honote{
-  margin-top:.3em;font-family:var(--mono);font-size:.66em;line-height:1.5;
+  margin-top:.35em;font-family:var(--mono);font-size:.64em;line-height:1.5;
   letter-spacing:.02em;color:var(--mute);
 }
+.handout .honote b{color:var(--brass)}
 
 .item{margin:0 0 .8em}
 .item .nm{font-family:var(--dsp);font-weight:700;text-transform:uppercase;font-size:1.25em;line-height:1.05}
