@@ -137,9 +137,10 @@ Sift the wreckage, cross-examine the factions, and work out who actually did it 
 
 *Scrawled across all three in red, pressed hard enough to tear: **SOMEBODY WILL BE EXPELLED FOR THIS.***
 >> A COFFEE SHOP RECEIPT
-3x large, black, no sugar. 04:12.
+**04:12.** 3x large, black, no sugar -- and one more, to go.
 
-*On the back, in caffeine-shaky handwriting:* 300 midterms x 10 mins = 50 HOURS GRADING. IMPOSSIBLE. IMPOSSIBLE. what if there were no midterms
+*On the back, in caffeine-shaky handwriting:* 300 midterms x 10 mins = **50 HOURS GRADING.** IMPOSSIBLE. what if there were no midterms
+!! Give them the list first and the receipt when somebody asks who else was awake. The fourth coffee is the one he sold to the Frat.
 :::
 
 +++

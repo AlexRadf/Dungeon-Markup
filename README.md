@@ -143,6 +143,7 @@ the argument; `|` splits it into parts.
 | `:::scenes LABEL` | What might happen, deliberately unordered |
 | `:::place Name \| one line` | A location and the three details you say aloud |
 | `:::quest Title \| kicker` | A fold-out quest card. SHOUTY keys make the front's data rows, `LEVEL` and `DIFFICULTY` go in the strip at the foot, and a `>> TITLE` line starts a section on the back |
+| `:::handout Label \| note` | A printable prop at usable size: a dashed cut line, the label above it and the guidance below. `ART:` makes it a frame to draw in |
 
 ### Stat blocks
 
@@ -253,6 +254,32 @@ The card is a fixed height in millimetres so it stays the same object whatever t
 size the booklet is set to — which means text can outgrow a panel without the page
 noticing, so a card whose panels have overflowed is outlined in red the same way an
 overfull page is. Two cards fit on a sheet. **Fold printed side out.**
+
+### Printable handouts
+
+A quest card's back is 90 mm across, which is fine for a note and no use at all
+for a prop somebody has to sign, fold, count or cross off. `:::handout` sets one at
+usable size:
+
+```markdown
+:::handout JOB 4 · LIABILITY WAIVER | one per player
+I, the undersigned, enter the Calibration Chamber of my own free will...
+
+Signed ................................................
+!! Make them actually sign it before the portal opens.
+:::
+```
+
+A dashed cut line with the prop clean inside it, the label above and the note
+below — so cutting the handout out does not take the GM's note with it. `ART: brief`
+makes it a frame to draw or paste a picture into, and a bare `TALL:` or `WIDE:` line
+before it sets the frame's shape (96 mm tall, or a 34 mm strip; the default is 52 mm).
+
+`content/q02-notice-board-handouts.md` is fourteen of them for the seven Notice
+Board jobs — the eviction notice that explains why the kobolds are angry, Leo's
+journal, the forged transcript, the waiver, the punch-card, the hour tracker, the
+sign-in log that names the culprit, and the frames for the napkin map, the vault
+blueprint, the accordion receipt and the fold-out bookmark.
 
 ### Dungeon maps
 

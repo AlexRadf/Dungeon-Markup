@@ -414,6 +414,36 @@ table.rooms th.mk{width:1.9em}
 .quest.full{outline:2px solid var(--red);outline-offset:3px}
 .quest.full .qcrease{color:var(--red)}
 
+/* ---------- a printable handout ----------
+   The dashed rule is the cut line and the prop sits clean inside it.
+   The label and the guidance live outside, so cutting the handout out
+   does not remove the note telling you what it is for. */
+.handout{margin:0 0 6mm;break-inside:avoid;page-break-inside:avoid}
+.handout .holbl{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1em;
+  font-family:var(--mono);font-size:.7em;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.3em;
+}
+.handout .holbl span{color:var(--mute);letter-spacing:.12em}
+.handout .hocut{
+  border:1px dashed var(--ink);padding:5mm 6mm;background:var(--paper);
+  display:flex;flex-direction:column;
+}
+.handout .hocut p{margin:0 0 .5em}
+.handout .hocut p:last-child{margin:0}
+.handout .hoart{
+  flex:1 1 auto;min-height:52mm;margin:0;border:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.handout .hoart.tall{min-height:96mm}
+.handout .hoart.wide{min-height:34mm}
+.handout .hoart.has{min-height:0}
+.handout .hoart img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.handout .honote{
+  margin-top:.3em;font-family:var(--mono);font-size:.66em;line-height:1.5;
+  letter-spacing:.02em;color:var(--mute);
+}
+
 .item{margin:0 0 .8em}
 .item .nm{font-family:var(--dsp);font-weight:700;text-transform:uppercase;font-size:1.25em;line-height:1.05}
 .item .kd{font-style:italic;color:var(--red);font-size:.95em;margin:.1em 0 .3em}
