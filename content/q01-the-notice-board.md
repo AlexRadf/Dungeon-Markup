@@ -17,9 +17,11 @@ POSTED: Practical Zoology
 PAYS: 50 gp
 LEVEL: 1–2
 DIFFICULTY: Easy
-Practical demonstrations have grown stale and students are falling asleep in the back row. There are active kobold nests up in the crags with exactly the live specimens required to make next week's lecture pop.
+My practical is on Tuesday and I have twenty-six second-years who have watched me hold up the same pickled specimen three years running.
 
-Head into the hills, secure a clutch of intact eggs or a handful of fresh scales, and return alive. Try not to get poked to death by improvised spears.
+There are live nests up Snakebite Crag. I want a clutch of intact eggs, or failing that a handful of scales -- **fresh**, not shed. I will know the difference.
+
+Fifty gold. Come back alive, please; I cannot face another form this term.
 >> A TORN TEXTBOOK PAGE
 Fig. 9 -- **KOBOLD CLUTCH, TYPICAL.** Three eggs in section, leathery shell, the yolk sac lettered (b), incubation 40–50 days at vent heat.
 
@@ -37,9 +39,9 @@ POSTED: Campus Security
 PAYS: 35 gp
 LEVEL: 1–2
 DIFFICULTY: Easy
-Multiple residents have reported terrible late-night howling interrupting exam prep. Word is an overeager Zoology student was studying lycanthropy and got a bit too hands-on with the research.
+Eleven complaints out of Dorm Four this week, and I have three officers who did not sign up for this. We think it is a Zoology student who got too hands-on with his own research.
 
-Track down the source, pacify the student-turned-wolf **without killing them**, and walk them to Alchemy for the cure before somebody calls the Guard.
+Find him. **Do not kill him** -- I am putting that in writing. Walk him to Alchemy for the cure and I will sign off whatever you need signed.
 >> LEO'S RIPPED JOURNAL PAGE
 *Handwriting steady at the top and coming apart by the end.*
 
@@ -61,9 +63,11 @@ POSTED: Administration & Registrar
 PAYS: 60 gp
 LEVEL: 1–2
 DIFFICULTY: Medium
-Semester registration is completely frozen. The master wax stamp -- an absolute legal necessity for every piece of enrolment paperwork -- has been swiped, and Admin spotted Year 3 delinquents sneaking into the restricted ruins below campus.
+I cannot process a single enrolment. The master wax seal has gone out of this office, and I watched three Year 3 students go down through the old trapdoor carrying it.
 
-Delve into the old vaults, get past whatever security the ruins still have running, and bring that seal back so we can clear the backlog.
+Recover the item. I care very little what else you find down there, or who you find holding it.
+
+Sixty gold, and my office opens again the moment it is on my desk.
 >> A FORGED TRANSCRIPT, ABANDONED BY THE TRAPDOOR
 **ELDORIA UNIVERSITY -- CONFERRAL OF DEGREE.** This is to certify that the bearer is admitted **Master of Unsanctioned Magic**, with *destinction*, in the faculty of *Abjuraton*.
 
@@ -81,9 +85,11 @@ POSTED: Dimensional Architecture
 PAYS: 75 gp
 LEVEL: 1–2
 DIFFICULTY: Hard
-Live combatants needed to stress-test the Arcane Library's updated planar security array. Step into the portal, survive four consecutive rooms of simulated planar carnage, and collect the Golden Hall Pass at the end.
+I need four people willing to be hit. My new planar array wants testing and I will learn nothing whatsoever from a straw dummy.
 
-Payment on return. The University assumes zero liability for dismemberment, temporal displacement, or vaporised gear.
+Four rooms, one at a time, no way back. The Golden Hall Pass is on a plinth at the far end and it is yours if you reach it.
+
+Seventy-five gold on the way out. Sign the waiver first. I would read it.
 >> LIABILITY WAIVER -- SIGN BEFORE ENTRY
 I, the undersigned, enter the Calibration Chamber of my own free will and release the University from all liability for **dismemberment, disintegration, temporal displacement**, or the loss of equipment, memory, or years.
 
@@ -107,9 +113,11 @@ POSTED: Department of Alchemy
 PAYS: 500 gp
 LEVEL: 1–2
 DIFFICULTY: Medium
-Professor Barnaby suffered an alchemical feline transmutation mishap at eight this morning and was immediately collected by "Campus Pest Control", which is a total front for black-market creature traders.
+I need to be precise about this, because it sounds like a joke and it is not one. At eight this morning Professor Barnaby transmuted himself into a cat. At half past, Campus Pest Control took him away in a box.
 
-Get into their basement operation, extract the Professor -- currently an angry, non-verbal orange tabby -- and have him back in his own lab before the five o'clock syllabus deadline.
+Campus Pest Control is not a council service.
+
+Get him back before **five**. After five the counter-agent is dead, he stays a cat for a week, and he has a syllabus due.
 >> BLACK MARKET AUCTION SLIP
 **LOT 14** -- Rare transmuted orange tabby. *Spits fire.* One previous owner, sort of.
 
@@ -129,9 +137,11 @@ POSTED: Office of the Dean
 PAYS: 200 gp
 LEVEL: 1–2
 DIFFICULTY: Medium
-The Senior Staff Lounge was obliterated this morning by an illegal necro-alchemical device. The Dean is threatening whole-house expulsions while the Pranksters, the Necromancers and the Frat point fingers at each other.
+Somebody detonated a necro-alchemical device in my staff lounge this morning. The Pranksters blame the Necromancers. The Necromancers blame the Frat. The Frat are blaming a ghost.
 
-Sift the wreckage, cross-examine the factions, and work out who actually did it before everybody gets thrown out.
+Bring me a name I can act on, by Friday. Two hundred gold.
+
+If you cannot, I will expel all three houses and I will sleep perfectly well afterwards.
 >> THE DEAN'S SUSPECT LIST, HALF BURNT
 **WHO DID THIS.** 1. The Frat -- *motive: they are the Frat* 2. Necromancy Club -- *motive: obvious* 3. Pranksters -- ~~*alibi confirmed, all in detention*~~
 
@@ -153,9 +163,11 @@ POSTED: Circulation Desk
 PAYS: 100 gp, and all your fines waived
 LEVEL: 1–2
 DIFFICULTY: Medium
-An ancient tome called *The Economics of Accumulation* was checked out a hundred and fifty years ago and never returned. A century of daily compound late fees gave the debt so much physical weight that it woke up as a feral origami paper dragon.
+One item. Checked out a hundred and fifty years ago, never returned, fines compounding daily throughout.
 
-It has nested in the deep archives on a hoard made entirely of late-fee coins, overdue notices and confiscated bookmarks. Tame or defeat it and return the tome **intact** to the front desk.
+The debt has acquired enough physical weight to stand up and walk. It is nesting in my deep archive on a hoard of its own late-fee coppers, and it objects to visitors.
+
+I want the book back. **Intact.** A hundred gold, and I will wipe every fine the four of you owe this library.
 >> PEN & INK -- THE ACCORDION RECEIPT
 ART: A till receipt of absurd length -- tape three strips of paper together for the table. Ruled columns of dates and pennies compounding down the whole thing, decade by decade, the figures getting longer as they go. At the very bottom, boxed: **TOTAL DUE: 10,420 gp.** Above it, small: *item not yet returned. Interest continues to accrue daily.*
 >> PEN & INK -- FOLDED ORIGAMI BOOKMARK
