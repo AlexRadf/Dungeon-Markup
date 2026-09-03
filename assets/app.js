@@ -114,8 +114,23 @@ async function boot(){
   const extra = Object.keys(store.drafts).filter(f => !files.includes(f));
   let order = store.order && store.order.length
     ? store.order.filter(f => files.includes(f) || extra.includes(f))
-    : files;
-  files.concat(extra).forEach(f => { if(!order.includes(f)) order.push(f); });
+    : files.slice();
+
+  // A page added to the manifest since this browser last saved an order is
+  // new to that browser, not last in it. Slot it in behind whichever page it
+  // follows in the manifest, so a page added to the book turns up where the
+  // book puts it instead of at the bottom of somebody's list.
+  files.forEach((f, i) => {
+    if(order.includes(f)) return;
+    let at = 0;
+    for(let k = i - 1; k >= 0; k--){
+      const p = order.indexOf(files[k]);
+      if(p >= 0){ at = p + 1; break; }
+    }
+    order.splice(at, 0, f);
+  });
+  // pages that exist only in this browser have no manifest position; they trail
+  extra.forEach(f => { if(!order.includes(f)) order.push(f); });
 
   docs = order.map(f => {
     const text = store.drafts[f] != null ? store.drafts[f] : bases[f];

@@ -280,6 +280,12 @@ Like a rename, the new order is a local preference until you commit it —
 **Download manifest.json** writes out `content/manifest.json` exactly as the app is
 showing the book, ready to drop back into `content/`.
 
+A browser that has reordered the book keeps its own order, so a page added to
+`content/manifest.json` afterwards is new to that browser rather than last in it.
+It is slotted in behind whichever page it follows in the manifest, wherever the
+reader has moved that page to — so a page added to the book turns up where the book
+puts it, not at the bottom of somebody's list.
+
 ### The in-browser editor
 
 **Edit** (Ctrl/Cmd+E) opens a live editor beside the page with chips that insert
