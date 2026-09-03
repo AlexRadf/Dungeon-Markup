@@ -344,6 +344,19 @@ Each printed sheet is pinned to `--print-fill` — the paper height minus the `@
 margins — so the folio sits at the foot of the page without a stray blank sheet
 after it.
 
+## Changing the CSS or the JS
+
+The four asset tags in `index.html` carry a `?v=` cache buster:
+
+```html
+<link rel="stylesheet" href="assets/press.css?v=2">
+```
+
+**Bump the number in all four whenever you change anything in `assets/`.** GitHub
+Pages serves those files with a ten-minute cache, so without it a reader keeps the
+old stylesheet after a deploy and your fix appears not to have landed. The `.md`
+files under `content/` are already fetched with `cache: no-cache` and need nothing.
+
 ## Adding a block
 
 Two steps. In `assets/markup.js`:

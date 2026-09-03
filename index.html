@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dungeon Markup</title>
 <meta name="description" content="Write one-night D&D adventures in plain markdown. Prints straight to a table-ready booklet.">
-<link rel="stylesheet" href="assets/press.css">
-<link rel="stylesheet" href="assets/print.css" media="print">
+<link rel="stylesheet" href="assets/press.css?v=2">
+<link rel="stylesheet" href="assets/print.css?v=2" media="print">
+<!-- ?v= is a cache buster. Bump it in all four tags whenever you change
+     anything in assets/, or browsers keep the old stylesheet for ten minutes
+     after a deploy and you will think your fix did not land. -->
 <style id="pagerule">@page{size:A4;margin:15mm 16mm}</style>
 </head>
 <body>
@@ -73,7 +76,7 @@
 <noscript><p style="color:#fff;font:14px system-ui;padding:20px">Dungeon Markup renders its pages in the browser, so it needs JavaScript. The adventure itself is plain markdown in <code>content/</code> if you would rather just read it there.</p></noscript>
 <div id="toast" role="status"></div>
 
-<script src="assets/markup.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/markup.js?v=2"></script>
+<script src="assets/app.js?v=2"></script>
 </body>
 </html>
