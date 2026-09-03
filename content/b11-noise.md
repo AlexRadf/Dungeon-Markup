@@ -8,33 +8,22 @@ headright: THE BOARD
 ---
 
 :::pitch
-Three Rhetoric seniors have finals in nine days and something on Grazier's Hill has howled from moonrise to dawn for eleven nights. They have pooled eighteen gold, a coat and half a cheese to make it stop, which is everything they own.
-!! THEME -- the howling is a sentence, in a language two people on campus can read, and it is asking to be let go.
+Three Rhetoric seniors have finals in nine days and something on Grazier's Hill has howled from moonrise to dawn for eleven nights. They have pooled eighteen gold, a coat and half a cheese, which is everything they own.
 :::
 
-:::box dark | WHAT IS ACTUALLY HAPPENING -- READ THIS BEFORE YOU RUN IT
-Forty years ago Divinity bound a **vespertine** -- a big, shy, nocturnal animal with a voice like a foghorn -- into the hollow on Grazier's Hill. The binding was meant to last a season and nobody ever lifted it. It cannot leave and it cannot stop calling.
+:::box dark | WHAT IS ACTUALLY HAPPENING -- READ THIS FIRST
+Forty years ago Divinity bound a **vespertine** -- a big, shy nocturnal animal with a voice like a foghorn -- into the hollow on Grazier's Hill. The binding was meant to last a season, nobody lifted it, and it can neither leave nor stop calling.
 
 The call is nine syllables of Old Divinic meaning **"I am still here. Is anyone coming?"** It has asked every night for forty years, and got loud eleven nights ago because it is old now and frightened.
 
 Divinity know. **Proctor Hale** has had an officer carry a dish up nightly to keep it calm, and denies it twice in writing -- admitting it admits a binding of theirs failed on university land.
 
-**It ends when somebody answers.** The reply is *"We are coming. You may go."* Said in the hollow, the binding breaks and it walks off the hill. Three people here know the words, and one object says them for you.
+**It ends when somebody answers.** The reply is *"We are coming. You may go."* Said in the hollow, the binding breaks and it walks off the hill.
 :::
 
 :::read WHERE IT STARTS -- READ IT AT MOONRISE
-Forty yards up the slope something starts to call, and does not move an inch while it does. Nine sounds, a pause, the same nine sounds. Lower down there is a covered dish on a flat stone, still warm, and eleven rings pressed into the grass around it, one inside the next.
+Forty yards up the slope something starts to call, and does not move while it does. Nine sounds, a pause, the same nine sounds. Lower down: a covered dish on a flat stone, still warm, and eleven rings pressed into the grass around it, one inside the next.
 :::
-
-:::reveal It is a question, in Divinity's own language, and Divinity is who has to answer it
-- D: The same nine syllables every night, stopping dead whenever anybody speaks
-- E: Old Divinic, taught to second years, translating as *I am still here. Is anyone coming?*
-- B: Hoad's grandmother called the hollow the asking place and said to ask the ones who keep the bell
-- C: The order to feed it is on Divinity paper and signed by the Proctor
-- E: The bell rings the reply by itself, which is exactly why nobody is allowed to ring it
-:::
-
-+++
 
 :::web WHAT LEADS WHERE -- FIVE PLACES, NO ORDER
 Two hours, five places. Nothing has to be fought and one thing has to be said aloud.
@@ -44,13 +33,13 @@ Two hours, five places. Nothing has to be fought and one thing has to be said al
 :::node A | The Flat Stone | place | start
 -> B  Mutton, on a hill covered in sheep, and the fold has not lost a single one.
 -> C  One set of boots comes up to the stone nightly and turns back at the fence.
--> D  The calling starts forty yards uphill and never once moves while it happens.
+-> D  The calling starts forty yards uphill and never moves while it happens.
 :::
 
 :::node B | Hoad and the Fold | person
 -> C  A university man walks up to the stone and back, eleven nights running.
--> D  Sheep graze everywhere but the hollow. His grandmother called it *the asking place*.
--> E  His grandmother knew the words. She told him to ask the ones who keep the bell.
+-> D  Sheep graze everywhere but the hollow. Grandmother called it *the asking place*.
+-> E  His grandmother knew the words. She said to ask the ones who keep the bell.
 :::
 
 :::node C | Officer Ryle, Security | person
@@ -70,71 +59,58 @@ Two hours, five places. Nothing has to be fought and one thing has to be said al
 :::
 :::
 
-:::cols 2
-:::roll d6 | COMPLICATION
-1 The dog gets loose and runs uphill.
-2 The dish is empty and nothing ate it.
-3 A Rhetoric senior has followed you up.
-4 Ryle arrives early, with a second dish.
-5 Cloud over the moon. It stops for an hour.
-6 Somebody hums the first three syllables.
-:::
-
-:::track
-Nights until finals: 9
-:::
-:::
-
 +++
+
+:::reveal It is a question, in Divinity's own language, and Divinity is who has to answer it
+- D: The same nine syllables every night, stopping dead whenever anybody speaks
+- E: Old Divinic, taught to second years, translating as *I am still here. Is anyone coming?*
+- B: Hoad's grandmother called the hollow the asking place and said to ask the ones who keep the bell
+- C: The order to feed it is on Divinity paper and signed by the Proctor
+- E: The bell rings the reply by itself, which is exactly why nobody is allowed to ring it
+:::
 
 :::box red | THE FIVE ENCOUNTERS
 **1. Hoad at the fence** *(social)* Blocks the gate with a lamp and a dog. Honesty works, a permit does not. Won over, he gives them the hollow, the grandmother, and the word *asking*.
 
 **2. Officer Ryle at the stone** *(social)* Sets the dish down and turns back. He will not say who ordered it until somebody promises not to report him, and then hands over the written instruction with relief.
 
-**3. The locked cupboard, Divinity** *(theft or persuasion)* DC 13 Thieves' Tools, or Hale's own key. Inside: one silver handbell. Hale is in the next room and will ask what they are doing.
+**3. The locked cupboard, Divinity** *(theft or persuasion)* DC 13 Thieves' Tools, or Hale's own key. Inside: one silver handbell. Hale is next door and will ask what they are doing.
 
 **4. The hollow** *(no fight)* It stops calling when they speak, and waits. Inside 30 ft it stands up, which is alarming and is not a threat. It does not attack.
 
-**5. Only if they attack it** *(combat, four rounds)* The stat block opposite. It fights to get away, not to win, and this ending costs the party the job.
+**5. Only if they attack it** *(combat, four rounds)* It fights to get away, not to win, and this ending costs the party the job.
 :::
 
 :::cols 2
 :::stat The Vespertine | CR 2 | AC 13 | HP 45 | SPD 30 ft | STR +2 | DEX +3 | CON +2 | INT +1 | WIS +3 | CHA +4
-**It does not start fights.** Forty years on this hill and it has hurt nothing, taken nothing and moved nowhere.
-**Claw** +5, 5 ft: 7 (1d8+3) slashing, twice a turn, and only if cornered inside the hollow.
-**The call.** Anybody sleeping within a mile: DC 13 WIS or no benefit from that night's rest. That is the entire crime and it is why the job exists.
-**Bound.** It cannot leave the hill or stop calling until answered. Killed, it re-forms in the hollow in four nights and starts again from the first syllable.
-> The hollow · one · four rounds if they insist, and they should be allowed to regret it
+**It does not start fights.** Forty years on this hill and it has hurt nothing and taken nothing.
+**Claw** +5, 5 ft: 7 (1d8+3) slashing, twice a turn, and only if cornered in the hollow.
+**The call.** Anybody sleeping within a mile: DC 13 WIS or no benefit from that night's rest. That is the entire crime.
+**Bound.** Killed, it re-forms in the hollow in four nights and starts again at the first syllable.
+> The hollow · one · four rounds if they insist, and they should regret it
 :::
 
 :::npc Proctor Adaline Hale | Divinity · signed the order, denies the bell
-WANT: This to stay a noise complaint. A failed binding on university land is a resignation.
+WANT: This to stay a noise complaint. A failed binding is a resignation.
 VOICE: Warm, fast, extremely helpful about everything except the cupboard.
-BREAK: Ask her what the nine syllables mean. She knows. She has known for eleven nights.
+BREAK: Ask her what the nine syllables mean. She knows, and has for eleven nights.
 LINE: There is no bell. There has never been a bell. Would you like some tea?
-USE: She can end this in one minute from her own doorstep, and will if she is given a way to do it that is not an admission.
+USE: She can end this in a minute from her own doorstep, given a way that is not an admission.
 :::
 :::
 
-:::puzzle The Nine Syllables | the hollow · a translation, and then a sentence said out loud
+:::puzzle The Nine Syllables | the hollow · a translation, then a sentence said out loud
 LOOKS: Nine sounds, the same nine, moonrise to dawn, in a language nobody on that hill reads.
-SOLVE: Get the words -- write them down phonetically and take them to any Divinity second year, ask Hale directly, or let Hoad's grandmother's phrase point at the bell. They mean **"I am still here. Is anyone coming?"** The reply is **"We are coming. You may go."** Said aloud in the hollow, in Old Divinic, the binding breaks. Ringing the bell within earshot says it for them.
+SOLVE: Get the words -- write them down phonetically and take them to any Divinity second year, ask Hale outright, or follow the grandmother's phrase to the bell. They mean **"I am still here. Is anyone coming?"** The reply is **"We are coming. You may go."** Said aloud in the hollow, in Old Divinic, the binding breaks. Ringing the bell within earshot says it for them.
 FAIL: Never a dead end. A wrong answer costs one night, and there are nine nights until finals.
 :::
 
 :::box gold | HOW IT ENDS
-**They answer it.** The calling stops mid-syllable. It stands, walks down past them without hurrying, and is gone off the hill by dawn. Grazier's Hill is quiet that night and every night after. Rhetoric pay up, in full, in coins and cheese, and sit their finals.
+**They answer it.** The calling stops mid-syllable. It stands, walks down past them without hurrying, and is off the hill by dawn. Grazier's Hill is quiet that night and every night after. Rhetoric pay up in full, in coins and cheese, and sit their finals.
 
-**They ring the bell instead.** The same ending, one night sooner, and Divinity now knows the party took the bell. Hale writes a letter of thanks that is also a warning.
+**They ring the bell instead.** The same ending a night sooner, and Divinity now knows the party took the bell. Hale writes a letter of thanks that is also a warning.
 
 **They kill it.** Silence for four nights. On the fifth it is back in the hollow, starting again at the first syllable, and the seniors have three nights left and no money.
 
 **They run out of nights.** Finals are sat unslept and all three fail. The coat and the cheese are returned to the party by hand, which is worse than being shouted at.
-:::
-
-:::valve
-If it's dragging: Hoad says the word *asking* out loud, and that his grandmother used it.
-If it's going fast: Hale comes up the hill herself at two in the morning, with the bell and no explanation.
-Cliffhanger: it stops on the ridge, turns, and calls once more. A different nine syllables, and something a long way north answers.
 :::
