@@ -8,33 +8,54 @@ headright: THE BOARD
 ---
 
 :::pitch
-Lost Property gives back the wrong things. You hand in a glove and you go away with somebody's locket, and every single person leaves that counter satisfied, and not one of them leaves with their own property. The audit is Thursday. The Head Porter would like to know what he is signing.
+Lost Property gives back the wrong things. You hand in a glove and go away with somebody's locket, and every single person leaves that counter satisfied, and not one of them leaves with their own property. The audit is Thursday and the Head Porter would like to know what he is signing.
 !! THEME -- it is not losing things. It is matching them, and it has never once been wrong about who needed what.
 :::
 
-:::read ON THE BOARD -- AS POSTED
-Eleven claims this term. Eleven wrong items handed over. Eleven students who came back to thank us.
+:::read WHERE IT STARTS -- READ IT AT THE COUNTER, WITH THE BOOK OPEN
+Marrable puts the book on the counter, turns it round and taps the shelf column. Eleven lines in the same very small hand, every one naming a shelf the Lodge does not have. Behind him the pigeonholes go back into the dark further than the room does.
+:::
 
-I have counted the shelves, I have counted them again, and there is nothing missing and nothing over. Somebody is doing the sorting and it is not my lads.
-
-Finance audit Thursday. Fifteen gold, or your own lost item back, and I can do that today. -- **G. Marrable**, Head Porter
+:::web THE WEB -- FIVE PLACES, NO ORDER
+Nothing here has to be fought. One thing here has to be written down.
 :::
 
 :::cols 2
-:::box plain | ON THE WAY THERE
-The Lodge has kept lost property since the Lodge existed and the shelves go by year, back to a year nobody can read.
-
-Every claimant signed the book and every signature is in the right hand. Nothing is ever taken off those shelves at night -- the porters would swear to it, and they are right. Things arrive on them. The old cataloguing clerk, Vell Prithe, retired in 1178 after forty years and left the counter drawer in perfect order.
+:::node A | The Counter | place | start
+The book, the eleven lines, and a porter who has worked out more than he is saying.
+-> B  The shelf column names a shelf with no year on it. Eleven times.
+-> C  Three claimants appear twice, each time taking away something else.
+-> D  Two entries dated at hours the Lodge was locked, in ink dry by opening.
 :::
 
-:::box dark | HANDOUT -- THE HANDING-IN BOOK, THIS TERM, ELEVEN LINES
-**HANDED IN** one glove, brown, left · **CLAIMED BY** T. Ashbury · **ITEM RELEASED** one locket, brass, empty · **SATISFIED?** yes
+:::node B | The Back Room | place
+Shelves by year, back past the readable ones -- and one at the end with no year on it.
+-> C  Nothing on it was ever claimed, and everything was cried over by somebody.
+-> D  Restocked between locking and opening, and the dust is disturbed from behind.
+-> E  Filled from the pigeonholes -- small handprints in the flour-dust, third row.
+:::
 
-**HANDED IN** one theory notebook · **CLAIMED BY** M. Oke · **ITEM RELEASED** a boot-knife, blunt · **SATISFIED?** yes, very
+:::node C | The Eleven Claimants | group
+They took the wrong thing home, they all kept it, and none of them will apologise.
+-> B  All eleven describe the same shelf, and the porters say there is no such shelf.
+-> D  Each signed under a line they did not write, and two noticed at the time.
+-> E  Each was handed the thing by somebody small they never got a look at.
+:::
 
-Nine more the same. Every line in a porter's hand except the shelf column, which is in a second hand, much smaller, and names a shelf with no year on it.
+:::node D | The Night Book | thing
+The second hand in the ledger: smaller, neater, writing after the door is locked.
+-> B  Its column and the unyeared shelf are the same place, written two ways.
+-> C  It writes the claimant's name before the claimant arrives. Every time.
+-> E  Vell Prithe's hand, copied, and Prithe left this building in 1178.
+:::
+
+:::node E | The Pigeonholes | place
+Going back further than the room does. Something in there has sorted for forty years.
+-> C  It can name all eleven, and what each had actually lost, which is not what they handed in.
 :::
 :::
+
++++
 
 :::secrets
 1. Nothing has ever left those shelves unrecorded. Things arrive on them, from the pigeonholes behind, overnight.
@@ -66,51 +87,6 @@ VOICE: Flat, courteous, finishes your sentence with the correct word.
 BREAK: Ask him what he lost. He will answer, and then he will want to change the subject.
 LINE: I'm not asking you to catch it. I'm asking you to give me a column I can fill in.
 USE: He will open anything in this building for you and stand in the doorway while you do it.
-:::
-:::
-
-+++
-
-:::read WHERE IT STARTS -- READ IT AT THE COUNTER, WITH THE BOOK OPEN
-Marrable puts the book on the counter, turns it round, and taps the shelf column. Eleven lines in the same very small hand, every one of them naming a shelf the Lodge does not have. Behind him the pigeonholes go back into the dark further than the room does.
-:::
-
-:::web THE WEB -- FIVE PLACES, NO ORDER
-Nothing here has to be fought and one thing here has to be written down.
-:::
-
-:::cols 2
-:::node A | The Counter | place | start
-The book, the eleven lines, and a porter who has worked out more than he is saying.
--> B  The shelf column names a shelf with no year on it, eleven times.
--> C  Three claimants appear twice, each time taking away something else.
--> D  Two entries are dated at hours the Lodge was locked, in ink that was dry by opening.
-:::
-
-:::node B | The Back Room | place
-Shelves by year, back past the readable ones -- and one at the end with no year on it.
--> C  Nothing on it has ever been claimed, and everything on it was cried over by somebody.
--> D  It is restocked between locking and opening, and the dust is disturbed only from behind.
--> E  It is filled from the pigeonholes, and there are small handprints in the flour-dust on the third row.
-:::
-
-:::node C | The Eleven Claimants | group
-They took the wrong thing home, they all kept it, and none of them will apologise.
--> B  All eleven describe the same shelf, in the same words, and the porters say there is no such shelf.
--> D  Each of them signed under a line they did not write, and two noticed at the time.
--> E  Every one of them was handed the thing by somebody small they did not get a proper look at.
-:::
-
-:::node D | The Night Book | thing
-The second hand in the ledger: smaller, neater, writing after the door is locked.
--> B  Its column and the unyeared shelf are the same place, written two ways.
--> C  It puts the claimant's name down before the claimant arrives. Every time, this whole term.
--> E  It is Vell Prithe's hand, copied, and Prithe has not been in this building since 1178.
-:::
-
-:::node E | The Pigeonholes | place
-Going back further than the room does. Something in there has sorted for forty years.
--> C  It can name all eleven, and what each of them had actually lost, which is not what they handed in.
 :::
 :::
 

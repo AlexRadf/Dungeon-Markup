@@ -12,28 +12,17 @@ Something has walked forty feet behind a night technician every night for three 
 !! THEME -- it is not following her. It is walking her off site, and nobody has told it it can stop.
 :::
 
-:::read ON THE BOARD -- AS POSTED
-I finish at two in Chemistry and I walk home across the park. For three weeks something has walked behind me. It does not come closer. It does not go away. It stops when I stop.
-
-Security walk me to the east gate. Past the gate is not their ground. It is eleven more minutes to my door and I would like company for them.
-
-I can pay twelve gold and I will cook you something. -- **D. Ashgrove**, technician, Chemistry, nights
+:::read WHERE IT STARTS -- READ IT AT TWO, OUTSIDE CHEMISTRY, IN THE RAIN
+She locks up, checks the door twice, and sets off without waiting to see if you follow. Forty feet back along the path, at the edge of what you can see, a lamp comes on. Nobody is carrying it. When she stops to shake out her umbrella, it stops.
 :::
 
-:::cols 2
-:::box plain | ON THE WAY THERE
-The physics path lamps have been out since Michaelmas and Estates have the requisition pending a section nobody will fill in.
-
-Forty feet, every night, never closer. It stops at the east gate and stands there until she is out of sight. The night porter's post was cut in a budget round six years ago and the lodge has been dark since. Two other people finish after midnight on that side and neither has ever been followed. A gardener says he has seen a lamp go along the park at two and nobody carrying it.
-:::
-
-:::box dark | HANDOUT -- THE SECURITY LOG, EAST GATE, THREE WEEKS
-**02:14** Escorted D. Ashgrove to east gate. No incident. · **02:16** Escorted D. Ashgrove to east gate. No incident. · **02:11** Escorted D. Ashgrove to east gate. No incident. · **02:15** As above. · **02:14** As above. · **02:13** As above.
-
-Nineteen entries in one hand, all the same line. The twentieth is in a different hand, pressed harder:
-
-*Asked me to walk her further tonight. Past the gate is not our ground and I have asked. Told her the board. I did look back and I am not putting what I saw in this book.*
-:::
+:::beats
+1. **The park.** Eleven minutes of walking and a conversation she has been saving for three weeks. It keeps its forty feet. Say the distance out loud every time somebody checks.
+2. **Somebody looks straight at it.** It sits down in the wet grass and does not move. Nothing you do makes it move. Turn your back and it is forty feet away again.
+3. **The physics path, unlit.** Two stray dogs off the allotments, all noise and no plan. The lamp comes up to twenty feet for exactly as long as this takes, and then goes back to forty.
+4. **The east gate.** It stops. It will not step through, and it will not be coaxed, called, bribed or carried through. It waits until she is out of sight down the lane.
+5. **Past the gate is where the job is.** Eleven more minutes, her street, her door, her kitchen, and a hot meal at half past two in the morning.
+6. **Tomorrow night is the actual question.** Someone has to be last off site, or somebody has to go and find Ivet Sunn.
 :::
 
 :::secrets
@@ -47,6 +36,8 @@ Nineteen entries in one hand, all the same line. The twentieth is in a different
 8. Ivet Sunn, who kept the lodge, is alive in Oakhaven, drinks in the Coach and Horses, and would come up tomorrow if anybody thought to ask her.
 :::
 
++++
+
 :::cols 2
 :::box red | TROUBLE
 - It will not be fought and cannot be caught. Every plan that starts with cornering it ends with it sitting down.
@@ -59,21 +50,6 @@ Nineteen entries in one hand, all the same line. The twentieth is in a different
 - Stand it down: Ivet Sunn, in person, at the lodge door, in the words the post used. She will come up for the price of a drink.
 - Relight the lodge. It stops walking anybody the moment somebody is on duty again, which costs the university nothing and will take Estates nine months.
 :::
-:::
-
-+++
-
-:::read WHERE IT STARTS -- READ IT AT TWO, OUTSIDE CHEMISTRY, IN THE RAIN
-She locks up, checks the door twice, and sets off without waiting to see if you follow. Forty feet back along the path, at the edge of what you can see, a lamp comes on. Nobody is carrying it. When she stops to shake out her umbrella, it stops.
-:::
-
-:::beats
-1. **The park.** Eleven minutes of walking and a conversation she has been saving for three weeks. It keeps its forty feet. Say the distance out loud every time somebody checks.
-2. **Somebody looks straight at it.** It sits down in the wet grass and does not move. Nothing you do makes it move. Turn your back and it is forty feet away again.
-3. **The physics path, unlit.** Two stray dogs off the allotments, all noise and no plan. The lamp comes up to twenty feet for exactly as long as this takes, and then goes back to forty.
-4. **The east gate.** It stops. It will not step through, and it will not be coaxed, called, bribed or carried through. It waits until she is out of sight down the lane.
-5. **Past the gate is where the job is.** Eleven more minutes, her street, her door, her kitchen, and a hot meal at half past two in the morning.
-6. **Tomorrow night is the actual question.** Someone has to be last off site, or somebody has to go and find Ivet Sunn.
 :::
 
 :::cols 2

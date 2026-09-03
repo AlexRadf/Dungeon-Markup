@@ -12,33 +12,30 @@ A second-year has a letter that has to be on the six o'clock mail coach out of O
 !! THEME -- nobody is chasing you. The only enemy tonight is the clock and your own good sense.
 :::
 
-:::read ON THE BOARD -- AS POSTED
-The mail coach goes from the Oakhaven yard at six and it is the only thing that reaches Cardell before Thursday. My brother's ship sails Thursday. I missed the posting hour because my practical overran and the porter had gone.
+:::read WHERE IT STARTS -- READ IT IN THE STABLE YARD, TEN PAST FOUR
+Rain that stopped an hour ago and is thinking about starting again. Tarn holds the grey's head and does not hand over the reins until somebody looks him in the eye. The letter goes in oilcloth, in a coat, buttoned. Eight miles that way. The yard clock in Oakhaven strikes six whether you are there or not.
+:::
 
-It is eight miles. I would go myself and I cannot ride and I would not get there.
-
-Eight gold, which is all of it, and you can read the letter, I don't mind. It isn't clever. -- **R. Copple**, second year, Natural Philosophy
+:::beats
+1. **Ten past four, the yard.** One horse, one lamp, one letter. Whoever is not riding is running, and the road is soft.
+2. **Half past, Bellow's Bottom.** The ford is over the stones and moving. Cross it (DC 12 Athletics, or Animal Handling for the horse) or go round and give up forty minutes.
+3. **Five, the toll gate.** Padlocked, and Hask asleep. Ring the bell and wake the cottage, climb it (DC 11), or say what the letter is for through the window and watch him get up.
+4. **Twenty past, the fen path.** Twenty minutes saved and the lamps are out. DC 12 Wisdom to hold the line; each failure is twenty minutes back the way they came.
+5. **Ten to six, the Oakhaven yard.** Empty. Fresh ruts, dung still steaming, and the ostler says he went early, he had a full load.
+6. **The hill road.** A mile of climb at a walk, and the letter goes up to the driver's hand from a run alongside. Nobody has to fight anybody tonight.
 :::
 
 :::cols 2
-:::box plain | ON THE WAY THERE
-Three days of rain. The ford at Bellow's Bottom is up over the stones and the long way round is forty minutes.
-
-The toll bridge is gated at night and Hask, who keeps it, sleeps through the bell -- his wife does not, and the baby does not. The fen path saves twenty minutes and carries marsh lamps in wet weather, which are old, harmless and extremely persuasive. Tarn in the stables will lend the good grey to anybody who asks him to his face and to nobody who sends a note. The coach has left early twice this month because the driver had a full load and a dry road.
+:::place The ford at Bellow's Bottom | Over the stones, and moving faster than it looks
+- The rail is under water and you can hear it, which is the only way you know where it is.
+- Somebody's hat, going round in the eddy, and it has been there long enough to be soft.
+- The long way round is signposted, in good repair, and forty minutes, and it is right there.
 :::
 
-:::box dark | HANDOUT -- THE LETTER, UNSEALED, FOUR LINES
-*Bel --*
-
-*I got in. The examiners said the second half was the strongest thing they'd read this year, and I'm to be kept on, and it's paid, it's actually paid.*
-
-*I know what you gave up so I could sit it. I have never once not known.*
-
-*Come home at Michaelmas and I'll have somewhere to put you. Don't sail without writing.*
-
-*-- Ren*
-
-Folded round a second sheet: a pressed sprig of something from the fen, and, in pencil, *this is the one you liked.*
+:::place The fen path | Twenty minutes saved, and the lamps are out tonight
+- Green, low, patient, and always exactly as far away as they were a minute ago.
+- The ground gives under the heel and comes back up smelling of iron.
+- A boot on a stick, driven in as a marker, pointing the way somebody else thought was right.
 :::
 :::
 
@@ -52,6 +49,8 @@ Folded round a second sheet: a pressed sprig of something from the fen, and, in 
 7. The driver will take a letter handed up to him at a walk. He has done it before. He will not stop, and he will not need to.
 8. Ren is at the yard gate at six anyway, having walked the eight miles in the dark, because she could not sit still.
 :::
+
++++
 
 :::cols 2
 :::box red | TROUBLE
@@ -67,38 +66,9 @@ Folded round a second sheet: a pressed sprig of something from the fen, and, in 
 :::
 :::
 
-+++
-
-:::read WHERE IT STARTS -- READ IT IN THE STABLE YARD, TEN PAST FOUR
-Rain that stopped an hour ago and is thinking about starting again. Tarn holds the grey's head and does not hand over the reins until somebody looks him in the eye. The letter goes in oilcloth, in a coat, buttoned. Eight miles that way. The yard clock in Oakhaven strikes six whether you are there or not.
-:::
-
-:::beats
-1. **Ten past four, the yard.** One horse, one lamp, one letter. Whoever is not riding is running, and the road is soft.
-2. **Half past, Bellow's Bottom.** The ford is over the stones and moving. Cross it (DC 12 Athletics, or Animal Handling for the horse) or go round and give up forty minutes.
-3. **Five, the toll gate.** Padlocked, and Hask asleep. Ring the bell and wake the cottage, climb it (DC 11), or say what the letter is for through the window and watch him get up.
-4. **Twenty past, the fen path.** Twenty minutes saved and the lamps are out. DC 12 Wisdom to hold the line; each failure is twenty minutes back the way they came.
-5. **Ten to six, the Oakhaven yard.** Empty. Fresh ruts, dung still steaming, and the ostler says he went early, he had a full load.
-6. **The hill road.** A mile of climb at a walk, and the letter goes up to the driver's hand from a run alongside. Nobody has to fight anybody tonight.
-:::
-
 :::track
 Minutes to six: 6
 Miles to Oakhaven: 8
-:::
-
-:::cols 2
-:::place The ford at Bellow's Bottom | Over the stones, and moving faster than it looks
-- The rail is under water and you can hear it, which is the only way you know where it is.
-- Somebody's hat, going round in the eddy, and it has been there long enough to be soft.
-- The long way round is signposted, in good repair, and forty minutes, and it is right there.
-:::
-
-:::place The fen path | Twenty minutes saved, and the lamps are out tonight
-- Green, low, patient, and always exactly as far away as they were a minute ago.
-- The ground gives under the heel and comes back up smelling of iron.
-- A boot on a stick, driven in as a marker, pointing the way somebody else thought was right.
-:::
 :::
 
 :::cols 2

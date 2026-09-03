@@ -320,6 +320,79 @@ table.rooms th.mk{width:1.9em}
 }
 
 /* magic item / plot object */
+/* ---------- the quest card ----------
+   Two panels and a crease. The card is cut out on the solid border and
+   folded PRINTED SIDE OUT along the dashed centre, which puts the front
+   on one outer face and the back on the other — fold a single-sided
+   sheet the other way and both panels end up hidden inside.
+
+   Panel heights are fixed in mm so a card is the same object whatever
+   --sheet-size is set to; app.js outlines one whose text has outgrown
+   its panel. */
+.quest{
+  display:flex;height:var(--card-h,100mm);margin:0 0 6mm;position:relative;
+  border:1px solid var(--ink);background:var(--paper);
+  break-inside:avoid;page-break-inside:avoid;
+}
+.quest .qp{
+  flex:1 1 50%;min-width:0;padding:5mm 5mm 4mm;position:relative;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.quest .qfront{border-right:1px dashed var(--rule)}
+.quest .qtag{
+  position:absolute;right:2mm;bottom:1.4mm;font-family:var(--mono);
+  font-size:6.2px;letter-spacing:.24em;text-transform:uppercase;color:#B5AC9B;
+}
+.quest .qcrease{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(180deg);
+  writing-mode:vertical-rl;font-family:var(--mono);font-size:6.2px;
+  letter-spacing:.24em;text-transform:uppercase;color:#B5AC9B;
+  background:var(--paper);padding:.9em .1em;
+}
+
+/* front */
+.quest .qkick{
+  font-family:var(--mono);font-size:.72em;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--red);margin-bottom:.35em;
+}
+.quest .qname{
+  font-family:var(--dsp);font-weight:700;text-transform:uppercase;
+  font-size:2.15em;line-height:.94;letter-spacing:.01em;
+  padding-bottom:.28em;border-bottom:2px solid var(--ink);
+}
+.quest .qdetail{margin:.6em 0 .5em;flex:1 1 auto}
+.quest .qdetail p{margin:0 0 .45em}
+.quest .qdetail p:last-child{margin:0}
+.quest .qgrid{border-top:1px solid var(--rule);padding-top:.45em}
+.quest .qgrid .row{display:flex;gap:.7em;margin-bottom:.2em;line-height:1.24}
+.quest .qgrid .k{
+  font-family:var(--mono);font-size:.68em;letter-spacing:.12em;line-height:1.9;
+  text-transform:uppercase;color:var(--mute);flex:0 0 15mm;
+}
+.quest .qfoot{
+  display:flex;gap:1em;margin-top:.5em;padding:.3em .5em;
+  background:var(--ink);color:var(--paper);
+  font-family:var(--mono);font-size:.72em;letter-spacing:.1em;text-transform:uppercase;
+}
+.quest .qfoot b{color:var(--gold);font-weight:400;margin-right:.4em}
+
+/* back */
+.quest .qback{background:var(--tint)}
+.quest .qsec{margin-bottom:.55em}
+.quest .qsec:last-of-type{margin-bottom:0}
+.quest .qlbl{
+  font-family:var(--mono);font-size:.7em;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);border-bottom:1px solid var(--rule);padding-bottom:.15em;margin-bottom:.3em;
+}
+.quest .qsec p{margin:0 0 .4em}
+.quest .qsec p:last-child{margin:0}
+.quest .qsec ul{margin:0;padding-left:1.05em}
+.quest .qsec li{margin-bottom:.15em}
+
+/* a card whose text has outgrown its panel, flagged the way a page is */
+.quest.full{outline:2px solid var(--red);outline-offset:3px}
+.quest.full .qcrease{color:var(--red)}
+
 .item{margin:0 0 .8em}
 .item .nm{font-family:var(--dsp);font-weight:700;text-transform:uppercase;font-size:1.25em;line-height:1.05}
 .item .kd{font-style:italic;color:var(--red);font-size:.95em;margin:.1em 0 .3em}

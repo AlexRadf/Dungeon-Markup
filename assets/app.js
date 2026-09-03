@@ -182,6 +182,12 @@ function flagOverflow(root){
     el.classList.toggle('over', natural > limit - 10);
     el.dataset.fill = Math.round(natural / limit * 100) + '%';
   });
+  // a quest card's panels are a fixed size, so text can outgrow one
+  // without the page noticing. Flag it the same way.
+  root.querySelectorAll('.quest').forEach(el => {
+    el.classList.toggle('full', [...el.querySelectorAll('.qp')]
+      .some(p => p.scrollHeight > p.clientHeight + 2));
+  });
 }
 
 function draw(){

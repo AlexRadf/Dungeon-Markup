@@ -261,6 +261,86 @@ block('rooms', (arg, body) => {
   return `<table class="rooms">${th}<tbody>${rows}</tbody></table>`;
 });
 
+/* ---------- the quest card ----------
+   One job as a card you cut out and fold. Two panels side by side:
+   the FRONT — what the job is, and everything you need to choose it —
+   and the BACK, which is the notice as posted and what they hear on
+   the way there.
+
+   A single-sided sheet folded ink-inward hides both panels, so these
+   fold PRINTED SIDE OUT: the crease is the card's edge, both panels
+   end up on an outer face, and neither needs to be set upside down.
+
+     :::quest Walk Me Home | JOB 15 · THE BOARD
+     GENRE: escort
+     THEME: night walk, one talk, no fight
+     WHERE: Chemistry to the east gate
+     POSTED: D. Ashgrove, technician, nights
+     PAYS: 12 gp and a hot meal
+     LEVEL: 1
+     DIFFICULTY: Easy
+     The two sentences that sell it.
+     >> ON THE BOARD
+     The notice, as it hangs there.
+     >> HANDOUTS TO MAKE
+     - the security log, nineteen identical lines
+     :::
+
+   SHOUTY keys become the card's data rows; LEVEL and DIFFICULTY are
+   lifted into the strip along the foot. Anything not a key is the
+   detail. A `>> TITLE` line starts a section on the back, and
+   everything after it belongs to the back. */
+
+const QFOOT = { level:'LEVEL', difficulty:'DIFFICULTY', diff:'DIFFICULTY' };
+
+block('quest', (arg, body) => {
+  const [nm, kick] = split(arg);
+  const ls = String(body||'').split('\n');
+  const cut = ls.findIndex(l => /^>>\s/.test(l));
+  const front = (cut < 0 ? ls : ls.slice(0, cut));
+  const back  = (cut < 0 ? [] : ls.slice(cut));
+
+  // front: SHOUTY keys make the grid, everything else is the detail
+  let rows = '', foot = {}, detail = [];
+  front.forEach(l => {
+    const m = l.match(/^\s*([A-Z][A-Z ]*[A-Z]|[A-Z])\s*:\s*(.*)$/);
+    if(!m) return detail.push(l);
+    const key = m[1].trim(), slot = QFOOT[key.toLowerCase().replace(/\s+/g,'')];
+    if(slot) foot[slot] = m[2];
+    else rows += `<div class="row"><span class="k">${esc(key)}</span><span>${inline(m[2])}</span></div>`;
+  });
+
+  // back: one section per >> heading
+  let secs = '', open = null, buf = [];
+  const flush = () => {
+    if(open === null) return;
+    secs += `<div class="qsec"><div class="qlbl">${inline(open)}</div>${h.md(buf.join('\n'))}</div>`;
+    buf = [];
+  };
+  back.forEach(l => {
+    const m = l.match(/^>>\s+(.*)$/);
+    if(m){ flush(); open = m[1]; } else buf.push(l);
+  });
+  flush();
+
+  const strip = Object.keys(foot).length
+    ? `<div class="qfoot">` + Object.entries(foot).map(([k,v]) =>
+        `<span><b>${esc(k)}</b> ${inline(v)}</span>`).join('') + `</div>`
+    : '';
+
+  return `<div class="quest">`
+       + `<div class="qp qfront">`
+       +   (kick?`<div class="qkick">${inline(kick)}</div>`:'')
+       +   `<div class="qname">${inline(nm||'')}</div>`
+       +   `<div class="qdetail">${h.md(detail.join('\n'))}</div>`
+       +   (rows?`<div class="qgrid">${rows}</div>`:'') + strip
+       +   `<div class="qtag">front</div>`
+       + `</div>`
+       + `<div class="qp qback">${secs}<div class="qtag">back</div></div>`
+       + `<div class="qcrease" aria-hidden="true">fold &middot; printed side out</div>`
+       + `</div>`;
+});
+
 block('item', (arg, body) => {
   const [nm, kind] = split(arg);
   return `<div class="item"><div class="nm">${inline(nm||'')}</div>`

@@ -12,7 +12,7 @@ Eighteen jobs, pinned up outside the Bursar's office, in a university that has d
 !! THEME -- every department here is solvent, respectable, and lying about one thing. The last four are the ones where nobody is.
 :::
 
-| # | Job | Difficulty | Genre | Levels | Sheet 2 |
+| # | Job | Difficulty | Genre | Levels | Shape |
 |---|---|---|---|---|---|
 | 1 | Something Is Eating Our Survey | Easy | combat | 1–2 | **beats** |
 | 2 | We Have Lost Our Field Site | Easy | political | 1–3 | **web** |
@@ -37,15 +37,13 @@ Eighteen jobs, pinned up outside the Bursar's office, in a university that has d
 
 :::cols 2
 :::box plain | HOW EACH JOB IS LAID OUT
-Jobs 1 to 14 are three sheets. One and three are the same every time; two is whatever the job actually is.
+Every job is two sheets, and the notice is not on either of them -- it is on the job's card, on **The Quest Board**.
 
-**Sheet one -- the board.** The notice as posted, what they hear on the way there, the handouts to cut free, and the secrets.
+**Sheet one -- the night.** The pitch, the opening shot, the shape of it (a web, a map or a run of beats) and the secrets.
 
-**Sheet two -- the web, the map, or the beats.** A mystery gets five nodes and three clues into each. A site gets a drawn map and keyed areas. Everything else gets the beats and the places.
+**Sheet two -- the crunch.** Trouble, the ways out, the doom clock, and every stat block, puzzle and table the table needs.
 
-**Sheet three -- the crunch.** Trouble, the doom clock, the ways out, and every stat block, puzzle and table you need.
-
-**Jobs 15 to 18 fold the same way onto two sheets:** the board, the secrets, the trouble and the ways out on the first, and everything you actually need at the table on the second.
+**The card.** Front: what the job is, what to expect, where, who wants it, what it pays, the level and the difficulty. Back: the notice as posted, what they hear on the way there, and the handouts worth making. Cut it out, fold it printed side out, pin the fronts up.
 :::
 
 :::box gold | RUNNING THESE
@@ -53,9 +51,11 @@ Jobs 1 to 14 are three sheets. One and three are the same every time; two is wha
 
 **Map** jobs are places: a drawn grid at five feet a square, keyed areas, and a complication table. **Beats** jobs are the ones with a shape -- a climb, a clock, an itinerary -- and get the run of the night and the places, in order.
 
+The **theme** line on each card is five words at most, and it is what to expect rather than what it means: *chase*, *torch counting*, *nobody fights*.
+
 The doom clocks are numbered one to four. They are what happens if the party does nothing at all, and they are meant to be run, not threatened with.
 
-Handouts marked **PEN & INK** are briefs for an illustrator, not read-aloud text. Everything in a dark panel is a document and can be handed over as it stands.
+Handouts are not printed any more. Each card's back names the two or three worth making, and what should be on them, so you can make the ones your table will actually pick up.
 :::
 :::
 
@@ -65,10 +65,14 @@ Eldoria is solvent, ancient, and administratively hostile. Departments do not co
 Nothing here is evil. Everything here is somebody's second-best option, taken under budget pressure, filed correctly, and forgotten. That is the horror and it is also the joke.
 
 **Except the last four.** Jobs 15 to 18 are level ones, two hours, and posted by people rather than departments -- a technician who wants walking home, a cook with six hundred dinners and no store, a porter facing an audit, a student with a letter and ninety minutes. Nothing in them is lying about anything. They pay badly, they end well, and they are the best place to start a table that has never played before.
+
+Nothing on this board eats anybody. Plenty of it will eat your equipment, your evening or your paperwork.
 :::
 
 :::box plain | WHERE TO START
 **A table that has never played before** starts at **15**, which is a walk across a park with a conversation in it, and cannot go wrong. Then **16**, for a dungeon with no fight in it, then **11**, for a mystery that is nearly kind. By then they are level 2 and job **1** is waiting.
+
+Hand the card over when they take a job down. Everything they are allowed to know before they set off is on it.
 
 **A table that has played** starts at **1** or **2** and takes the board in any order it likes. **5** and **14** are the two that assume the rest of it has happened.
 

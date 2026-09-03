@@ -12,62 +12,10 @@ The Refectory feeds six hundred at six o'clock and the winter store went out of 
 !! THEME -- nothing has been stolen. It has been *tidied*, and whatever tidied it is extremely proud of the job.
 :::
 
-:::read ON THE BOARD -- AS POSTED
-Four tons out of the deep larder between locking up and lighting the ovens. No forced door. No cart in the yard. Nothing sold in Oakhaven, we have asked, we have asked everybody.
-
-Dinner is at six and it is six hundred covers and I am not sending them to Finance to be told there is a form.
-
-Ten gold. You eat first, and you eat properly. -- **B. Ossint**, Head Cook
-:::
-
-:::cols 2
-:::box plain | ON THE WAY THERE
-The kitchens have run on the same cellars for three hundred years and no plan of them exists above the ground floor.
-
-A scullion says the shelves were emptied in order -- top to bottom, left to right, the way you would put a room away, not the way you would rob it. The chalk numbers on the near shelves have been rewritten by somebody with much smaller handwriting. Ossint's predecessor left out a bowl of milk and dripping every night for thirty years and put it on the books as *waste*. Finance stopped it eleven months ago as an unvouched expense.
-:::
-
-:::box dark | HANDOUT -- THE CHALK LOG, WRITTEN ON THE CELLAR WALL AT SHIN HEIGHT
-**BROUGHT DOWN AND SORTED, BY WEIGHT, AS IS PROPER**
-
-Salt beef, 41 casks. Flour, 60 sack. Onion, 22 crate. Butter, 9 firkin. Apple, 31 crate, of which 4 crate spoiling and set aside and NOT counted, see below. Cheese, 12 wheel. Bacon, 18 flitch. Peas, dried, 30 sack.
-
-*4 crate apple spoiling. I have set them apart. I did not eat them. I have not eaten anything that was not left out for me, not once, not in eleven months.*
-
-*Ready for inspection.*
-:::
-:::
-
-:::secrets
-1. Nothing is missing. All four tons are downstairs, stacked, in perfect order, sorted by weight.
-2. It has been carrying two hundredweight a night for eleven months and last night it finished.
-3. It is waiting to be inspected. It will not release the stack until somebody signs off the work.
-4. It has not eaten. It is very thin and it will not say so, and Ossint will notice before the party does.
-5. The bowl stopped eleven months ago when Finance struck the line. Nobody told it why. It assumed it had been found wanting.
-6. It can put the whole store back in an hour if it is asked. Nobody has ever asked it for anything.
-7. The beetles in the ice room came in with the straw and are the only thing down here that means harm.
-8. Ossint's predecessor knew. It is in her handover notes, on the page after the one about the ovens, which nobody read.
-:::
-
-:::cols 2
-:::box red | TROUBLE
-- Six o'clock. Say the time aloud every ten minutes of play and mean it.
-- The stack is fourteen feet of casks and sacks in the dark and it is beautifully balanced. Climbing it is not.
-- The cellar door opens a hand's width because there is a sack against it, and pushing hard puts eight casks down the stair.
-:::
-
-:::box gold | WAYS OUT
-- Inspect the work. Walk the stack with the log in your hand, out loud, and sign it. That is the ending, and it takes two minutes and a straight face.
-- Ask it to move the store back. It will, in an hour, and be glad of the asking.
-- Put the bowl back on the shelf, which costs a penny a day and needs a line on a form that Finance has already refused once.
-:::
-:::
-
-+++
-
 :::read WHERE IT STARTS -- READ IT AT THE CELLAR DOOR, TEN PAST FOUR
 The door gives a hand's width and stops. Through the gap: cold, a smell of apples, and the near shelves stripped to the boards, with a chalk number under every empty ring of dust. Something a long way down is stacking. You can hear it counting under its breath and it has got as far as eleven.
 :::
+
 
 ```dungeon 5 FT GRID · THE CELLARS UNDER THE REFECTORY · NO LIGHT, AND BELOW FREEZING AT THE FAR END
 ##############################
@@ -93,6 +41,33 @@ The door gives a hand's width and stops. Through the gap: cold, a smell of apple
 3 | The fallen shelving | Where it started, eleven months ago. Rubble, difficult terrain, the chalk log at shin height.
 4 | The flooded run | Knee-deep and moving, and the drain Estates has hunted since spring. DC 11 Acrobatics or prone.
 5 | The deep larder | **The stack.** Fourteen feet of it, by weight, and the larder-hand asleep on top with the tally in its fist.
+:::
+
+:::secrets
+1. Nothing is missing. All four tons are downstairs, stacked, in perfect order, sorted by weight.
+2. It has been carrying two hundredweight a night for eleven months and last night it finished.
+3. It is waiting to be inspected. It will not release the stack until somebody signs off the work.
+4. It has not eaten. It is very thin and it will not say so, and Ossint will notice before the party does.
+5. The bowl stopped eleven months ago when Finance struck the line. Nobody told it why. It assumed it had been found wanting.
+6. It can put the whole store back in an hour if it is asked. Nobody has ever asked it for anything.
+7. The beetles in the ice room came in with the straw and are the only thing down here that means harm.
+8. Ossint's predecessor knew. It is in her handover notes, on the page after the one about the ovens, which nobody read.
+:::
+
++++
+
+:::cols 2
+:::box red | TROUBLE
+- Six o'clock. Say the time aloud every ten minutes of play and mean it.
+- The stack is fourteen feet of casks and sacks in the dark and it is beautifully balanced. Climbing it is not.
+- The cellar door opens a hand's width because there is a sack against it, and pushing hard puts eight casks down the stair.
+:::
+
+:::box gold | WAYS OUT
+- Inspect the work. Walk the stack with the log in your hand, out loud, and sign it. That is the ending, and it takes two minutes and a straight face.
+- Ask it to move the store back. It will, in an hour, and be glad of the asking.
+- Put the bowl back on the shelf, which costs a penny a day and needs a line on a form that Finance has already refused once.
+:::
 :::
 
 :::cols 2
