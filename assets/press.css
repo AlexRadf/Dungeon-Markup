@@ -376,18 +376,39 @@ table.rooms th.mk{width:1.9em}
 }
 .quest .qfoot b{color:var(--gold);font-weight:400;margin-right:.4em}
 
-/* back */
+/* back — one handout: a label, the thing itself, and the guidance at the foot */
 .quest .qback{background:var(--tint)}
-.quest .qsec{margin-bottom:.55em}
-.quest .qsec:last-of-type{margin-bottom:0}
 .quest .qlbl{
   font-family:var(--mono);font-size:.7em;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--red);border-bottom:1px solid var(--rule);padding-bottom:.15em;margin-bottom:.3em;
+  color:var(--red);border-bottom:1px solid var(--rule);padding-bottom:.15em;margin-bottom:.4em;
 }
-.quest .qsec p{margin:0 0 .4em}
-.quest .qsec p:last-child{margin:0}
-.quest .qsec ul{margin:0;padding-left:1.05em}
-.quest .qsec li{margin-bottom:.15em}
+.quest .qhand{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.quest .qhand p{margin:0 0 .4em}
+.quest .qhand p:last-child{margin:0}
+.quest .qhand ul{margin:0;padding-left:1.05em}
+.quest .qhand li{margin-bottom:.15em}
+
+/* One handout per section. A document is printed as it reads, so the panel
+   can be cut up and handed over. An illustration cannot be, so it gets an
+   empty frame to draw in — and the frame is the part that flexes, taking
+   whatever the documents leave. */
+.quest .qdoc{flex:0 0 auto;margin-bottom:.5em;display:flex;flex-direction:column;min-height:0}
+.quest .qdoc:last-child{margin-bottom:0}
+.quest .qdoc.art{flex:1 1 auto}
+.quest .qart{
+  flex:1 1 auto;min-height:26mm;margin:0;padding:2mm;
+  border:1px dashed var(--rule);display:flex;align-items:center;justify-content:center;
+}
+.quest .qart.has{border:0;padding:0;background:transparent}
+.quest .qart img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+
+.quest .qguide{
+  flex:0 0 auto;margin-top:.45em;padding-top:.35em;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:.64em;line-height:1.5;letter-spacing:.02em;color:var(--mute);
+}
+.quest .qguide p{margin:0 0 .4em}
+.quest .qguide p:last-child{margin:0}
+.quest .qguide b{color:var(--brass)}
 
 /* a card whose text has outgrown its panel, flagged the way a page is */
 .quest.full{outline:2px solid var(--red);outline-offset:3px}

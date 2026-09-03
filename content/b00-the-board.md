@@ -43,7 +43,7 @@ Every job is two sheets, and the notice is not on either of them -- it is on the
 
 **Sheet two -- the crunch.** Trouble, the ways out, the doom clock, and every stat block, puzzle and table the table needs.
 
-**The card.** Front: what the job is, what to expect, where, who wants it, what it pays, the level and the difficulty. Back: the notice as posted, what they hear on the way there, and the handouts worth making. Cut it out, fold it printed side out, pin the fronts up.
+**The card.** Front: the notice as it hangs, then what to expect, where, who wants it, what it pays, the level and the difficulty. Back: the handouts, and nothing else. Cut it out, fold it printed side out, pin the fronts up.
 :::
 
 :::box gold | RUNNING THESE
@@ -55,7 +55,7 @@ The **theme** line on each card is five words at most, and it is what to expect 
 
 The doom clocks are numbered one to four. They are what happens if the party does nothing at all, and they are meant to be run, not threatened with.
 
-Handouts are not printed any more. Each card's back names the two or three worth making, and what should be on them, so you can make the ones your table will actually pick up.
+Handouts live on the back of the card. The paper ones -- a ballot, a duty log, a letter -- are printed as they read, so cut the back up and hand the pieces over. The ones meant to be drawn get an empty frame with room to draw in and the brief along the foot.
 :::
 :::
 

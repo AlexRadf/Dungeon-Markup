@@ -86,13 +86,23 @@ puts both panels on the inside, which is a lesson everybody learns once.
 
 | Panel | What is on it |
 |---|---|
-| **Front** | The detail that sells the job, then genre, theme, where, who posted it, what it pays, the level and the difficulty |
-| **Back** | The notice exactly as it hangs on the board, what they hear on the way there, and the handouts worth making |
+| **Front** | The notice exactly as it hangs on the board, then genre, theme, where, who posted it, what it pays, the level and the difficulty |
+| **Back** | The handouts, and nothing else |
 
 A card's **theme** is five words at most and describes what to expect rather than
-what the job means: *chase*, *torch counting*, *nobody fights*. Handouts are not
-printed in this book — the card names the two or three that are worth the trouble
-and says what should be on them, so you make the ones your table will pick up.
+what the job means: *chase*, *torch counting*, *nobody fights*.
+
+The back holds one or two handouts, and a handout is one of two things:
+
+- **A document** — a ballot, a duty log, a letter, a lease — is printed as it
+  reads, so you can cut the back up and hand the pieces over as they stand.
+- **An illustration** cannot be, so it gets an empty dashed frame with room to draw
+  in. Its brief drops to the foot of the panel, because a brief printed inside the
+  box is a brief you would have to draw over. The frame takes whatever the documents
+  leave, and never less than 26 mm.
+
+Either way the guidance runs along the foot: what the handout is for, and when to
+put it in somebody's hand.
 
 `content/01-matriculation-delve.md` is a worked two-page example: page 1 is the
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
@@ -206,7 +216,7 @@ web. A `:::node` quoted inside a ``` fence is a code sample, not a node.
 ### Quest cards
 
 `:::quest` sets one job as a card to cut out and fold. Two panels and a crease: the
-front is what the job is, the back is the notice as it hangs on the board.
+front is the notice and the numbers, the back is the handouts.
 
 ```markdown
 :::quest Walk Me Home | JOB 15 · THE BOARD
@@ -217,21 +227,27 @@ POSTED: D. Ashgrove, night technician
 PAYS: 12 gp and a hot meal
 LEVEL: 1
 DIFFICULTY: Easy
-The two sentences that sell it.
->> ON THE BOARD -- AS POSTED
-The notice, exactly as it hangs there.
->> ON THE WAY THERE
-What they pick up before they arrive.
->> HANDOUTS TO MAKE
-- the security log, nineteen identical lines
+The notice, in the voice of whoever pinned it up.
+>> THE SECURITY LOG, EAST GATE
+**02:14** Escorted D. Ashgrove to east gate. No incident. **02:16** As above.
+>> PEN & INK -- THE PARK AT TWO
+ART: the physics path, unlit, and a lamp forty feet back with nobody holding it
+!! Cut the log out and hand it over the first time anybody talks to Security.
 :::
 ```
 
 A **SHOUTY KEY: value** line becomes a row in the front's data grid, in the order
 you write it, except `LEVEL` and `DIFFICULTY`, which are lifted into the black strip
-along the foot. Everything else before the first `>>` is the detail. A `>> TITLE`
-line opens a section on the back, and everything after the first one belongs to the
-back.
+along the foot. Everything else before the first `>>` is the notice.
+
+A `>> TITLE` line starts one handout on the back. Inside it:
+
+| Line | What it does |
+|---|---|
+| `ART: brief` | Makes this handout an empty frame to draw in. The brief prints at the foot of the panel instead of inside the box |
+| `![alt](src)` | Fills that frame with a picture — paste or drop one in the editor and it lands here |
+| anything else | The document, printed as it reads, so the back can be cut up and handed over |
+| `!!` | The guidance, along the foot of the panel |
 
 The card is a fixed height in millimetres so it stays the same object whatever text
 size the booklet is set to — which means text can outgrow a panel without the page
