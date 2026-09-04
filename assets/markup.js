@@ -243,7 +243,11 @@ block('valve', (arg, body) => {
 
 block('cols', (arg, body) => {
   const n = /^[23]$/.test(String(arg).trim()) ? String(arg).trim() : '2';
-  return `<div class="cols" style="column-count:${n}">${h.md(body)}</div>`;
+  // The cols2/cols3 class is what press.css counts children against: a block
+  // holding exactly as many children as it has columns is laid out on a grid
+  // instead of balanced, so a tall stat block cannot drag its partner down
+  // underneath it. Everything else keeps the multi-column flow.
+  return `<div class="cols cols${n}" style="column-count:${n}">${h.md(body)}</div>`;
 });
 
 block('rooms', (arg, body) => {

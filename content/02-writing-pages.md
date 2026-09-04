@@ -31,7 +31,7 @@ Plain markdown works: **bold**, *italic*, ~~struck~~, `code`, lists, `>` quotes,
 | `:::track` | Clocks. `Label: 6` per line, drawn as boxes to tick. |
 | `:::valve` | Pacing valves. `Label: text` per line. |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark`. |
-| `:::cols 2` | Two or three columns. Blocks nest inside. |
+| `:::cols 2` | Two or three columns. Blocks nest inside. Two blocks in a `cols 2` always sit side by side. |
 | `:::secrets` | Ten things they can learn, in any order, each with a box to tick. |
 | `:::scenes LABEL` | What might happen, deliberately unordered. |
 | `:::place Name \| one line` | A location and the three details you say aloud. |
