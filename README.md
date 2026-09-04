@@ -135,7 +135,7 @@ the argument; `|` splits it into parts.
 | `:::track` | Clocks — `Label: 6` per line, drawn as boxes to tick |
 | `:::valve` | Pacing valves — `Label: text` per line |
 | `:::box plain \| TITLE` | Callout. Kinds: `plain`, `gold`, `red`, `dark` |
-| `:::cols 2` | Two or three columns; blocks nest inside |
+| `:::cols 2` | Two or three columns; blocks nest inside. Put exactly as many blocks in as there are columns and they are laid on a grid, one per column, rather than balanced -- so a tall stat block cannot pull its partner down underneath it |
 | `:::secrets` | Ten things they can learn, in any order, each with a box to tick |
 | `:::scenes LABEL` | What might happen, deliberately unordered |
 | `:::place Name \| one line` | A location and the three details you say aloud |

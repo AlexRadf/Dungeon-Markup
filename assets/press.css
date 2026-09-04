@@ -528,8 +528,21 @@ table.roll tbody tr:nth-child(odd) td{background:var(--tint)}
 .sheet .cols td:first-child:not(:only-child),.cols th{white-space:normal}
 .cols code,.cols td,.cols th{overflow-wrap:anywhere}
 .cols .nm,.cols .rn,.cols h2,.cols h3,.cols h4,.cols .bar,.cols .abil{hyphens:none;-webkit-hyphens:none}
-.cols>*{break-inside:avoid}
+.cols>*{break-inside:avoid;min-width:0}
 .cols>h2:first-child,.cols>h3:first-child{margin-top:0}
+/* Two stat blocks in a :::cols 2 are meant to sit side by side, and multi-column
+   only puts them there if it balances the way you hoped. Make one child taller
+   than half the pair -- which is all it takes to change the text size -- and a
+   browser is within its rights to drop both into the first column and leave the
+   second one empty. But a block holding exactly as many children as it has
+   columns has nothing to balance: one child per column is the only answer. So
+   lay that case out on a grid, where it is the only answer the browser can
+   give. Prose, headings and longer lists still flow through the columns.
+   (A browser without :has() just keeps today's behaviour.) */
+.cols2:has(>:nth-child(2):last-child),
+.cols3:has(>:nth-child(3):last-child){
+  display:grid;grid-auto-flow:column;grid-auto-columns:1fr;align-items:start;
+}
 
 svg.dmap{width:100%;height:auto;display:block;margin:.2em auto .15em;max-width:95mm}
 
