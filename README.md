@@ -106,6 +106,37 @@ session — pitch, opening shot, beats, cast, the clue, pacing valves — and pa
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
 d6 complication table and the loot.
 
+### The table's own three pages
+
+Three pages carry no adventure at all. They are what the table needs around one,
+and they sit at the front of the book because you reach for them before you reach
+for a job:
+
+- **`content/p01-first-year.md` — First Year.** Two sheets you hand a player who
+  has never done this, written as an Eldoria matriculation pack: a first-year
+  player, a first-year character, neither of them knowing where anything is. It
+  teaches almost no rules on purpose. The whole game is four lines, each ability
+  score is a question rather than a mechanic, and the rest is questions to ask when
+  you are stuck and six sentences you can say word for word — including *"I'd
+  rather we skipped that bit."*
+- **`content/d01-the-screen.md` — The Screen.** Four sheets, in the order you panic
+  in. **1** rulings: the DC ladder, skills by ability, advantage, attitude, and the
+  exploration numbers. **2** the turn and the body: actions, all fifteen conditions,
+  0 hp and death saves, cover, crits and rests. **3** improvising Eldoria: who is
+  already in the room (d20), what is on the board (d12), what goes wrong now (d10),
+  and a name, a department and a pocketful of something. **4** off the rails: the
+  five questions for a room you never drew, the pacing valves, three reskinnable
+  stat blocks and a CR line to build a monster on mid-sentence.
+- **`content/d02-session-notes.md` — Session Notes.** One sheet a night, filled in
+  as you go: the party, where you left off, what happened, who they met, threads
+  still open, what was paid and what is owed, clocks to tick where the table can
+  see them, and at the foot the two questions you ask before anybody stands up —
+  *what are you doing next?* and *who do you still owe?* Those two answers are next
+  week's prep, and **The Screen** ends by telling you to write them here.
+
+The Screen and the notes sheet are GM side. First Year is not — print it, hand it
+over, and let them keep it.
+
 ## Writing
 
 Normal markdown works: `**bold**`, `*italic*`, `~~struck~~`, `` `code` ``, lists,
@@ -383,6 +414,9 @@ content/manifest.json page order
 content/q01-*.md      the notice board — every job as a fold-out card
 content/q02-*.md      the handouts, at a size you can hand over
 content/c0*.md        the seven Notice Board jobs, two sheets each
+content/p01-*.md      first year — how to play, for somebody who never has
+content/d01-*.md      the screen — four panels of GM side
+content/d02-*.md      session notes — one sheet a night
 content/*.md          the adventure
 ```
 

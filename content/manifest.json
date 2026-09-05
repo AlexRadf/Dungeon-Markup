@@ -1,6 +1,9 @@
 {
   "title": "Eldoria Press",
   "pages": [
+    "p01-first-year.md",
+    "d01-the-screen.md",
+    "d02-session-notes.md",
     "q01-the-notice-board.md",
     "q02-notice-board-handouts.md",
     "c01-kobold-scales-and-eggs.md",
