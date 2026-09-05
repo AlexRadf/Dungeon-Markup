@@ -861,6 +861,9 @@ function parseDoc(text){
     number:   meta.number || '',
     head:     meta.head || '',
     headright: meta.headright || meta['head-right'] || '',
+    // how the page is set: '' is the house's dense GM setting, 'open' is
+    // the large, airy one a player handout wants. See .sheet.set-* in press.css.
+    set:      (meta.set || '').toLowerCase(),
     md
   };
 }
@@ -892,6 +895,7 @@ function serialize(doc){
   if(doc.subtitle) fm.push(`subtitle: ${doc.subtitle}`);
   if(doc.head) fm.push(`head: ${doc.head}`);
   if(doc.headright) fm.push(`headright: ${doc.headright}`);
+  if(doc.set) fm.push(`set: ${doc.set}`);
   fm.push('---', '');
   return fm.join('\n') + String(doc.md||'').replace(/^\n+/,'');
 }

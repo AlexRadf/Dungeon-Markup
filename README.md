@@ -42,6 +42,32 @@ headright: DUNG 101
 ---
 ```
 
+### How a page is set
+
+A seventh key, `set:`, chooses the page's typographic setting. Leave it out and
+you get the house's GM setting: **8.2pt, packed**, because a GM reads a whole
+spread at a glance and wants the session in one eyeful.
+
+```markdown
+set: open
+```
+
+`set: open` is the other job — a page read once, slowly, by somebody who has never
+seen any of this, with nobody to ask. Body copy goes up by 1.45× (about 11.9pt),
+leading opens, panels get room inside and between them, running text is capped to a
+34em measure so it reads down rather than across, and table striping goes away,
+because the zebra that helps a GM find a row mid-sentence is only noise to somebody
+reading top to bottom.
+
+Content type is already sized in `em` off the sheet, so that one multiplier moves
+the whole page and every block keeps its proportions. `content/p01-first-year.md`
+is the only page set this way.
+
+The setting is `.sheet.set-*` in `assets/press.css` — **and restated in
+`assets/print.css`**, because `#print-root .sheet` is an ID selector and out-
+specifies it. Leave that second rule out and the page previews large and airy and
+comes off the printer at 8.2pt.
+
 `content/03-the-god-is-still-dying.md` is a level 15 one-shot laid out on Sly
 Flourish's prep spine instead of a plot: a strong start, unordered potential scenes,
 ten secrets and clues tied to no room, three fantastic locations with three
@@ -105,6 +131,44 @@ of the same props at full size — see **Printable handouts** below.
 session — pitch, opening shot, beats, cast, the clue, pacing valves — and page 2 is
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
 d6 complication table and the loot.
+
+### The table's own four pages
+
+Four pages carry no adventure at all. They are what the table needs around one,
+and they sit at the front of the book because you reach for them before you reach
+for a job:
+
+- **`content/p01-first-year.md` — First Year.** Four sheets you hand a player who
+  has never done this, written as an Eldoria matriculation pack: a first-year
+  player, a first-year character, neither of them knowing where anything is. It
+  teaches almost no rules on purpose. The whole game is four lines, each ability
+  score is a question rather than a mechanic, and the rest is questions to ask when
+  you are stuck and six sentences you can say word for word — including *"I'd
+  rather we skipped that bit."* It is the one page in the book set `open` rather
+  than in the house's dense GM setting — see **How a page is set** above.
+- **`content/d01-the-screen.md` — The Screen.** Four sheets, in the order you panic
+  in. **1** rulings: the DC ladder, skills by ability, advantage, attitude, and the
+  exploration numbers. **2** the turn and the body: actions, all fifteen conditions,
+  0 hp and death saves, cover, crits and rests. **3** improvising Eldoria: who is
+  already in the room (d20), what is on the board (d12), what goes wrong now (d10),
+  and a name, a department and a pocketful of something. **4** off the rails: the
+  five questions for a room you never drew, the pacing valves, three reskinnable
+  stat blocks and a CR line to build a monster on mid-sentence.
+- **`content/d02-session-notes.md` — Session Notes.** One sheet a night, filled in
+  as you go: the party, where you left off, what happened, who they met, threads
+  still open, what was paid and what is owed, clocks to tick where the table can
+  see them, and at the foot the two questions you ask before anybody stands up —
+  *what are you doing next?* and *who do you still owe?* Those two answers are next
+  week's prep, and **The Screen** ends by telling you to write them here.
+- **`content/d03-the-realm.md` — The Realm.** Three sheets of world around the
+  campus. Sheet 1 is the map itself (`assets/map-eldoria.jpg`) printed full width,
+  with how long everything takes from the University gate. Sheet 2 is the six big
+  places, each with the three details you say aloud, and a d10 for the road. Sheet 3
+  is every site named on the map — town, ruin, dungeon, landmark — one line of what
+  it is and one of what it is for.
+
+The Screen, the notes sheet and The Realm are GM side. First Year is not — print
+it, hand it over, and let them keep it.
 
 ## Writing
 
@@ -291,8 +355,8 @@ square. Text after the word `dungeon` becomes the caption.
 ### Page setup
 
 **Page…** in the toolbar (Ctrl/Cmd+I, or double-click a page's masthead) edits the
-current page's front matter — title, kicker, number, subtitle, and both halves of
-the running head — plus the file name it saves under. **New** builds a page from the
+current page's front matter — title, kicker, number, subtitle, both halves of the
+running head, and how the page is set — plus the file name it saves under. **New** builds a page from the
 same form. Renaming a page is a local change: update `content/manifest.json` to
 match before you commit.
 
@@ -379,10 +443,15 @@ assets/print.css      print-only rules (loaded with media="print")
 assets/markup.js      parser, block registry, dungeon map renderer
 assets/app.js         state, storage, editor, print pipeline
 assets/fonts/         subset WOFF2 + licences
+assets/map-eldoria.jpg the realm map, printed full width by content/d03-*.md
 content/manifest.json page order
 content/q01-*.md      the notice board — every job as a fold-out card
 content/q02-*.md      the handouts, at a size you can hand over
 content/c0*.md        the seven Notice Board jobs, two sheets each
+content/p01-*.md      first year — how to play, for somebody who never has
+content/d01-*.md      the screen — four panels of GM side
+content/d02-*.md      session notes — one sheet a night
+content/d03-*.md      the realm — the map, and everything named on it
 content/*.md          the adventure
 ```
 

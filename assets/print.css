@@ -38,6 +38,12 @@ body{
   break-after:page;page-break-after:always;
 }
 #print-root .sheet:last-child{break-after:auto;page-break-after:auto;min-height:0}
+/* A page whose front matter says `set: open` keeps that setting on paper.
+   The #print-root rule above is an ID selector, so it out-specifies
+   .sheet.set-open in press.css — leave this out and a handout previews
+   large and airy on screen and comes off the printer at the GM's 8.2pt. */
+#print-root .sheet.set-open{font-size:calc(var(--print-size) * 1.45);line-height:1.6}
+
 #print-root .sheet>.body{flex:1 0 auto}
 
 /* explicit breaks inside a page (rare — `+++` makes a new sheet instead) */
