@@ -556,6 +556,56 @@ svg.dmap{width:100%;height:auto;display:block;margin:.2em auto .15em;max-width:9
 .err{background:var(--pink);border:1px dashed var(--red);color:var(--red);padding:.45em .65em;font-family:var(--mono);font-size:.8em;margin-bottom:.7em}
 
 /* overflow warning — screen only, tells you a page will spill */
+/* ============================================================
+   SET: OPEN — the player-facing setting
+   ------------------------------------------------------------
+   The house sets body copy at 8.2pt and packs it, because a GM
+   reads a whole spread at a glance and wants it in one eyeful.
+   A handout is the opposite job: read once, slowly, by somebody
+   who has never seen any of this before, with nobody to ask.
+
+   `set: open` in a page's front matter is that second setting.
+   Content type is already sized in em off the sheet, so one
+   multiplier moves the whole page and every block keeps its
+   proportions — what changes on top of that is air: more space
+   between things, fewer filled panels, and a measure capped
+   short enough to read down rather than across.
+   ============================================================ */
+.sheet.set-open{font-size:calc(var(--sheet-size) * 1.45);line-height:1.6}
+
+/* Running text is capped to a readable measure. Panels, tables and
+   columns still take the full width of the page. */
+.sheet.set-open>.body>p{max-width:34em}
+
+.sheet.set-open h1{font-size:2.9em}
+.sheet.set-open .masthead{margin-bottom:1.6em}
+.sheet.set-open .masthead .subtitle{font-size:.95em;letter-spacing:.06em}
+.sheet.set-open .masthead .bignum{font-size:3.6em}
+
+.sheet.set-open h2{font-size:1.75em;margin:1.5em 0 .6em;padding-bottom:.18em}
+.sheet.set-open h3{font-size:.95em;letter-spacing:.24em;margin:1.7em 0 .6em}
+.sheet.set-open>.body>h2:first-child,
+.sheet.set-open>.body>h3:first-child{margin-top:0}
+
+.sheet.set-open p{margin:0 0 .75em}
+.sheet.set-open li{margin-bottom:.5em}
+.sheet.set-open ol,.sheet.set-open ul{margin-bottom:1em}
+
+/* the panels: more room inside them, more room between them */
+.sheet.set-open .kbox{padding:1em 1.15em;margin:0 0 1.3em}
+.sheet.set-open .kbox>.t{font-size:.92em;letter-spacing:.2em;margin-bottom:.6em}
+.sheet.set-open .pitch{padding:1.1em 1.25em;margin:0 0 1.4em}
+.sheet.set-open .cols{column-gap:9mm;margin-bottom:1.1em}
+.sheet.set-open .valve{padding:.8em 0;margin:1.3em 0}
+.sheet.set-open .valve>div{margin-bottom:.5em}
+.sheet.set-open .beats li{margin-bottom:.7em}
+.sheet.set-open td{padding:.5em .6em}
+.sheet.set-open th{padding-top:.4em;padding-bottom:.4em}
+
+/* A handout is read, not scanned, so the striping that helps a GM find a
+   row mid-sentence is just noise here. One hairline per row instead. */
+.sheet.set-open tbody tr:nth-child(odd) td{background:none}
+
 .sheet.over{outline:2px solid var(--red);outline-offset:4px}
 .overflag{
   display:none;font-family:var(--mono);font-size:.75em;letter-spacing:.16em;text-transform:uppercase;

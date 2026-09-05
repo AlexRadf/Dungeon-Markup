@@ -42,6 +42,32 @@ headright: DUNG 101
 ---
 ```
 
+### How a page is set
+
+A seventh key, `set:`, chooses the page's typographic setting. Leave it out and
+you get the house's GM setting: **8.2pt, packed**, because a GM reads a whole
+spread at a glance and wants the session in one eyeful.
+
+```markdown
+set: open
+```
+
+`set: open` is the other job — a page read once, slowly, by somebody who has never
+seen any of this, with nobody to ask. Body copy goes up by 1.45× (about 11.9pt),
+leading opens, panels get room inside and between them, running text is capped to a
+34em measure so it reads down rather than across, and table striping goes away,
+because the zebra that helps a GM find a row mid-sentence is only noise to somebody
+reading top to bottom.
+
+Content type is already sized in `em` off the sheet, so that one multiplier moves
+the whole page and every block keeps its proportions. `content/p01-first-year.md`
+is the only page set this way.
+
+The setting is `.sheet.set-*` in `assets/press.css` — **and restated in
+`assets/print.css`**, because `#print-root .sheet` is an ID selector and out-
+specifies it. Leave that second rule out and the page previews large and airy and
+comes off the printer at 8.2pt.
+
 `content/03-the-god-is-still-dying.md` is a level 15 one-shot laid out on Sly
 Flourish's prep spine instead of a plot: a strong start, unordered potential scenes,
 ten secrets and clues tied to no room, three fantastic locations with three
@@ -112,13 +138,14 @@ Four pages carry no adventure at all. They are what the table needs around one,
 and they sit at the front of the book because you reach for them before you reach
 for a job:
 
-- **`content/p01-first-year.md` — First Year.** Two sheets you hand a player who
+- **`content/p01-first-year.md` — First Year.** Four sheets you hand a player who
   has never done this, written as an Eldoria matriculation pack: a first-year
   player, a first-year character, neither of them knowing where anything is. It
   teaches almost no rules on purpose. The whole game is four lines, each ability
   score is a question rather than a mechanic, and the rest is questions to ask when
   you are stuck and six sentences you can say word for word — including *"I'd
-  rather we skipped that bit."*
+  rather we skipped that bit."* It is the one page in the book set `open` rather
+  than in the house's dense GM setting — see **How a page is set** above.
 - **`content/d01-the-screen.md` — The Screen.** Four sheets, in the order you panic
   in. **1** rulings: the DC ladder, skills by ability, advantage, attitude, and the
   exploration numbers. **2** the turn and the body: actions, all fifteen conditions,
@@ -328,8 +355,8 @@ square. Text after the word `dungeon` becomes the caption.
 ### Page setup
 
 **Page…** in the toolbar (Ctrl/Cmd+I, or double-click a page's masthead) edits the
-current page's front matter — title, kicker, number, subtitle, and both halves of
-the running head — plus the file name it saves under. **New** builds a page from the
+current page's front matter — title, kicker, number, subtitle, both halves of the
+running head, and how the page is set — plus the file name it saves under. **New** builds a page from the
 same form. Renaming a page is a local change: update `content/manifest.json` to
 match before you commit.
 

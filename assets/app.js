@@ -158,7 +158,10 @@ async function boot(){
 function sheetHTML(doc, md, first, folio){
   const left  = doc.head || doc.kicker || doc.title;
   const right = doc.headright || doc.title;
-  return `<section class="sheet">`
+  // `set:` in the front matter picks how the page is set. Anything that is
+  // not a plain word is ignored rather than pasted into the class list.
+  const set = /^[a-z][a-z0-9-]*$/.test(doc.set || '') ? ' set-' + doc.set : '';
+  return `<section class="sheet${set}">`
        + `<div class="runhead"><span>${Markup.esc(left)}</span>`
        + `<span class="r">${Markup.esc(right)}</span></div>`
        + `<div class="body">${first ? Markup.masthead(doc) : ''}${Markup.render(md)}</div>`
@@ -520,7 +523,8 @@ const META_FIELDS = [
   ['number',    'Number',       'Large grey numeral, top right'],
   ['subtitle',  'Subtitle',     'Grey line under the title'],
   ['head',      'Running head', 'Top left of every page'],
-  ['headright', 'Head right',   'Top right of every page']
+  ['headright', 'Head right',   'Top right of every page'],
+  ['set',       'Set',          'Blank = the house\u2019s dense GM setting. open = large and airy, for a handout']
 ];
 
 function metaModal(opts){
