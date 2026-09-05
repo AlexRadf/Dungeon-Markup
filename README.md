@@ -106,9 +106,9 @@ session — pitch, opening shot, beats, cast, the clue, pacing valves — and pa
 the crunch — map, keyed areas, compressed stat blocks, a drop-in puzzle, hazards, a
 d6 complication table and the loot.
 
-### The table's own three pages
+### The table's own four pages
 
-Three pages carry no adventure at all. They are what the table needs around one,
+Four pages carry no adventure at all. They are what the table needs around one,
 and they sit at the front of the book because you reach for them before you reach
 for a job:
 
@@ -133,9 +133,15 @@ for a job:
   see them, and at the foot the two questions you ask before anybody stands up —
   *what are you doing next?* and *who do you still owe?* Those two answers are next
   week's prep, and **The Screen** ends by telling you to write them here.
+- **`content/d03-the-realm.md` — The Realm.** Three sheets of world around the
+  campus. Sheet 1 is the map itself (`assets/map-eldoria.jpg`) printed full width,
+  with how long everything takes from the University gate. Sheet 2 is the six big
+  places, each with the three details you say aloud, and a d10 for the road. Sheet 3
+  is every site named on the map — town, ruin, dungeon, landmark — one line of what
+  it is and one of what it is for.
 
-The Screen and the notes sheet are GM side. First Year is not — print it, hand it
-over, and let them keep it.
+The Screen, the notes sheet and The Realm are GM side. First Year is not — print
+it, hand it over, and let them keep it.
 
 ## Writing
 
@@ -410,6 +416,7 @@ assets/print.css      print-only rules (loaded with media="print")
 assets/markup.js      parser, block registry, dungeon map renderer
 assets/app.js         state, storage, editor, print pipeline
 assets/fonts/         subset WOFF2 + licences
+assets/map-eldoria.jpg the realm map, printed full width by content/d03-*.md
 content/manifest.json page order
 content/q01-*.md      the notice board — every job as a fold-out card
 content/q02-*.md      the handouts, at a size you can hand over
@@ -417,6 +424,7 @@ content/c0*.md        the seven Notice Board jobs, two sheets each
 content/p01-*.md      first year — how to play, for somebody who never has
 content/d01-*.md      the screen — four panels of GM side
 content/d02-*.md      session notes — one sheet a night
+content/d03-*.md      the realm — the map, and everything named on it
 content/*.md          the adventure
 ```
 
